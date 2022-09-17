@@ -22,17 +22,6 @@ const ConfigForm = () => {
   );
 
   const selectedBikeUpgrades = selectedBike.upgrades;
-  console.log(selectedBikeUpgrades);
-
-  // const bikeLogo = selectedBikeUpgrades[0];
-  // const bikeColor = selectedBikeUpgrades[1];
-  // const bikeWheel = selectedBikeUpgrades[2];
-  // const bikeExhaust = selectedBikeUpgrades[3];
-  // const bikeSeat = selectedBikeUpgrades[4];
-  // const bikeSuspension = selectedBikeUpgrades[5];
-  // const bikeWindshield = selectedBikeUpgrades[6];
-  // const bikeBrakes = selectedBikeUpgrades[7];
-  // const bikePower = selectedBikeUpgrades[8];
 
   const {
     logo: bikeLogo,
@@ -58,156 +47,144 @@ const ConfigForm = () => {
     bikeBackground = <div className={classes.thunderstorm}></div>;
   }
 
-  const [isLogoChecked, setIsLogoChecked] = useState(false);
-  const [isLogoChanged, setIsLogoChanged] = useState(false);
-  const [logo, setLogo] = useState("");
-  const [isColorChecked, setIsColorChecked] = useState(false);
-  const [isColorChanged, setIsColorChanged] = useState(false);
-  const [color, setColor] = useState("");
-  const [isWheelChecked, setIsWheelChecked] = useState(false);
-  const [isWheelChanged, setIsWheelChanged] = useState(false);
-  const [wheel, setWheel] = useState("");
-
-  const [isExhaustChecked, setIsExhaustChecked] = useState(false);
-  const [isExhaustRangeChanged, setIsExhaustRangeChanged] = useState(false);
-  const [exhaustRangeValue, setExhaustRangeValue] = useState("");
-  const [isSeatChecked, setIsSeatChecked] = useState(false);
-  const [isSuspensionChecked, setIsSuspensionChecked] = useState(false);
-  const [isBrakesChecked, setIsBrakesChecked] = useState(false);
-  const [isWindshieldChecked, setIsWindshieldChecked] = useState(false);
-  const [isPowerChecked, setIsPowerChecked] = useState(false);
-  const [isPowerRangeChanged, setIsPowerRangeChanged] = useState(false);
-  const [powerRangeValue, setPowerRangeValue] = useState("");
+  const [formState, setFormState] = useState({
+    isLogoChecked: false,
+    isLogoChanged: false,
+    logo: "",
+    isColorChecked: false,
+    isColorChanged: false,
+    color: "",
+    isWheelChecked: false,
+    isWheelChanged: false,
+    wheel: "",
+    isExhaustChecked: false,
+    isExhaustChanged: false,
+    exhaust: "",
+    isSeatChecked: false,
+    isSuspensionChecked: false,
+    isBrakesChecked: false,
+    isWindshieldChecked: false,
+    isPowerChecked: false,
+    isPowerChanged: false,
+    power: "",
+  });
 
   let waitingTime = 0;
 
-  if (isLogoChecked) {
+  if (formState.isLogoChecked) {
     waitingTime += bikeLogo.waitingTime;
   }
-  if (isColorChecked) {
+  if (formState.isColorChecked) {
     waitingTime += bikeColor.waitingTime;
   }
-  if (isWheelChecked) {
+  if (formState.isWheelChecked) {
     waitingTime += bikeWheel.waitingTime;
   }
-  if (isExhaustChecked) {
+  if (formState.isExhaustChecked) {
     waitingTime += bikeExhaust.waitingTime;
   }
-  if (isSeatChecked) {
+  if (formState.isSeatChecked) {
     waitingTime += bikeSeat.waitingTime;
   }
-  if (isSuspensionChecked) {
+  if (formState.isSuspensionChecked) {
     waitingTime += bikeSuspension.waitingTime;
   }
-  if (isBrakesChecked) {
+  if (formState.isBrakesChecked) {
     waitingTime += bikeBrakes.waitingTime;
   }
-  if (isWindshieldChecked) {
+  if (formState.isWindshieldChecked) {
     waitingTime += bikeWindshield.waitingTime;
   }
-  if (isPowerChecked) {
+  if (formState.isPowerChecked) {
     waitingTime += bikePower.waitingTime;
   }
-  console.log(waitingTime);
 
-  const onLogoCheckedHandler = () => {
-    setIsLogoChecked((prevValue) => !prevValue);
+  const onCheckedHandler = (upgrade) => {
+    setFormState((prevState) => ({
+      ...prevState,
+      [upgrade]: !prevState[upgrade],
+    }));
   };
 
-  const onLogoChangeHandler = (event) => {
-    if (event.target.value.trim().length !== 0) {
-      setIsLogoChanged(true);
-      setLogo(event.target.value);
+  const onChangeHandler = (changed, chosen, event) => {
+    const value = event.target.value;
+    if (chosen === "logo" || chosen === "color" || chosen === "wheel") {
+      if (event.target.value.trim().length !== 0) {
+        setFormState((prevState) => ({
+          ...prevState,
+          [changed]: true,
+          [chosen]: value,
+        }));
+      }
+    }
+    if (chosen === "exhaust") {
+      if (value === "0") {
+        setFormState((prevState) => ({
+          ...prevState,
+          [chosen]: "Thundering Sound",
+        }));
+      } else if (value === "50") {
+        setFormState((prevState) => ({
+          ...prevState,
+          [chosen]: "Normal Sound",
+        }));
+      } else if (value === "100") {
+        setFormState((prevState) => ({
+          ...prevState,
+          [chosen]: "Roaring Sound",
+        }));
+      }
+      setFormState((prevState) => ({
+        ...prevState,
+        [changed]: true,
+      }));
+    }
+    if (chosen === "power") {
+      setFormState((prevState) => ({
+        ...prevState,
+        [changed]: true,
+        [chosen]: `+${value}HP`,
+      }));
     }
   };
 
-  //Napravi za svaki INPUT poseban Blur handler da bi mogao razlicite input vrednosti da preuzmes i ispoljis u showNotification.
+  // Za blur treba da se napravi i logika za exhaust i power ili da se napravi default vrednost za ta input polja i da budu bez onBlur logike
 
-  const onLogoBlurHandler = (event) => {
-    console.log(event);
-    const value = event.target.id;
-    if (event.target.value.length === 0) {
+  const onBlurHandler = (event) => {
+    const id = event.target.id;
+
+    if (id === "logo" && event.target.value.length === 0) {
       return dispatch(
         uiActions.showNotification({
           status: "incomplete",
-          title: `Incomplete ${value} configuration`,
+          title: `Incomplete ${id} configuration`,
+          message: `Please make sure to choose your prefered value!`,
+        })
+      );
+    }
+    if (
+      (id === "color" && formState.isColorChanged === false) ||
+      (id === "wheel" && formState.isWheelChanged === false)
+    ) {
+      return dispatch(
+        uiActions.showNotification({
+          status: "incomplete",
+          title: `Incomplete ${id} configuration`,
           message: `Please make sure to choose your prefered value!`,
         })
       );
     }
   };
 
-  const onColorCheckedHandler = () => {
-    setIsColorChecked((prevValue) => !prevValue);
-  };
-
-  const onColorChangeHandler = (event) => {
-    setIsColorChanged(true);
-    setColor(event.target.value);
-  };
-
-  const onWheelCheckedHandler = () => {
-    setIsWheelChecked((prevValue) => !prevValue);
-  };
-
-  const onWheelChangeHandler = (event) => {
-    setIsWheelChanged(true);
-    setWheel(event.target.value);
-  };
-
-  const onExhaustChangeHandler = (event) => {
-    setIsExhaustChecked((prevValue) => !prevValue);
-  };
-
-  const onExhaustRangeChangeHandler = (event) => {
-    let value = event.target.value;
-
-    if (value === "0") {
-      setExhaustRangeValue("Thundering Sound");
-    } else if (value === "50") {
-      setExhaustRangeValue("Normal Sound");
-    } else if (value === "100") {
-      setExhaustRangeValue("Roaring Sound");
-    }
-    setIsExhaustRangeChanged(true);
-  };
-
-  const onSeatChangeHandler = () => {
-    setIsSeatChecked((prevValue) => !prevValue);
-  };
-
-  const onSuspensionChangeHandler = () => {
-    setIsSuspensionChecked((prevValue) => !prevValue);
-  };
-
-  const onBrakesChangeHandler = () => {
-    setIsBrakesChecked((prevValue) => !prevValue);
-  };
-
-  const onWindshieldChangeHandler = () => {
-    setIsWindshieldChecked((prevValue) => !prevValue);
-  };
-
-  const onPowerChangeHandler = () => {
-    setIsPowerChecked((prevState) => !prevState);
-  };
-
-  const onPowerRangeChangeHandler = (event) => {
-    setIsPowerRangeChanged(true);
-    let value = event.target.value;
-
-    setPowerRangeValue(`+${value}HP`);
-  };
-
   const configFormSubmitHandler = (event) => {
     event.preventDefault();
     if (firstSubmit === true) {
       if (
-        !isExhaustChecked ||
-        !isSeatChecked ||
-        !isSuspensionChecked ||
-        !isBrakesChecked ||
-        isWindshieldChecked
+        !formState.isExhaustChecked ||
+        !formState.isSeatChecked ||
+        !formState.isSuspensionChecked ||
+        !formState.isBrakesChecked ||
+        formState.isWindshieldChecked
       ) {
         firstSubmit = false;
         alert("Are you sure you don't want to add any more upgrades?");
@@ -233,10 +210,14 @@ const ConfigForm = () => {
       }
     };
 
-    checkValidity(isLogoChecked, isLogoChanged, "logo");
-    checkValidity(isColorChecked, isColorChanged, "color");
-    checkValidity(isWheelChecked, isWheelChanged, "wheel");
-    checkValidity(isExhaustChecked, isExhaustRangeChanged, "exhaust");
+    checkValidity(formState.isLogoChecked, formState.isLogoChanged, "logo");
+    checkValidity(formState.isColorChecked, formState.isColorChanged, "color");
+    checkValidity(formState.isWheelChecked, formState.isWheelChanged, "wheel");
+    checkValidity(
+      formState.isExhaustChecked,
+      formState.isExhaustChanged,
+      "exhaust"
+    );
 
     // if (isLogoChecked && !isLogoChanged) {
     //   return dispatch(
@@ -280,34 +261,39 @@ const ConfigForm = () => {
     //   );
     // }
 
-    const logoConfig = isLogoChanged
+    const logoConfig = formState.isLogoChanged
       ? {
           name: "Logo",
-          value: logo,
+          value: formState.logo,
           waitingTime: bikeLogo.waitingTime,
           price: bikeLogo.price,
         }
       : { name: "Logo", value: "none", waitingTime: 0, price: 0 };
-    const colorConfig = isColorChanged
+    const colorConfig = formState.isColorChanged
       ? {
           name: "Color",
-          value: color,
+          value: formState.color,
           waitingTime: bikeColor.waitingTime,
           price: bikeColor.price,
         }
       : { name: "bike.color", value: "none", waitingTime: 0, price: 0 };
-    const wheelConfig = isWheelChanged
-      ? { name: "Wheel", value: wheel, waitingTime: 1, price: bikeWheel.price }
+    const wheelConfig = formState.isWheelChanged
+      ? {
+          name: "Wheel",
+          value: formState.wheel,
+          waitingTime: 1,
+          price: bikeWheel.price,
+        }
       : { name: "Wheel", value: "none", waitingTime: 0, price: 0 };
-    const exhaustConfig = isExhaustChecked
+    const exhaustConfig = formState.isExhaustChecked
       ? {
           name: "Exhaust",
-          value: exhaustRangeValue,
+          value: formState.exhaustRangeValue,
           waitingTime: 2,
           price: bikeExhaust.price,
         }
       : { name: "Exhaust", value: "none", waitingTime: 0, price: 0 };
-    const seatConfig = isSeatChecked
+    const seatConfig = formState.isSeatChecked
       ? {
           name: "Seat",
           value: "yes",
@@ -315,7 +301,7 @@ const ConfigForm = () => {
           price: bikeSeat.price,
         }
       : { name: "Seat", value: "none", waitingTime: 0, price: 0 };
-    const suspensionConfig = isSuspensionChecked
+    const suspensionConfig = formState.isSuspensionChecked
       ? {
           name: "Suspension",
           value: "yes",
@@ -323,7 +309,7 @@ const ConfigForm = () => {
           price: bikeSuspension.price,
         }
       : { name: "Suspension", value: "none", waitingTime: 0, price: 0 };
-    const brakesConfig = isBrakesChecked
+    const brakesConfig = formState.isBrakesChecked
       ? {
           name: "Brakes",
           value: "yes",
@@ -331,7 +317,7 @@ const ConfigForm = () => {
           price: bikeBrakes.price,
         }
       : { name: "Brakes", value: "none", waitingTime: 0, price: 0 };
-    const windshieldConfig = isWindshieldChecked
+    const windshieldConfig = formState.isWindshieldChecked
       ? {
           name: "Windshield",
           value: "yes",
@@ -339,10 +325,10 @@ const ConfigForm = () => {
           price: bikeWindshield.price,
         }
       : { name: "Windshield", value: "none", waitingTime: 0, price: 0 };
-    const powerConfig = isPowerChecked
+    const powerConfig = formState.isPowerChecked
       ? {
           name: "Power",
-          value: powerRangeValue,
+          value: formState.powerRangeValue,
           waitingTime: bikePower.waitingTime,
           price: bikePower.price,
         }
@@ -396,18 +382,20 @@ const ConfigForm = () => {
                 type="checkbox"
                 id="logo"
                 className={classes.toggle}
-                onChange={onLogoCheckedHandler}
+                onChange={() => onCheckedHandler("isLogoChecked")}
               ></input>
               <label htmlFor="logo" className={classes.label}>
                 <span className={classes.ball}></span>
               </label>
               <div className={classes["toggled-input"]}>
-                {isLogoChecked && (
+                {formState.isLogoChecked && (
                   <input
                     type="text"
                     id="logo"
-                    onChange={onLogoChangeHandler}
-                    onBlur={onLogoBlurHandler}
+                    onChange={(event) =>
+                      onChangeHandler("isLogoChanged", "logo", event)
+                    }
+                    onBlur={onBlurHandler}
                   ></input>
                 )}
               </div>
@@ -431,18 +419,20 @@ const ConfigForm = () => {
                 type="checkbox"
                 id="color"
                 className={classes.toggle}
-                onChange={onColorCheckedHandler}
+                onChange={() => onCheckedHandler("isColorChecked")}
               ></input>
               <label htmlFor="color" className={classes.label}>
                 <span className={classes.ball}></span>
               </label>
               <div className={classes["toggled-input"]}>
-                {isColorChecked && (
+                {formState.isColorChecked && (
                   <input
                     type="color"
                     id="color"
-                    onChange={onColorChangeHandler}
-                    onBlur={onLogoBlurHandler}
+                    onChange={(event) =>
+                      onChangeHandler("isColorChanged", "color", event)
+                    }
+                    onBlur={onBlurHandler}
                   ></input>
                 )}
               </div>
@@ -467,19 +457,21 @@ const ConfigForm = () => {
                 type="checkbox"
                 id="wheel"
                 className={classes.toggle}
-                onChange={onWheelCheckedHandler}
+                onChange={() => onCheckedHandler("isWheelChecked")}
               ></input>
               <label htmlFor="wheel" className={classes.label}>
                 <span className={classes.ball}></span>
               </label>
 
               <div className={classes["toggled-input"]}>
-                {isWheelChecked && (
+                {formState.isWheelChecked && (
                   <input
                     type="color"
                     id="wheel"
-                    onChange={onWheelChangeHandler}
-                    onBlur={onLogoBlurHandler}
+                    onChange={(event) =>
+                      onChangeHandler("isWheelChanged", "wheel", event)
+                    }
+                    onBlur={onBlurHandler}
                   ></input>
                 )}
               </div>
@@ -506,13 +498,13 @@ const ConfigForm = () => {
                 type="checkbox"
                 id="exhaust"
                 className={classes.toggle}
-                onChange={onExhaustChangeHandler}
+                onChange={() => onCheckedHandler("isExhaustChecked")}
               ></input>
               <label htmlFor="exhaust" className={classes.label}>
                 <span className={classes.ball}></span>
               </label>
               <div className={classes["toggled-input"]}>
-                {isExhaustChecked && (
+                {formState.isExhaustChecked && (
                   <span className={classes.range}>
                     <label htmlFor="exhaust-range">
                       Thundering/Normal/Roaring Sound
@@ -520,14 +512,16 @@ const ConfigForm = () => {
                     <input
                       type="range"
                       id="exhaust-range"
-                      onChange={onExhaustRangeChangeHandler}
-                      onBlur={onLogoBlurHandler}
+                      onChange={(event) =>
+                        onChangeHandler("isExhaustChanged", "exhaust", event)
+                      }
+                      onBlur={onBlurHandler}
                       min="0"
                       max="100"
                       step="50"
                     ></input>
                     <span className={classes["range-value"]}>
-                      {exhaustRangeValue}
+                      {formState.exhaust}
                     </span>
                   </span>
                 )}
@@ -551,7 +545,7 @@ const ConfigForm = () => {
                 type="checkbox"
                 id="seat"
                 className={classes.toggle}
-                onChange={onSeatChangeHandler}
+                onChange={() => onCheckedHandler("isSeatChecked")}
               ></input>
               <label htmlFor="seat" className={classes.label}>
                 <span className={classes.ball}></span>
@@ -575,7 +569,7 @@ const ConfigForm = () => {
                 type="checkbox"
                 id="suspension"
                 className={classes.toggle}
-                onChange={onSuspensionChangeHandler}
+                onChange={() => onCheckedHandler("isSuspensionChecked")}
               ></input>
               <label htmlFor="suspension" className={classes.label}>
                 <span className={classes.ball}></span>
@@ -599,7 +593,7 @@ const ConfigForm = () => {
                 type="checkbox"
                 id="brakes"
                 className={classes.toggle}
-                onChange={onBrakesChangeHandler}
+                onChange={() => onCheckedHandler("isBrakesChecked")}
               ></input>
               <label htmlFor="brakes" className={classes.label}>
                 <span className={classes.ball}></span>
@@ -622,7 +616,7 @@ const ConfigForm = () => {
                 type="checkbox"
                 id="windshield"
                 className={classes.toggle}
-                onChange={onWindshieldChangeHandler}
+                onChange={() => onCheckedHandler("isWindshieldChecked")}
               ></input>
               <label htmlFor="windshield" className={classes.label}>
                 <span className={classes.ball}></span>
@@ -645,26 +639,28 @@ const ConfigForm = () => {
                 type="checkbox"
                 id="power"
                 className={classes.toggle}
-                onChange={onPowerChangeHandler}
+                onChange={() => onCheckedHandler("isPowerChecked")}
               ></input>
               <label htmlFor="power" className={classes.label}>
                 <span className={classes.ball}></span>
               </label>
               <div className={classes["toggled-input"]}>
-                {isPowerChecked && (
+                {formState.isPowerChecked && (
                   <span className={classes.range}>
                     <label htmlFor="power-range">Amount (HP)</label>
                     <input
                       type="range"
                       id="power-range"
-                      onChange={onPowerRangeChangeHandler}
-                      onBlur={onLogoBlurHandler}
+                      onChange={(event) =>
+                        onChangeHandler("isPowerChanged", "power", event)
+                      }
+                      onBlur={onBlurHandler}
                       min="15"
                       max="30"
                       step="15"
                     ></input>
                     <span className={classes["range-value"]}>
-                      {powerRangeValue}
+                      {formState.power}
                     </span>
                   </span>
                 )}
