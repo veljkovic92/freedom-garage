@@ -1,0 +1,242 @@
+.dragon {
+  background-image: url("../../../../assets/BikeConfigPics/dragon-config.jpg");
+  min-height: 300px;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -10rem;
+}
+
+.firestorm {
+  background-image: url("../../../../assets/BikeConfigPics/firestorm-config.jpg");
+  min-height: 300px;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -10rem;
+}
+.raptor {
+  background-image: url("../../../../assets/BikeConfigPics/raptor-config.jpg");
+  min-height: 300px;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -10rem;
+}
+.thunderstorm {
+  background-image: url("../../../../assets/BikeConfigPics/thunderstorm-config.jpg");
+  min-height: 300px;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -10rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 6rem;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 30rem;
+}
+
+.aesthethics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.left-container p {
+  width: 70%;
+  margin-bottom: -2rem;
+}
+
+.left-container {
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 1);
+  color: white;
+}
+
+.toggled-input {
+  height: 2rem;
+}
+
+.right-container {
+  flex-basis: 70%;
+}
+
+.logo {
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    url("../../../../assets/UpgradesPics/logo.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.color {
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    url("../../../../assets/UpgradesPics/color.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.wheel {
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    url("../../../../assets/UpgradesPics/wheel.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.functionality {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.form h3 {
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.functionality p {
+  width: 70%;
+}
+
+.price {
+  align-self: flex-end;
+  margin-bottom: 5%;
+  margin-right: 5%;
+  background-color: rgb(255, 54, 54);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.exhaust {
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    url("../../../../assets/UpgradesPics/exhaust.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.seat {
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    url("../../../../assets/UpgradesPics/seat.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.suspension {
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    url("../../../../assets/UpgradesPics/suspension.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.brakes {
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    url("../../../../assets/UpgradesPics/brakes.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.windshield {
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    url("../../../../assets/UpgradesPics/windshield.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.power {
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    url("../../../../assets/UpgradesPics/power.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.toggle {
+  visibility: hidden;
+}
+
+.label {
+  background-color: lightgrey;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 15px 0;
+  width: 80px;
+  height: 40px;
+  position: relative;
+}
+
+.toggle:checked + .label {
+  background-color: #8e44ad;
+}
+
+.ball {
+  background: #fff;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  animation: slideOff 0.3s linear forwards;
+}
+
+.toggle:checked + .label .ball {
+  animation: slideOn 0.3s linear forwards;
+}
+
+.range {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideOn {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    transform: translateX(20px) scale(1.2);
+  }
+  100% {
+    transform: translateX(40px) scale(1);
+  }
+}
+
+@keyframes slideOff {
+  0% {
+    transform: translateX(40px) scale(1);
+  }
+  50% {
+    transform: translateX(20px) scale(1.2);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}

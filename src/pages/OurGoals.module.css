@@ -1,0 +1,68 @@
+.home {
+  width: 70rem;
+  max-width: 80vw;
+  margin: 10rem auto;
+  font-size: 1.2rem;
+}
+
+.home-header {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  
+}
+
+.story {
+  display: flex;
+  flex-direction: column;
+}
+
+.story-row {
+  display: flex;
+  height: 30rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.number {
+  flex-basis: 10%;
+  font-size: 5rem;
+  background-color: rgb(255, 54, 54);
+  color: white;
+  border-radius: 10%;
+}
+
+.text-row {
+  flex-basis: 40%;
+}
+
+.text-row:nth-of-type(2n) {
+  text-align: right;
+}
+
+.img-row {
+  flex-basis: 40%;
+  height: 25rem;
+  border-radius: 10px;
+}
+
+.img1 {
+  background-image: url("../assets/finding.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img2 {
+  background-image: url("../assets/garage.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img3 {
+  background-image: url("../assets/testing.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

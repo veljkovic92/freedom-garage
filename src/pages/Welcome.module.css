@@ -1,0 +1,10 @@
+.welcome {
+  width: 70rem;
+  max-width: 80vw;
+  margin: auto;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

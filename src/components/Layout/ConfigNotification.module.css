@@ -1,0 +1,13 @@
+.notification {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.notification p {
+  align-self: center;
+}
+
+.notification button {
+  align-self: flex-end;
+}

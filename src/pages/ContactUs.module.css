@@ -1,0 +1,127 @@
+:root {
+  --left-bg-color: rgba(79, 133, 184, 0.7);
+  --right-bg-color: rgba(114, 62, 62, 0.7);
+  --hover-width: 60%;
+  --other-width: 40%;
+  --speed: 1000ms;
+}
+
+.contact {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #333;
+
+  /* height: 100vh;
+
+  margin-top: 10%;
+  margin-bottom: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center; */
+}
+
+.contact h2 {
+  font-size: 4rem;
+  color: #fff;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.left h2 {
+  right: 15%;
+  top: 10%;
+  transform: translateX(30%);
+}
+
+.right h2 {
+  left: 15%;
+  top: 10%;
+  transform: translateX(-30%);
+}
+
+.left {
+  position: relative;
+}
+
+.left p {
+  position: absolute;
+  max-height: 200px;
+  right: 7%;
+  top: 25%;
+  color: white;
+  font-size: 130%;
+  width: 250px;
+}
+
+.right p {
+  position: absolute;
+  max-height: 200px;
+  left: 7%;
+  top: 25%;
+  color: white;
+  font-size: 130%;
+  width: 250px;
+}
+
+.split {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.split.left {
+  left: 0;
+  background: url("../assets/stefan-left.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -10rem;
+}
+
+.split.left::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--left-bg-color);
+}
+
+.split.right {
+  right: 0;
+  background: url("../assets/tanja-right.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -10rem;
+}
+
+.split.right::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--right-bg-color);
+}
+
+.split.right,
+.split.left,
+.split.right::before,
+.split.left::before {
+  transition: all var(--speed) ease-in-out;
+}
+
+.hover-left .left {
+  width: var(--hover-width);
+}
+
+.hover-left .right {
+  width: var(--other-width);
+}
+
+.hover-right .right {
+  width: var(--hover-width);
+}
+
+.hover-right .left {
+  width: var(--other-width);
+}

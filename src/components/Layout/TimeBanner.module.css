@@ -1,0 +1,10 @@
+.time-banner {
+  display: flex;
+  position: fixed;
+  padding: 2rem 4rem;
+  bottom: 10rem;
+  right: 10rem;
+  text-align: center;
+  background-color: white;
+  justify-content: center;
+}

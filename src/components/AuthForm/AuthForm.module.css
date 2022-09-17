@@ -1,0 +1,73 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 3rem;
+  box-shadow: 2px 2px 10px 2px black;
+  width: 50rem;
+  height: 30rem;
+  padding: 3rem;
+  margin: auto;
+  margin-top: 5%;
+  color: black;
+  border-radius: 10px;
+}
+
+.form p {
+  margin-top: 0.2rem;
+  height: 0.5rem;
+}
+
+.form label {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.form input {
+  width: 70%;
+  min-height: 2rem;
+  border-radius: 5px;
+}
+
+input .invalid {
+  color: red;
+}
+
+.invalid {
+  color: red;
+  border-color: red;
+}
+
+.formBtn,
+.formBtn:active,
+.formBtn:focus {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 110%;
+  background-color: rgb(44, 255, 125);
+  border: none;
+  box-shadow: 1px 1px 2px 2px grey;
+}
+
+.formBtn:hover {
+  transform: scale(105%);
+}
+
+.formBtn:disabled {
+  border: none;
+  background-color: lightgrey;
+  border: 1px solid grey;
+  cursor: not-allowed;
+}
+
+.form .btnMode {
+  border: none;
+  background-color: transparent;
+  color: blue;
+  cursor: pointer;
+  font-size: 110%;
+  margin-top: 1rem;
+}

@@ -1,0 +1,39 @@
+.bike-item {
+  display: flex;
+  height: 20rem;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 4px 2px grey;
+  border-radius: 10px;
+  margin: 3rem 1rem;
+}
+
+.left-box {
+  flex-basis: 50%;
+  height: 18rem;
+  object-fit: contain;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.bike-item img {
+  width: 100%;
+}
+
+.right-box {
+  flex-basis: 50%;
+  padding: 3rem;
+}
+
+.right-top-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  background-color: rgb(255, 54, 54);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+}

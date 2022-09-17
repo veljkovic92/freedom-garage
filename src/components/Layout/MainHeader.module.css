@@ -1,0 +1,51 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  padding: 0.1rem 3rem;
+  background-color: rgb(255, 54, 54);
+  color: white;
+  z-index: 1;
+}
+
+.header h1 {
+  margin-left: 0;
+}
+
+.header ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header li:not(:last-child) {
+  margin-right: 3rem;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+}
+
+.activeLink {
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
+}
+
+.authHeadBtn {
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 110%;
+  background-color: aqua;
+  border: none;
+  transition: all 0.2s;
+}
+
+.authHeadBtn:hover {
+  transform: scale(105%);
+}
