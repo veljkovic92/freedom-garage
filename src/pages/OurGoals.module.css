@@ -1,14 +1,13 @@
 .home {
   width: 70rem;
   max-width: 80vw;
-  margin: 10rem auto;
+  margin: auto;
   font-size: 1.2rem;
 }
 
 .home-header {
   margin-top: 5rem;
   margin-bottom: 5rem;
-  
 }
 
 .story {

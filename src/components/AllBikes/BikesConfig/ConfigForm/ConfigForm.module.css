@@ -78,6 +78,7 @@
   color: white;
 }
 
+
 .toggled-input {
   height: 2rem;
 }
@@ -112,8 +113,6 @@
   flex-direction: column;
   align-items: center;
 }
-
-
 
 .form h3 {
   align-self: flex-start;

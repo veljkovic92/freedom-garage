@@ -27,7 +27,7 @@ const MainHeader = () => {
             <h1>The "Future Garage"</h1>
           </li>
 
-          <CartButton />
+          {userLoggedIn && <CartButton />}
 
           <li>
             <ul className={classes.navBtns}>
@@ -40,25 +40,19 @@ const MainHeader = () => {
                   Our Goals
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/team"
-                  activeClassName={classes.activeLink}
-                  className={classes.navLink}
-                >
-                  Tag Team
-                </NavLink>
-              </li>
-              {userLoggedIn && <li>
-                <NavLink
-                  to="/bikes"
-                  activeClassName={classes.activeLink}
-                  className={classes.navLink}
-                >
-                  Bikes
-                </NavLink>
-              </li>}
-              
+
+              {userLoggedIn && (
+                <li>
+                  <NavLink
+                    to="/bikes"
+                    activeClassName={classes.activeLink}
+                    className={classes.navLink}
+                  >
+                    Bikes
+                  </NavLink>
+                </li>
+              )}
+
               <li>
                 <NavLink
                   to="/contact-us"

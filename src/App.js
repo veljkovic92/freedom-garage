@@ -3,7 +3,6 @@ import Layout from "./components/Layout/Layout";
 import Authentication from "./pages/Authentication";
 import OurGoals from "./pages/OurGoals";
 import Welcome from "./pages/Welcome";
-import TagTeam from "./pages/TagTeam";
 import { useSelector } from "react-redux";
 import Bikes from "./pages/Bikes";
 import ContactUs from "./pages/ContactUs";
@@ -33,9 +32,7 @@ function App() {
         <Route path="/goals">
           <OurGoals />
         </Route>
-        <Route path="/team">
-          <TagTeam />
-        </Route>
+
         <Route path="/bikes" exact>
           {isLoggedIn && <Bikes />}
           {!isLoggedIn && <Redirect to="/not-auth" />}
