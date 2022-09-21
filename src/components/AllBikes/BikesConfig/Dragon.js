@@ -1,4 +1,3 @@
-import ConfigForm from "./ConfigForm/ConfigForm";
 import classes from "./Dragon.module.css";
 
 const Dragon = () => {

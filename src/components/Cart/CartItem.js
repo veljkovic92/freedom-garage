@@ -43,16 +43,3 @@ const CartItem = (props) => {
 
 export default CartItem;
 
-{
-  /* <p>{props.config.logo[1]}</p>
-<p>{props.config.color[1]}</p>
-<p>{props.config.wheel[1]}</p>
-<p>{props.config.exhaustRange[1]}</p>
-<p>{props.config.seat[1]}</p>
-<p>{props.config.suspension[1]}</p>
-<p>{props.config.brakes[1]}</p>
-<p>{props.config.windshield[1]}</p>
-<p>{props.config.powerRange[1]}</p> */
-}
-
-// probaj da napravis da moze da se automatski popularizuje ova strana

@@ -1,9 +1,10 @@
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import classes from "./MainHeader.module.css";
 import { authActions } from "../../store/auth-slice";
 import CartButton from "../Cart/CartButton";
+
+
 
 const MainHeader = () => {
   const history = useHistory();

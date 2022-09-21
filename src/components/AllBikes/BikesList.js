@@ -5,15 +5,15 @@ const BikesList = () => {
   const availableBikes = useSelector((state) => state.cart.availableBikes);
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-      {availableBikes.map((bike) => (
+    <div>
+      {Object.keys(availableBikes).map((bike) => (
         <BikeItem
-          key={bike.id}
-          id={bike.id}
-          name={bike.name}
-          img={bike.img}
-          desc={bike.desc}
-          price={bike.price}
+          key={availableBikes[bike].id}
+          id={availableBikes[bike].id}
+          name={availableBikes[bike].name}
+          img={availableBikes[bike].img}
+          desc={availableBikes[bike].desc}
+          price={availableBikes[bike].price}
         />
       ))}
     </div>
@@ -21,3 +21,5 @@ const BikesList = () => {
 };
 
 export default BikesList;
+
+// style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}

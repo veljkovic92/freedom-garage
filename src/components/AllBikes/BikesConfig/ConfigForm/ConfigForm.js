@@ -8,6 +8,8 @@ import TimeBanner from "../../../Layout/TimeBanner";
 
 import classes from "./ConfigForm.module.css";
 
+
+
 let firstSubmit = true;
 
 const ConfigForm = () => {
@@ -16,9 +18,13 @@ const ConfigForm = () => {
   const notification = useSelector((state) => state.ui.notification);
   const bikes = useSelector((state) => state.cart.availableBikes);
 
-  const selectedBike = bikes.find(
-    (bike) => bike.name.toLowerCase() === params.bikeId
-  );
+  let selectedBike;
+  Object.getOwnPropertyNames(bikes).find((bike) => {
+    if (bike === params.bikeId) {
+      selectedBike = bikes[bike];
+    }
+  });
+  console.log(selectedBike);
 
   const selectedBikeUpgrades = selectedBike.upgrades;
 
@@ -234,7 +240,6 @@ const ConfigForm = () => {
     isPowerChecked,
     isPowerChanged,
   ]);
-  console.log(formState);
 
   const configFormSubmitHandler = (event) => {
     event.preventDefault();
@@ -256,7 +261,6 @@ const ConfigForm = () => {
       }
     }
 
-    // See to make one unified notification for all the cases. Like this there's bug of showing only one even if more are invalid.
 
     const logoConfig = isLogoChanged
       ? {

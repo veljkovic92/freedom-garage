@@ -4,7 +4,7 @@ import classes from "./CartList.module.css";
 
 const CartList = () => {
   const chosenBikes = useSelector((state) => state.cart.items);
-  console.log(chosenBikes);
+  
 
   return Object.keys(chosenBikes).map((bike) => {
     return (

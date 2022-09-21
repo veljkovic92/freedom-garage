@@ -5,11 +5,13 @@ import firestorm from "../assets/firestorm.jpg";
 import raptor from "../assets/raptor.jpg";
 import thunderstorm from "../assets/thunderstorm.jpg";
 
+// Dodaj u FIREBASE objecte za svaki availableBikes i onda radi FETCH
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    availableBikes: [
-      {
+    availableBikes: {
+      dragon: {
         id: "1",
         name: "Dragon",
         img: dragon,
@@ -28,7 +30,7 @@ const cartSlice = createSlice({
           power: { price: 1150, waitingTime: 4 },
         },
       },
-      {
+      firestorm: {
         id: "2",
         name: "Firestorm",
         img: firestorm,
@@ -47,7 +49,7 @@ const cartSlice = createSlice({
           power: { price: 990, waitingTime: 4 },
         },
       },
-      {
+      raptor: {
         id: "3",
         name: "Raptor",
         img: raptor,
@@ -66,7 +68,7 @@ const cartSlice = createSlice({
           power: { price: 790, waitingTime: 4 },
         },
       },
-      {
+      thunderstorm: {
         id: "4",
         name: "Thunderstorm",
         img: thunderstorm,
@@ -84,7 +86,7 @@ const cartSlice = createSlice({
           power: { price: 1090, waitingTime: 4 },
         },
       },
-    ],
+    },
     items: [],
     waitingTime: 0,
     totalQuantity: 0,
