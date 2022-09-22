@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import BikeItem from "./BikeItem";
 
 const BikesList = () => {
-  const availableBikes = useSelector((state) => state.cart.availableBikes);
+  const availableBikes = useSelector((state) => state.bikes.bikes);
 
   return (
     <div>

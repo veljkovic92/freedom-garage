@@ -4,7 +4,7 @@ import classes from "./BikeItem.module.css";
 
 const BikeItem = (props) => {
   const history = useHistory();
-  const price = props.price.toFixed(3);
+  const price = props.price;
 
   const onConfigureHandler = () => {
     if (props.id === "1") {

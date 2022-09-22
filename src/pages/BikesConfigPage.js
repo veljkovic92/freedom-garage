@@ -5,9 +5,10 @@ import NotFound from "./NotFound";
 
 const BikesConfigPage = () => {
   const params = useParams();
-  const availableBikes = useSelector((state) => state.cart.availableBikes);
-  const foundBike = Object.keys(availableBikes).find(
-    (bike) => availableBikes[bike].name.toLowerCase() === params.bikeId
+  const bikes = useSelector((state) => state.bikes.bikes);
+  console.log(bikes);
+  const foundBike = Object.keys(bikes).find(
+    (bike) => bikes[bike].name.toLowerCase() === params.bikeId
   );
 
   if (!foundBike) {
