@@ -12,18 +12,19 @@ const cartSlice = createSlice({
     addToCart(state, action) {
       let configPrice = 0;
       const config = action.payload.config;
+
       Object.keys(config).forEach((item) => {
-        configPrice += item.price;
+        configPrice += config[item].price;
       });
 
       const newBikeConfig = {
         id: action.payload.id,
         name: action.payload.name,
         config: action.payload.config,
-        waitingTime: action.payload.waitingTime,
         price: configPrice,
       };
       state.items.push(newBikeConfig);
+      state.waitingTime += action.payload.waitingTime;
       state.totalQuantity++;
       state.totalPrice += configPrice;
     },

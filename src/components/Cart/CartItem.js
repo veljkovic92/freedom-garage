@@ -2,7 +2,7 @@ import classes from "./CartItem.module.css";
 
 const CartItem = (props) => {
   // add the date and time of adding to cart
-
+  console.log(props);
   const config = props.config;
   const boja = "red-color";
 
@@ -42,4 +42,3 @@ const CartItem = (props) => {
 };
 
 export default CartItem;
-

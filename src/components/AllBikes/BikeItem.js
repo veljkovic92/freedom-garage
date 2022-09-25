@@ -5,17 +5,10 @@ import classes from "./BikeItem.module.css";
 const BikeItem = (props) => {
   const history = useHistory();
   const price = props.price;
+  console.log(props);
 
   const onConfigureHandler = () => {
-    if (props.id === "1") {
-      history.push("/bikes/dragon");
-    } else if (props.id === "2") {
-      history.push("/bikes/firestorm");
-    } else if (props.id === "3") {
-      history.push("/bikes/raptor");
-    } else if (props.id === "4") {
-      history.push("/bikes/thunderstorm");
-    }
+    history.push(`/bikes/${props.name.toLowerCase()}`);
   };
 
   return (

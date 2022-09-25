@@ -8,23 +8,15 @@ import TimeBanner from "../../../Layout/TimeBanner";
 
 import classes from "./ConfigForm.module.css";
 
-
-
 let firstSubmit = true;
 
 const ConfigForm = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.ui.notification);
-  const bikes = useSelector((state) => state.cart.availableBikes);
+  const bikes = useSelector((state) => state.bikes.bikes);
 
-  let selectedBike;
-  Object.getOwnPropertyNames(bikes).find((bike) => {
-    if (bike === params.bikeId) {
-      selectedBike = bikes[bike];
-    }
-  });
-  console.log(selectedBike);
+  const selectedBike = bikes[params.bikeId];
 
   const selectedBikeUpgrades = selectedBike.upgrades;
 
@@ -40,17 +32,7 @@ const ConfigForm = () => {
     power: bikePower,
   } = selectedBikeUpgrades;
 
-  let bikeBackground;
-
-  if (params.bikeId === "dragon") {
-    bikeBackground = <div className={classes.dragon}></div>;
-  } else if (params.bikeId === "firestorm") {
-    bikeBackground = <div className={classes.firestorm}></div>;
-  } else if (params.bikeId === "raptor") {
-    bikeBackground = <div className={classes.raptor}></div>;
-  } else {
-    bikeBackground = <div className={classes.thunderstorm}></div>;
-  }
+  const bikeBackground = <div className={`${classes[params.bikeId]}`}></div>;
 
   const [formState, setFormState] = useState({
     isLogoChecked: false,
@@ -261,7 +243,6 @@ const ConfigForm = () => {
       }
     }
 
-
     const logoConfig = isLogoChanged
       ? {
           name: "Logo",
@@ -349,7 +330,7 @@ const ConfigForm = () => {
         windshield: windshieldConfig,
         power: powerConfig,
       },
-      waitingTime: `${waitingTime} working days`,
+      waitingTime: waitingTime,
     };
 
     dispatch(cartActions.addToCart(chosenConfig));

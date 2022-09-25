@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
-
+ 
   return (
     <Modal>
       <CartList />

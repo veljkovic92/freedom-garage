@@ -6,10 +6,12 @@ import NotFound from "./NotFound";
 const BikesConfigPage = () => {
   const params = useParams();
   const bikes = useSelector((state) => state.bikes.bikes);
-  console.log(bikes);
-  const foundBike = Object.keys(bikes).find(
-    (bike) => bikes[bike].name.toLowerCase() === params.bikeId
-  );
+
+  if (!bikes) {
+    return <p>Error fetching bikes from database</p>;
+  }
+  const foundBike = bikes[params.bikeId];
+
 
   if (!foundBike) {
     return <NotFound />;
