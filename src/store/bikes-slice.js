@@ -2,11 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const bikesSlice = createSlice({
   name: "bikes",
-  initialState: { bikes: null },
+  initialState: { bikes: null, bikesLoading: true },
   reducers: {
     getBikes(state, action) {
       state.bikes = action.payload;
     },
+    
   },
 });
 

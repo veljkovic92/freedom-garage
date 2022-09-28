@@ -10,14 +10,27 @@ import BikesConfigPage from "./pages/BikesConfigPage";
 import Cart from "./components/Cart/Cart";
 import { useEffect } from "react";
 import { fetchBikesData } from "./store/bikes-actions";
+import { cartActions } from "./store/cart-slice";
 
 function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const showCart = useSelector((state) => state.ui.cartIsVisible);
+  const cartItems = useSelector((state) => state.cart.items);
 
   useEffect(() => {
     dispatch(fetchBikesData());
+  }, []);
+
+  useEffect(() => {
+    try {
+      const chosenLocalConfig = JSON.parse(
+        localStorage.getItem("chosenConfig")
+      );
+      if (chosenLocalConfig && cartItems.length === 0) {
+        dispatch(cartActions.addToCart(chosenLocalConfig));
+      }
+    } catch (error) {}
   }, []);
 
   return (

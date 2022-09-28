@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { setCartData } from "../../../../store/cart-actions";
 import { cartActions } from "../../../../store/cart-slice";
 import { uiActions } from "../../../../store/ui-slice";
 import ConfigNotification from "../../../Layout/ConfigNotification";
@@ -15,6 +16,7 @@ const ConfigForm = () => {
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.ui.notification);
   const bikes = useSelector((state) => state.bikes.bikes);
+  const cart = useSelector((state) => state.cart.items);
 
   const selectedBike = bikes[params.bikeId];
 
@@ -316,24 +318,34 @@ const ConfigForm = () => {
         }
       : { name: "Power", value: "none", waitingTime: 0, price: 0 };
 
+    const chosenUpgrades = {
+      logo: logoConfig,
+      color: colorConfig,
+      wheel: wheelConfig,
+      exhaust: exhaustConfig,
+      seat: seatConfig,
+      suspension: suspensionConfig,
+      brakes: brakesConfig,
+      windshield: windshieldConfig,
+      power: powerConfig,
+    };
+
+    let configPrice = 0;
+
+    Object.keys(chosenUpgrades).forEach(
+      (item) => (configPrice += chosenUpgrades[item].price)
+    );
+
     const chosenConfig = {
       id: selectedBike.id,
       name: selectedBike.name,
-      config: {
-        logo: logoConfig,
-        color: colorConfig,
-        wheel: wheelConfig,
-        exhaust: exhaustConfig,
-        seat: seatConfig,
-        suspension: suspensionConfig,
-        brakes: brakesConfig,
-        windshield: windshieldConfig,
-        power: powerConfig,
-      },
+      config: chosenUpgrades,
       waitingTime: waitingTime,
+      totalConfigPrice: configPrice,
     };
 
     dispatch(cartActions.addToCart(chosenConfig));
+    localStorage.setItem("chosenConfig", JSON.stringify(chosenConfig));
   };
 
   return (

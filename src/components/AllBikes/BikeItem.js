@@ -5,7 +5,6 @@ import classes from "./BikeItem.module.css";
 const BikeItem = (props) => {
   const history = useHistory();
   const price = props.price;
-  console.log(props);
 
   const onConfigureHandler = () => {
     history.push(`/bikes/${props.name.toLowerCase()}`);

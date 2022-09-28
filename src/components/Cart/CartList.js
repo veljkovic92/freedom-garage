@@ -4,6 +4,7 @@ import classes from "./CartList.module.css";
 
 const CartList = () => {
   const chosenBikes = useSelector((state) => state.cart.items);
+
   const waitingTime = useSelector((state) => state.cart.waitingTime);
 
   return Object.keys(chosenBikes).map((bike) => {

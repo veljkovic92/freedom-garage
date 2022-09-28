@@ -15,8 +15,6 @@ export const fetchBikesData = () => {
     try {
       const bikesData = await fetchData();
       dispatch(bikesActions.getBikes(bikesData));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 };
