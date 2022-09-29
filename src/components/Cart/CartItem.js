@@ -13,20 +13,21 @@ const CartItem = (props) => {
   const cartItems = useSelector((state) => state.cart.items);
 
   // napravi da direktno povlacis data iz availableBikes i cartItems i da onda direktno menjas cartItems u zavisnosti od value u availableBIkes
+  const cartItem = cartItems.find((item) => item.id === props.id);
+
   const addItemHandler = (event) => {
     const buttonName = event.target.name;
 
-    const cartItem = cartItems.find((item) => item.id === props.id);
-    const chosenBikePrice =
+    const chosenUpgradePrice =
       availableBikes[cartItem.name.toLowerCase()].upgrades[buttonName].price;
-    const chosenBikeWaitingTime =
+    const chosenUpgradeWaitingTime =
       availableBikes[cartItem.name.toLowerCase()].upgrades[buttonName]
         .waitingTime;
 
-    let chosenUpgradePrice = cartItem.config[buttonName].price;
-    let chosenUpgradeWaitingTime = cartItem.config[buttonName].waitingTime;
-    chosenUpgradePrice = chosenBikePrice;
-    chosenUpgradeWaitingTime = chosenBikeWaitingTime;
+    // let chosenUpgradePrice = cartItem.config[buttonName].price;
+    // let chosenUpgradeWaitingTime = cartItem.config[buttonName].waitingTime;
+    // chosenUpgradePrice = chosenBikePrice;
+    // chosenUpgradeWaitingTime = chosenBikeWaitingTime;
     const updatedConfig = {
       id: props.id,
       name: buttonName,
@@ -34,12 +35,27 @@ const CartItem = (props) => {
       chosenUpgradeWaitingTime,
     };
 
-    
-
     dispatch(cartActions.addItemToCart(updatedConfig));
   };
 
-  const removeItemHandler = () => {};
+  const removeItemHandler = (event) => {
+    const buttonName = event.target.name;
+
+    const chosenUpgradePrice =
+      availableBikes[cartItem.name.toLowerCase()].upgrades[buttonName].price;
+    const chosenUpgradeWaitingTime =
+      availableBikes[cartItem.name.toLowerCase()].upgrades[buttonName]
+        .waitingTime;
+
+    const updatedConfig = {
+      id: props.id,
+      name: buttonName,
+      chosenUpgradePrice,
+      chosenUpgradeWaitingTime,
+    };
+
+    dispatch(cartActions.removeItemFromCart(updatedConfig));
+  };
 
   const configMap = Object.keys(config).map((item, index) => {
     return (
@@ -49,7 +65,7 @@ const CartItem = (props) => {
         </div>
         <div>
           <h3>Status</h3>
-          {config[item].value !== "none" ? (
+          {config[item].price !== 0 ? (
             <span className={classes.value}>"Added"</span>
           ) : (
             <span className={`${classes.value} ${classes[boja]}`}>

@@ -252,7 +252,12 @@ const ConfigForm = () => {
           waitingTime: bikeLogo.waitingTime,
           price: bikeLogo.price,
         }
-      : { name: "Logo", value: "none", waitingTime: 0, price: 0 };
+      : {
+          name: "Logo",
+          value: "none",
+          waitingTime: 0,
+          price: 0,
+        };
     const colorConfig = isColorChanged
       ? {
           name: "Color",
