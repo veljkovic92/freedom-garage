@@ -12,7 +12,7 @@ const CartItem = (props) => {
   const availableBikes = useSelector((state) => state.bikes.bikes);
   const cartItems = useSelector((state) => state.cart.items);
 
-  // napravi da direktno povlacis data iz availableBikes i cartItems i da onda direktno menjas cartItems u zavisnosti od value u availableBIkes
+
   const cartItem = cartItems.find((item) => item.id === props.id);
 
   const addItemHandler = (event) => {
@@ -23,18 +23,14 @@ const CartItem = (props) => {
     const chosenUpgradeWaitingTime =
       availableBikes[cartItem.name.toLowerCase()].upgrades[buttonName]
         .waitingTime;
-
-    // let chosenUpgradePrice = cartItem.config[buttonName].price;
-    // let chosenUpgradeWaitingTime = cartItem.config[buttonName].waitingTime;
-    // chosenUpgradePrice = chosenBikePrice;
-    // chosenUpgradeWaitingTime = chosenBikeWaitingTime;
+    
     const updatedConfig = {
       id: props.id,
       name: buttonName,
       chosenUpgradePrice,
       chosenUpgradeWaitingTime,
     };
-
+  
     dispatch(cartActions.addItemToCart(updatedConfig));
   };
 
@@ -86,12 +82,15 @@ const CartItem = (props) => {
           <span className={classes.value}>{config[item].price}</span>
         </div>
         <div>
-          <button onClick={addItemHandler} name={item}>
-            Add
-          </button>
-          <button onClick={removeItemHandler} name={item}>
-            Remove
-          </button>
+          {config[item].price === 0 ? (
+            <button onClick={addItemHandler} name={item}>
+              Add
+            </button>
+          ) : (
+            <button onClick={removeItemHandler} name={item}>
+              Remove
+            </button>
+          )}
         </div>
       </li>
     );

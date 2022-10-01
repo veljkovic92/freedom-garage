@@ -265,7 +265,7 @@ const ConfigForm = () => {
           waitingTime: bikeColor.waitingTime,
           price: bikeColor.price,
         }
-      : { name: "bike.color", value: "none", waitingTime: 0, price: 0 };
+      : { name: "Color", value: "none", waitingTime: 0, price: 0 };
     const wheelConfig = isWheelChanged
       ? {
           name: "Wheel",
@@ -341,16 +341,23 @@ const ConfigForm = () => {
       (item) => (configPrice += chosenUpgrades[item].price)
     );
 
+    let configTime = 0;
+
+    Object.keys(chosenUpgrades).forEach(
+      (item) => (configTime += chosenUpgrades[item].waitingTime)
+    );
+
+    console.log(configTime);
+
     const chosenConfig = {
       id: selectedBike.id,
       name: selectedBike.name,
       config: chosenUpgrades,
-      waitingTime: waitingTime,
+      waitingTime: configTime,
       totalConfigPrice: configPrice,
     };
 
     dispatch(cartActions.addToCart(chosenConfig));
-    localStorage.setItem("chosenConfig", JSON.stringify(chosenConfig));
   };
 
   return (

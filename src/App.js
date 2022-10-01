@@ -17,6 +17,9 @@ function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const showCart = useSelector((state) => state.ui.cartIsVisible);
   const cartItems = useSelector((state) => state.cart.items);
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
+  const totalWaitingTime = useSelector((state) => state.cart.waitingTime);
+
 
   useEffect(() => {
     dispatch(fetchBikesData());
@@ -27,11 +30,24 @@ function App() {
       const chosenLocalConfig = JSON.parse(
         localStorage.getItem("chosenConfig")
       );
-      if (chosenLocalConfig && cartItems.length === 0) {
-        dispatch(cartActions.addToCart(chosenLocalConfig));
+      if (chosenLocalConfig.length !== 0 && cartItems.length === 0) {
+        chosenLocalConfig.forEach((item) => {
+          dispatch(cartActions.addToCart(item));
+        });
       }
     } catch (error) {}
   }, []);
+
+  useEffect(() => {
+    if (cartItems.length !== 0) {
+      localStorage.setItem("chosenConfig", JSON.stringify(cartItems));
+      localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+      localStorage.setItem(
+        "totalWaitingTime",
+        JSON.stringify(totalWaitingTime)
+      );
+    }
+  }, [cartItems, totalPrice, totalWaitingTime]);
 
   return (
     <Layout>

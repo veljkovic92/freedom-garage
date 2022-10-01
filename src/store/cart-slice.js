@@ -1,5 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-
+// resi logiku ubacivanja itema
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -23,22 +23,24 @@ const cartSlice = createSlice({
       state.totalQuantity--;
       state.totalPrice -= item.price;
     },
-    // NAMESTI DA MOZE DA SE DODAJE ITEM I BRISE
+
     addItemToCart(state, action) {
-      const currentState = state.items;
-      currentState.find((configItem) => {
+      state.items.find((configItem) => {
         if (configItem.id == action.payload.id) {
           configItem.config[action.payload.name].price =
             action.payload.chosenUpgradePrice;
           configItem.config[action.payload.name].waitingTime =
             action.payload.chosenUpgradeWaitingTime;
 
+          configItem.totalConfigPrice += action.payload.chosenUpgradePrice;
+          configItem.waitingTime += action.payload.chosenUpgradeWaitingTime;
+
           state.totalPrice += action.payload.chosenUpgradePrice;
-          console.log(current(state.items));
+          state.waitingTime += action.payload.chosenUpgradeWaitingTime;
         }
       });
     },
-    // namesti logiku da ne broji price u plus u nedogled bajco, sa IF ili da uporedi sa cart
+
     removeItemFromCart(state, action) {
       const currentState = state.items;
       currentState.find((configItem) => {
@@ -46,8 +48,11 @@ const cartSlice = createSlice({
           configItem.config[action.payload.name].price = 0;
           configItem.config[action.payload.name].waitingTime = 0;
 
+          configItem.totalConfigPrice -= action.payload.chosenUpgradePrice;
+          configItem.waitingTime -= action.payload.chosenUpgradeWaitingTime;
+
           state.totalPrice -= action.payload.chosenUpgradePrice;
-          console.log(current(state.items));
+          state.waitingTime -= action.payload.chosenUpgradeWaitingTime;
         }
       });
     },
