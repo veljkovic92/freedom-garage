@@ -1,27 +1,50 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { cartActions } from "../../store/cart-slice";
+import { uiActions } from "../../store/ui-slice";
 import CartItem from "./CartItem";
 import classes from "./CartList.module.css";
 
 const CartList = () => {
+  const dispatch = useDispatch();
   const chosenBikes = useSelector((state) => state.cart.items);
+  const history = useHistory();
 
-  const waitingTime = useSelector((state) => state.cart.waitingTime);
+  const onRemoveConfigHandler = (bikeId) => {
+    dispatch(cartActions.removeFromCart(bikeId));
 
-  return Object.keys(chosenBikes).map((bike) => {
+    if (chosenBikes.length === 1) {
+      dispatch(uiActions.hideCart());
+      history.push("/bikes");
+    }
+  };
+
+  return chosenBikes.map((bike) => {
     return (
-      <ul className={classes["cart-list"]} key={chosenBikes[bike].id}>
+      <ul className={classes["cart-list"]} key={bike.id}>
         <div className={classes["cart-top"]}>
-          <h2>{chosenBikes[bike].name}</h2>
+          <h2>{bike.name}</h2>
+        </div>
+        <div className={classes["cart-mid"]}>
+          <CartItem id={bike.id} config={bike.config} />
         </div>
         <div className={classes["cart-bot"]}>
-          <CartItem
-            id={chosenBikes[bike].id}
-            config={chosenBikes[bike].config}
-          />
-        </div>
-        <div>
-          <h3>Please note:</h3>
-          <p>Estimated total waiting time: {waitingTime} working days.</p>
+          <div>
+            <h3>Please note:</h3>
+            <p>
+              Estimated waiting time to complete this bike: {bike.waitingTime}{" "}
+              working days.
+            </p>
+          </div>
+          <div>
+            <h3>Total price for this bike: {bike.totalConfigPrice}</h3>
+          </div>
+          <div>
+            <button onClick={() => onRemoveConfigHandler(bike.id)}>
+              Remove <br />
+              Configuration
+            </button>
+          </div>
         </div>
       </ul>
     );

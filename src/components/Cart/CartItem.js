@@ -15,6 +15,8 @@ const CartItem = (props) => {
 
   const cartItem = cartItems.find((item) => item.id === props.id);
 
+  console.log(cartItem.totalConfigPrice);
+
   const addItemHandler = (event) => {
     const buttonName = event.target.name;
 

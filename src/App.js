@@ -19,8 +19,8 @@ function App() {
   const cartItems = useSelector((state) => state.cart.items);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const totalWaitingTime = useSelector((state) => state.cart.waitingTime);
-
-
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  
   useEffect(() => {
     dispatch(fetchBikesData());
   }, []);
@@ -39,15 +39,15 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (cartItems.length !== 0) {
-      localStorage.setItem("chosenConfig", JSON.stringify(cartItems));
-      localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
-      localStorage.setItem(
-        "totalWaitingTime",
-        JSON.stringify(totalWaitingTime)
-      );
-    }
-  }, [cartItems, totalPrice, totalWaitingTime]);
+    localStorage.removeItem("chosenConfig");
+    localStorage.setItem("chosenConfig", JSON.stringify(cartItems));
+    localStorage.removeItem("totalPrice");
+    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+    localStorage.removeItem("totalWaitingTime");
+    localStorage.setItem("totalWaitingTime", JSON.stringify(totalWaitingTime));
+    localStorage.removeItem("totalQuantity");
+    localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity));
+  }, [cartItems, totalPrice, totalWaitingTime, totalQuantity]);
 
   return (
     <Layout>

@@ -1,14 +1,25 @@
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Card from "../UI/Card";
 import classes from "./BikeItem.module.css";
 
 const BikeItem = (props) => {
   const history = useHistory();
   const price = props.price;
+  const cartItems = useSelector((state) => state.cart.items);
+  const bikeAlreadyInCart = cartItems.find((item) => item.id === props.id);
 
   const onConfigureHandler = () => {
-    history.push(`/bikes/${props.name.toLowerCase()}`);
+    if (!bikeAlreadyInCart) {
+      history.push(`/bikes/${props.name.toLowerCase()}`);
+    }
   };
+
+  const bikeItemAction = !bikeAlreadyInCart ? (
+    <button onClick={onConfigureHandler}>Configure</button>
+  ) : (
+    <p>This bike is already added in "Your Garage"</p>
+  );
 
   return (
     <Card className={classes["bike-item"]} onClick={onConfigureHandler}>
@@ -23,7 +34,7 @@ const BikeItem = (props) => {
         <div>
           <p>{props.desc}</p>
         </div>
-        <button onClick={onConfigureHandler}>Configure</button>
+        {bikeItemAction}
       </div>
     </Card>
   );

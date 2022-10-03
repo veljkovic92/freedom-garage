@@ -4,12 +4,12 @@ import classes from "./MainHeader.module.css";
 import { authActions } from "../../store/auth-slice";
 import CartButton from "../Cart/CartButton";
 
-
-
 const MainHeader = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const userLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const cartItems = useSelector((state) => state.cart.items);
+  console.log(cartItems);
 
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
@@ -28,7 +28,7 @@ const MainHeader = () => {
             <h1>The "Future Garage"</h1>
           </li>
 
-          {userLoggedIn && <CartButton />}
+          {userLoggedIn && cartItems.length > 0 && <CartButton />}
 
           <li>
             <ul className={classes.navBtns}>
