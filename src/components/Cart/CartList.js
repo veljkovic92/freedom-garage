@@ -40,6 +40,9 @@ const CartList = () => {
             <h3>Total price for this bike: {bike.totalConfigPrice}</h3>
           </div>
           <div>
+            <h4>Date of adding: {bike.date}</h4>
+          </div>
+          <div>
             <button onClick={() => onRemoveConfigHandler(bike.id)}>
               Remove <br />
               Configuration

@@ -12,10 +12,7 @@ const CartItem = (props) => {
   const availableBikes = useSelector((state) => state.bikes.bikes);
   const cartItems = useSelector((state) => state.cart.items);
 
-
   const cartItem = cartItems.find((item) => item.id === props.id);
-
-  console.log(cartItem.totalConfigPrice);
 
   const addItemHandler = (event) => {
     const buttonName = event.target.name;
@@ -25,14 +22,14 @@ const CartItem = (props) => {
     const chosenUpgradeWaitingTime =
       availableBikes[cartItem.name.toLowerCase()].upgrades[buttonName]
         .waitingTime;
-    
+
     const updatedConfig = {
       id: props.id,
       name: buttonName,
       chosenUpgradePrice,
       chosenUpgradeWaitingTime,
     };
-  
+
     dispatch(cartActions.addItemToCart(updatedConfig));
   };
 

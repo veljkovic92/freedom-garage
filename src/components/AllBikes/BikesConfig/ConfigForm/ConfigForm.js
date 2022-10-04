@@ -347,7 +347,7 @@ const ConfigForm = () => {
       (item) => (configTime += chosenUpgrades[item].waitingTime)
     );
 
-    console.log(configTime);
+    const currentDate = new Date().toLocaleString();
 
     const chosenConfig = {
       id: selectedBike.id,
@@ -355,6 +355,7 @@ const ConfigForm = () => {
       config: chosenUpgrades,
       waitingTime: configTime,
       totalConfigPrice: configPrice,
+      date: currentDate,
     };
 
     dispatch(cartActions.addToCart(chosenConfig));

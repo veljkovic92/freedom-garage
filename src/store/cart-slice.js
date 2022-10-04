@@ -1,12 +1,9 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
-// resi logiku ubacivanja itema
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
-    inCartAdded: false,
-    inCartRemoved: false,
     waitingTime: 0,
     totalQuantity: 0,
     totalPrice: 0,
@@ -28,7 +25,6 @@ const cartSlice = createSlice({
       state.waitingTime -= selectedBike.waitingTime;
 
       state.items = state.items.filter((item) => item.id !== action.payload);
-      console.log(current(state));
     },
 
     addItemToCart(state, action) {
@@ -63,6 +59,15 @@ const cartSlice = createSlice({
         }
       });
     },
+    clearCart(state) {
+      state.items = [];
+      state.totalPrice = 0;
+      state.totalQuantity = 0;
+      state.waitingTime = 0;
+    },
+    savedCart(state, action) {
+
+    }
   },
 });
 

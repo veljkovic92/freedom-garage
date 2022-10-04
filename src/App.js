@@ -11,6 +11,8 @@ import Cart from "./components/Cart/Cart";
 import { useEffect } from "react";
 import { fetchBikesData } from "./store/bikes-actions";
 import { cartActions } from "./store/cart-slice";
+import MyOrders from "./pages/MyOrders";
+import { fetchOrdersData } from "./store/previous-orders-actions";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,9 +22,10 @@ function App() {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const totalWaitingTime = useSelector((state) => state.cart.waitingTime);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  
+
   useEffect(() => {
     dispatch(fetchBikesData());
+    dispatch(fetchOrdersData());
   }, []);
 
   useEffect(() => {
@@ -51,6 +54,7 @@ function App() {
 
   return (
     <Layout>
+      {showCart && <Cart />}
       <Switch>
         {!isLoggedIn && (
           <Route path="/auth">
@@ -61,7 +65,9 @@ function App() {
           <Welcome />
         </Route>
 
-        {showCart && <Cart />}
+        <Route path="/orders">
+          <MyOrders />
+        </Route>
 
         <Route path="/goals">
           <OurGoals />

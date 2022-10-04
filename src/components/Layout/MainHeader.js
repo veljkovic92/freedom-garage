@@ -9,7 +9,6 @@ const MainHeader = () => {
   const dispatch = useDispatch();
   const userLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const cartItems = useSelector((state) => state.cart.items);
-  console.log(cartItems);
 
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
@@ -32,6 +31,15 @@ const MainHeader = () => {
 
           <li>
             <ul className={classes.navBtns}>
+              <li>
+                <NavLink
+                  to="/orders"
+                  activeClassName={classes.activeLink}
+                  className={classes.navLink}
+                >
+                  My Orders
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   to="/goals"
