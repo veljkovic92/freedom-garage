@@ -3,6 +3,7 @@ import { createSlice, current } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
+    cartId: 0,
     items: [],
     waitingTime: 0,
     totalQuantity: 0,
@@ -10,6 +11,7 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart(state, action) {
+      state.cartId = action.payload.cartId;
       state.items.push(action.payload);
       state.waitingTime += action.payload.waitingTime;
       state.totalQuantity++;
@@ -65,9 +67,7 @@ const cartSlice = createSlice({
       state.totalQuantity = 0;
       state.waitingTime = 0;
     },
-    savedCart(state, action) {
-
-    }
+    savedCart(state, action) {},
   },
 });
 

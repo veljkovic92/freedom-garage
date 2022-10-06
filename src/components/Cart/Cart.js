@@ -6,8 +6,11 @@ import { setOrdersData } from "../../store/cart-actions";
 import classes from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { fetchOrdersData } from "../../store/previous-orders-actions";
 
 const Cart = () => {
+  console.log(fetchOrdersData);
+
   const history = useHistory();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
@@ -16,13 +19,17 @@ const Cart = () => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const onCartSubmitHandler = () => {
+    var cartId = "id" + Math.random().toString(16).slice(2);
+
     const submittedCart = {
+      cartId,
       cartItems,
       totalPrice,
       totalWaitingTime,
       totalQuantity,
     };
     dispatch(setOrdersData(submittedCart));
+
     dispatch(cartActions.clearCart());
     dispatch(uiActions.hideCart());
     history.replace("/bikes");

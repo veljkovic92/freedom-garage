@@ -9,7 +9,8 @@ const MainHeader = () => {
   const dispatch = useDispatch();
   const userLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const cartItems = useSelector((state) => state.cart.items);
-
+  const orders = useSelector((state) => state.orders.orders);
+  console.log(orders);
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
       dispatch(authActions.userLoggedOut());
@@ -31,15 +32,18 @@ const MainHeader = () => {
 
           <li>
             <ul className={classes.navBtns}>
-              <li>
-                <NavLink
-                  to="/orders"
-                  activeClassName={classes.activeLink}
-                  className={classes.navLink}
-                >
-                  My Orders
-                </NavLink>
-              </li>
+              {orders.length > 0 && (
+                <li>
+                  <NavLink
+                    to="/orders"
+                    activeClassName={classes.activeLink}
+                    className={classes.navLink}
+                  >
+                    My Orders
+                  </NavLink>
+                </li>
+              )}
+
               <li>
                 <NavLink
                   to="/goals"

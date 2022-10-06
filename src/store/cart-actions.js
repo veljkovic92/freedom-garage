@@ -1,3 +1,5 @@
+import { fetchOrdersData } from "./previous-orders-actions";
+
 export const setOrdersData = (cart) => {
   return async (dispatch) => {
     const sendRequest = async () => {
@@ -6,6 +8,7 @@ export const setOrdersData = (cart) => {
         {
           method: "PUT",
           body: JSON.stringify({
+            cartId: cart.cartId,
             configs: cart.cartItems,
             waitingTime: cart.totalWaitingTime,
             totalQuantity: cart.totalQuantity,
@@ -19,8 +22,7 @@ export const setOrdersData = (cart) => {
     };
     try {
       await sendRequest();
+      dispatch(fetchOrdersData());
     } catch (error) {}
   };
 };
-
-

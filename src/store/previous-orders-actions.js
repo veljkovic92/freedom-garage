@@ -10,6 +10,7 @@ export const fetchOrdersData = () => {
         throw new Error("Can't set configs");
       }
       const data = await response.json();
+
       return data;
     };
     try {

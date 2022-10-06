@@ -348,6 +348,7 @@ const ConfigForm = () => {
     );
 
     const currentDate = new Date().toLocaleString();
+    
 
     const chosenConfig = {
       id: selectedBike.id,
