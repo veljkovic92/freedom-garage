@@ -22,6 +22,7 @@ function App() {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const totalWaitingTime = useSelector((state) => state.cart.waitingTime);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  
 
   useEffect(() => {
     dispatch(fetchBikesData());

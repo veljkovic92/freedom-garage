@@ -11,63 +11,43 @@ const MyOrders = () => {
         <li className={classes["order-item"]}>
           {item.configs.map((configData) => {
             return (
-              <div className={classes["order-item-top"]} key={configData.id}>
-                <h2>"{configData.name}"</h2>
-                <div>
-                  <span>
-                    <em>
-                      Ordered on:<strong> {configData.date}</strong>
-                    </em>
-                  </span>
+              <>
+                <div className={classes["order-item-top"]} key={configData.id}>
+                  <h2>"{configData.name}"</h2>
+                  <div>
+                    <span>
+                      <em>
+                        Ordered on:<strong> {configData.date}</strong>
+                      </em>
+                    </span>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-
-          {item.configs.map((configData) => {
-            return (
-              <ul className={classes["item-config-list"]} key={configData.id}>
-                {Object.keys(configData.config).map((configItem) => {
-                  return (
-                    <li className={classes["item-config"]} key={configItem}>
-                      <h4>{configData.config[configItem].name}</h4>
-                      <div>
-                        <span>
-                          Price: {configData.config[configItem].price}
-                        </span>
-                      </div>
-                      <div>
-                        <span>
-                          Value: {configData.config[configItem].value}
-                        </span>
-                      </div>
-                      <div>
-                        <span>
-                          Waiting Time:{" "}
-                          {configData.config[configItem].waitingTime}
-                        </span>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            );
-          })}
-
-          {item.configs.map((configData) => {
-            return (
-              <div className={classes["order-item-bot"]} key={configData.id}>
-                <div>
-                  <span>
-                    <em>Total Bike Waiting Time: </em>
-                    <strong>{configData.waitingTime}</strong>
-                  </span>
-                  <span>
-                    <em>Total Bike Price: </em>
-                    <strong>{configData.totalConfigPrice}</strong>
-                  </span>
-                </div>
-              </div>
+                <ul className={classes["item-config-list"]} key={configData.id}>
+                  {Object.keys(configData.config).map((configItem) => {
+                    return (
+                      <li className={classes["item-config"]} key={configItem}>
+                        <h4>{configData.config[configItem].name}</h4>
+                        <div>
+                          <span>
+                            Price: {configData.config[configItem].price}
+                          </span>
+                        </div>
+                        <div>
+                          <span>
+                            Value: {configData.config[configItem].value}
+                          </span>
+                        </div>
+                        <div>
+                          <span>
+                            Waiting Time:{" "}
+                            {configData.config[configItem].waitingTime}
+                          </span>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
             );
           })}
         </li>
