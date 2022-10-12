@@ -62,15 +62,17 @@ function App() {
 
         clearInterval(countdown);
         localStorage.removeItem("expirationTime");
+        localStorage.removeItem("user");
       }
     }, 1000);
   }, [token]);
 
   useEffect(() => {
-    const localToken = localStorage.getItem("token");
-    if (localToken) {
-      dispatch(authActions.userLoggedIn());
-      dispatch(authActions.localToken(localToken));
+    const localUser = JSON.parse(localStorage.getItem("user"));
+
+    if (localUser) {
+      dispatch(authActions.userLoggedIn(localUser));
+      dispatch(authActions.localToken(localUser.token));
     }
     const existingLocalTime = localStorage.getItem("expirationTime");
     if (existingLocalTime) {

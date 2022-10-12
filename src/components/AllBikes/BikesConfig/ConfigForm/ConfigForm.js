@@ -17,6 +17,7 @@ const ConfigForm = () => {
   const notification = useSelector((state) => state.ui.notification);
   const bikes = useSelector((state) => state.bikes.bikes);
   const cart = useSelector((state) => state.cart.items);
+  const user = useSelector((state) => state.auth.user);
 
   const selectedBike = bikes[params.bikeId];
 
@@ -348,9 +349,9 @@ const ConfigForm = () => {
     );
 
     const currentDate = new Date().toLocaleString();
-    
 
     const chosenConfig = {
+      user: user,
       id: selectedBike.id,
       name: selectedBike.name,
       config: chosenUpgrades,

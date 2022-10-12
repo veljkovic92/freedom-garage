@@ -17,11 +17,13 @@ const Cart = () => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const totalWaitingTime = useSelector((state) => state.cart.waitingTime);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const user = useSelector((state) => state.auth.user);
 
   const onCartSubmitHandler = () => {
     var cartId = "id" + Math.random().toString(16).slice(2);
 
     const submittedCart = {
+      user,
       cartId,
       cartItems,
       totalPrice,

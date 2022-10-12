@@ -8,6 +8,7 @@ export const setOrdersData = (cart) => {
         {
           method: "PUT",
           body: JSON.stringify({
+            user: cart.user,
             cartId: cart.cartId,
             configs: cart.cartItems,
             waitingTime: cart.totalWaitingTime,

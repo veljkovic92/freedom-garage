@@ -1,4 +1,4 @@
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import classes from "./MainHeader.module.css";
 import { authActions } from "../../store/auth-slice";
@@ -14,7 +14,7 @@ const MainHeader = () => {
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
       dispatch(authActions.userLoggedOut());
-      localStorage.removeItem("token");
+      localStorage.removeItem("user");
       localStorage.removeItem("expirationTime");
       localStorage.setItem("isLoggedIn", false);
       history.replace("/auth");
@@ -28,7 +28,9 @@ const MainHeader = () => {
       <nav>
         <ul>
           <li>
-            <h1>The "Future Garage"</h1>
+            <Link to="/" className={classes.title}>
+              <h1>The "Future Garage"</h1>
+            </Link>
           </li>
 
           {userLoggedIn && cartItems.length > 0 && <CartButton />}

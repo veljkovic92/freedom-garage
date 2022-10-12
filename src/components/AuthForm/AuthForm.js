@@ -92,11 +92,15 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        dispatch(authActions.userLoggedIn(data.idToken));
+        const userData = {
+          user: data.email,
+          token: data.idToken,
+        };
+        dispatch(authActions.userLoggedIn(userData));
 
         expirationTimeHandler(data);
 
-        localStorage.setItem("token", data.idToken);
+        localStorage.setItem("user", JSON.stringify(userData));
         localStorage.setItem("isLoggedIn", true);
 
         history.replace("/welcome");

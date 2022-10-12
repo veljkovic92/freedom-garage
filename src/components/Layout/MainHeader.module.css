@@ -8,6 +8,11 @@
   z-index: 1;
 }
 
+.title {
+  text-decoration: none;
+  color: inherit;
+}
+
 .header h1 {
   margin-left: 0;
 }
