@@ -13,6 +13,8 @@ import { fetchBikesData } from "./store/bikes-actions";
 import { cartActions } from "./store/cart-slice";
 import MyOrders from "./pages/MyOrders";
 import { fetchOrdersData } from "./store/previous-orders-actions";
+import { authActions } from "./store/auth-slice";
+import { countdownHandler } from "./components/AuthForm/expiration";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ function App() {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const totalWaitingTime = useSelector((state) => state.cart.waitingTime);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     dispatch(fetchBikesData());
@@ -52,6 +54,29 @@ function App() {
     localStorage.removeItem("totalQuantity");
     localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity));
   }, [cartItems, totalPrice, totalWaitingTime, totalQuantity]);
+
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      if (localStorage.getItem("expirationTime") <= 0) {
+        dispatch(authActions.userLoggedOut());
+
+        clearInterval(countdown);
+        localStorage.removeItem("expirationTime");
+      }
+    }, 1000);
+  }, [token]);
+
+  useEffect(() => {
+    const localToken = localStorage.getItem("token");
+    if (localToken) {
+      dispatch(authActions.userLoggedIn());
+      dispatch(authActions.localToken(localToken));
+    }
+    const existingLocalTime = localStorage.getItem("expirationTime");
+    if (existingLocalTime) {
+      countdownHandler(existingLocalTime);
+    }
+  }, []);
 
   return (
     <Layout>

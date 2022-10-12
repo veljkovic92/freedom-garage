@@ -12,6 +12,9 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.token = null;
     },
+    localToken (state, action) {
+      state.token = action.payload;
+    }
   },
 });
 

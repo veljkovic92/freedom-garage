@@ -10,10 +10,13 @@ const MainHeader = () => {
   const userLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const cartItems = useSelector((state) => state.cart.items);
   const orders = useSelector((state) => state.orders.orders);
-  console.log(orders);
+
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
       dispatch(authActions.userLoggedOut());
+      localStorage.removeItem("token");
+      localStorage.removeItem("expirationTime");
+      localStorage.setItem("isLoggedIn", false);
       history.replace("/auth");
     } else {
       history.push("/auth");

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
 import classes from "./AuthForm.module.css";
+import { expirationHandler, expirationTimeHandler } from "./expiration";
 
 const AuthForm = () => {
   const dispatch = useDispatch();
@@ -91,10 +92,13 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        
-
-        
         dispatch(authActions.userLoggedIn(data.idToken));
+
+        expirationTimeHandler(data);
+
+        localStorage.setItem("token", data.idToken);
+        localStorage.setItem("isLoggedIn", true);
+
         history.replace("/welcome");
       })
       .catch((error) => {
