@@ -37,7 +37,7 @@
   margin-top: 2rem;
 }
 
-.order-item-bot  div {
+.order-item-bot div {
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -54,4 +54,11 @@
   padding: 3rem;
   border: 3px solid red;
   border-radius: 10px;
+}
+
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

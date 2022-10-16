@@ -14,7 +14,8 @@ import { cartActions } from "./store/cart-slice";
 import MyOrders from "./pages/MyOrders";
 import { fetchOrdersData } from "./store/previous-orders-actions";
 import { authActions } from "./store/auth-slice";
-import { countdownHandler } from "./components/AuthForm/expiration";
+import { countdownHandler } from "./helpers/expiration";
+import MyAccount from "./pages/MyAccount";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,8 @@ function App() {
   const totalWaitingTime = useSelector((state) => state.cart.waitingTime);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const token = useSelector((state) => state.auth.token);
+
+  // Fetching Bikes and Orders on first load
 
   useEffect(() => {
     dispatch(fetchBikesData());
@@ -43,6 +46,8 @@ function App() {
       }
     } catch (error) {}
   }, []);
+
+  // Updating LS on every Cart change
 
   useEffect(() => {
     localStorage.removeItem("chosenConfig");
@@ -91,6 +96,10 @@ function App() {
         )}
         <Route path="/welcome">
           <Welcome />
+        </Route>
+
+        <Route path="/my-account">
+          <MyAccount />
         </Route>
 
         <Route path="/orders">

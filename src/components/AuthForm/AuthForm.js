@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
 import classes from "./AuthForm.module.css";
-import { expirationHandler, expirationTimeHandler } from "./expiration";
+import { expirationHandler, expirationTimeHandler } from "../../helpers/expiration";
 
 const AuthForm = () => {
   const dispatch = useDispatch();

@@ -1,0 +1,32 @@
+.my-account {
+  padding: 0 20%;
+}
+
+.my-account h1,
+h3 {
+  text-align: center;
+}
+
+.account-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-info__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-info img {
+  width: 6rem;
+  border-radius: 10px;
+}
+
+.my-account h3 {
+  margin-top: 5rem;
+}
+
+.account-edit {
+  display: flex;
+  flex-direction: column;
+}

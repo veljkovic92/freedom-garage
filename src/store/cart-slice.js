@@ -4,7 +4,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     user: "",
-    cartId: 0,
+   
     items: [],
     waitingTime: 0,
     totalQuantity: 0,
@@ -13,7 +13,6 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       state.user = action.payload.user;
-      state.cartId = action.payload.cartId;
       state.items.push(action.payload);
       state.waitingTime += action.payload.waitingTime;
       state.totalQuantity++;

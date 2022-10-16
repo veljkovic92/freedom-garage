@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import classes from "./MainHeader.module.css";
 import { authActions } from "../../store/auth-slice";
 import CartButton from "../Cart/CartButton";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const MainHeader = () => {
   const history = useHistory();
@@ -10,6 +12,9 @@ const MainHeader = () => {
   const userLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const cartItems = useSelector((state) => state.cart.items);
   const orders = useSelector((state) => state.orders.orders);
+  const user = useSelector((state) => state.auth.user);
+
+  const [userHasOrders, setUserHasOrders] = useState(false);
 
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
@@ -22,6 +27,19 @@ const MainHeader = () => {
       history.push("/auth");
     }
   };
+
+  useEffect(() => {
+    if (orders != null) {
+      Object.keys(orders).forEach((order) => {
+        if (orders[order].user === user) {
+          setUserHasOrders(true);
+        }
+      });
+    }
+    if (!user) {
+      setUserHasOrders(false);
+    }
+  }, [user, orders]);
 
   return (
     <header className={classes.header}>
@@ -37,7 +55,18 @@ const MainHeader = () => {
 
           <li>
             <ul className={classes.navBtns}>
-              {orders.length > 0 && (
+              {userLoggedIn && (
+                <li>
+                  <NavLink
+                    to="my-account"
+                    activeClassName={classes.activeLink}
+                    className={classes.navLink}
+                  >
+                    My Account
+                  </NavLink>
+                </li>
+              )}
+              {userLoggedIn && userHasOrders && (
                 <li>
                   <NavLink
                     to="/orders"

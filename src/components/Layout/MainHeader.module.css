@@ -22,6 +22,7 @@
   list-style: none;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
 }
 
 .header li:not(:last-child) {

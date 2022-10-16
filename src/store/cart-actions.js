@@ -6,10 +6,9 @@ export const setOrdersData = (cart) => {
       const response = await fetch(
         "https://react-http-de4ad-default-rtdb.europe-west1.firebasedatabase.app/orders.json",
         {
-          method: "PUT",
+          method: "POST",
           body: JSON.stringify({
             user: cart.user,
-            cartId: cart.cartId,
             configs: cart.cartItems,
             waitingTime: cart.totalWaitingTime,
             totalQuantity: cart.totalQuantity,
