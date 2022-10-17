@@ -10,6 +10,7 @@ h3 {
 .account-info {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .account-info__left {
@@ -17,9 +18,24 @@ h3 {
   flex-direction: column;
 }
 
-.account-info img {
-  width: 6rem;
+.account-info__right {
+  position: relative;
+}
+
+.account-info__right img {
+  width: 10rem;
   border-radius: 10px;
+}
+
+.account-info__right a {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  bottom: 5px;
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .my-account h3 {
@@ -29,4 +45,16 @@ h3 {
 .account-edit {
   display: flex;
   flex-direction: column;
+}
+
+.account-edit > div {
+  background-color: rgb(224, 224, 224);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin-top: 5px;
+}
+
+.password-edit {
 }
