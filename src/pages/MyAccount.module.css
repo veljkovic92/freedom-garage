@@ -52,9 +52,36 @@ h3 {
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px;
-  margin-top: 5px;
+
+  margin-top: 10px;
 }
 
-.password-edit {
+.name-edit,
+.password-edit,
+.account-delete {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-edit-header,
+.password-edit-header,
+.account-delete-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.name-edit-body,
+.password-edit-body,
+.account-delete-body {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: rgb(243, 243, 243);
+  border: 1px solid lightgrey;
+  border-radius: 5px;
 }

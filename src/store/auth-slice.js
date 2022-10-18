@@ -15,7 +15,7 @@ const authSlice = createSlice({
       state.token = null;
     },
     localToken(state, action) {
-      state.token = action.payload.token;
+      state.token = action.payload;
     },
   },
 });

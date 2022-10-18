@@ -1,6 +1,6 @@
 import { ordersActions } from "./previous-orders-slice";
 
-export const fetchOrdersData = () => {
+export const fetchOrdersData = (user) => {
   return async (dispatch) => {
     const sendRequest = async () => {
       const response = await fetch(
