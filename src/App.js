@@ -26,12 +26,13 @@ function App() {
   const totalWaitingTime = useSelector((state) => state.cart.waitingTime);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.auth.user);
 
   // Fetching Bikes and Orders on first load
 
   useEffect(() => {
     dispatch(fetchBikesData());
-    dispatch(fetchOrdersData());
+    dispatch(fetchOrdersData(user));
   }, []);
 
   useEffect(() => {

@@ -4,7 +4,10 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
 import classes from "./AuthForm.module.css";
-import { expirationHandler, expirationTimeHandler } from "../../helpers/expiration";
+import {
+  expirationHandler,
+  expirationTimeHandler,
+} from "../../helpers/expiration";
 
 const AuthForm = () => {
   const dispatch = useDispatch();
@@ -65,49 +68,46 @@ const AuthForm = () => {
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDUlyw-dltmGCc-EjQuuVbGAQpX92HFL0I";
     }
 
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        email: enteredEmail,
-        password: enteredPassword,
-        returnSecureToken: true,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return res.json().then((data) => {
-            let errorMessage = "Authentification failed!";
+    (async () => {
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          body: JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-            if (data && data.error && data.error.message) {
-              errorMessage = data.error.message;
-            }
+        let data = await res.json();
 
-            throw new Error(errorMessage);
-          });
+        let errorMessage = "Authentification failed!";
+
+        if (data && data.error && data.error.message) {
+          errorMessage = data.error.message;
+          throw new Error(errorMessage);
         }
-      })
-      .then((data) => {
+
         const userData = {
           user: data.email,
           token: data.idToken,
         };
+
         dispatch(authActions.userLoggedIn(userData));
 
-        expirationTimeHandler(data);
+        expirationTimeHandler(data.expiresIn);
 
         localStorage.setItem("user", JSON.stringify(userData));
         localStorage.setItem("isLoggedIn", true);
 
         history.replace("/welcome");
-      })
-      .catch((error) => {
+      } catch (error) {
         console.log(error);
-      });
+      }
+    })();
 
     setEnteredEmail("");
     setEnteredPassword("");
