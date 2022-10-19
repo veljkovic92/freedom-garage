@@ -8,8 +8,8 @@ import { useEffect } from "react";
 const MyAccount = () => {
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
-  console.log(token);
-  console.log(user);
+  const userName = useSelector((state) => state.auth.name);
+
   const [nameIsClicked, setNameIsClicked] = useState(false);
   const [name, setName] = useState("");
 
@@ -31,11 +31,42 @@ const MyAccount = () => {
     setNameIsClicked((prevValue) => !prevValue);
   };
 
-  const onNameChangeHandler = () => {
-    fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDUlyw-dltmGCc-EjQuuVbGAQpX92HFL0I",
-      {}
-    );
+  const onNameChangeHandler = (event) => {
+    const name = event.target.value;
+
+    setName(name);
+  };
+
+  const onNameSubmitHandler = async () => {
+    try {
+      const response = await fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDUlyw-dltmGCc-EjQuuVbGAQpX92HFL0I",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            idToken: token,
+            displayName: name,
+            returnSecureToken: false,
+          }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      const data = await response.json();
+
+      let errorMessage = "Authentification failed!";
+
+      if (data && data.error && data.error.message) {
+        errorMessage = data.error.message;
+        throw new Error(errorMessage);
+      }
+
+      if (response.ok) {
+        console.log("Name changed");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onPasswordClickedHandler = () => {
@@ -91,7 +122,7 @@ const MyAccount = () => {
       <h1>My Account</h1>
       <div className={classes["account-info"]}>
         <div className={classes["account-info__left"]}>
-          <span>My Name:</span>
+          <span>My Name: {userName || ""}</span>
           <span>My E-Mail: {user}</span>
         </div>
         <div className={classes["account-info__right"]}>
@@ -106,15 +137,19 @@ const MyAccount = () => {
             className={classes["name-edit-header"]}
             onClick={onNameClickedHandler}
           >
-            <a onClick={onNameChangeHandler}>Change my name</a>
+            <a>Change my name</a>
             <FaArrowDown />
           </div>
           <div>
             {nameIsClicked && (
               <div className={classes["name-edit-body"]}>
                 <label htmlFor="new-name">New Name:</label>
-                <input type="text" id="new-name" />
-                <button onClick={onNameChangeHandler}>Submit</button>
+                <input
+                  type="text"
+                  id="new-name"
+                  onChange={onNameChangeHandler}
+                />
+                <button onClick={onNameSubmitHandler}>Submit</button>
               </div>
             )}
           </div>

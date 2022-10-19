@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
 import classes from "./AuthForm.module.css";
@@ -12,6 +12,7 @@ import {
 const AuthForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const token = useSelector((state) => state.auth.token);
 
   const [signUpMode, setSignUpMode] = useState(true);
 
@@ -108,6 +109,8 @@ const AuthForm = () => {
         console.log(error);
       }
     })();
+
+    
 
     setEnteredEmail("");
     setEnteredPassword("");

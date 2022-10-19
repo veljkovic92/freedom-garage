@@ -16,6 +16,10 @@ import { fetchOrdersData } from "./store/previous-orders-actions";
 import { authActions } from "./store/auth-slice";
 import { countdownHandler } from "./helpers/expiration";
 import MyAccount from "./pages/MyAccount";
+import {
+  getDisplayName,
+  onGetDisplayNameHandler,
+} from "./helpers/getAccountInfos";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,9 +31,8 @@ function App() {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.user);
-
+  const name = useSelector((state) => state.auth.name);
   // Fetching Bikes and Orders on first load
-
   useEffect(() => {
     dispatch(fetchBikesData());
     dispatch(fetchOrdersData(user));
@@ -61,6 +64,8 @@ function App() {
     localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity));
   }, [cartItems, totalPrice, totalWaitingTime, totalQuantity]);
 
+  const localUser = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
     const countdown = setInterval(() => {
       if (localStorage.getItem("expirationTime") <= 0) {
@@ -71,11 +76,17 @@ function App() {
         localStorage.removeItem("user");
       }
     }, 1000);
+    
+    if (token && localUser) {
+      if (!localUser.name) {
+        dispatch(getDisplayName(token));
+      } else {
+        dispatch(authActions.localName(localUser.name));
+      }
+    }
   }, [token]);
 
   useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem("user"));
-
     if (localUser) {
       dispatch(authActions.userLoggedIn(localUser));
       dispatch(authActions.localToken(localUser.token));
