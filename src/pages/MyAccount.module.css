@@ -48,7 +48,6 @@ h3 {
 }
 
 .account-edit > div {
-  background-color: rgb(224, 224, 224);
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
@@ -61,11 +60,14 @@ h3 {
 .account-delete {
   display: flex;
   flex-direction: column;
+  background-color: rgb(243, 243, 243);
+  border: 1px solid lightgrey;
 }
 
 .name-edit-header,
 .password-edit-header,
 .account-delete-header {
+  background-color: rgb(224, 224, 224);
   display: flex;
   justify-content: space-between;
   padding: 5px 10px;
@@ -77,11 +79,32 @@ h3 {
 .password-edit-body,
 .account-delete-body {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.name-edit-input,
+.password-edit-input,
+.account-delete-input {
+  display: flex;
   justify-content: center;
   gap: 1rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
-  background-color: rgb(243, 243, 243);
-  border: 1px solid lightgrey;
   border-radius: 5px;
+}
+
+.name-edit-notificaiton,
+.password-edit-notification,
+.account-delete-notification {
+}
+
+.success-notification {
+  color: green;
+}
+
+.fail-notification {
+  color: red;
 }

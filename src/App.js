@@ -19,7 +19,7 @@ import MyAccount from "./pages/MyAccount";
 import {
   getDisplayName,
   onGetDisplayNameHandler,
-} from "./helpers/getAccountInfos";
+} from "./helpers/fetchAccountInfos";
 
 function App() {
   const dispatch = useDispatch();

@@ -1,14 +1,17 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./MyAccount.module.css";
 import profileImage from "../assets/profile-template.jpg";
 import { FaArrowDown } from "react-icons/fa";
 import { useState } from "react";
 import { useEffect } from "react";
+import { changePassword, setDisplayName } from "../helpers/fetchAccountInfos";
 
 const MyAccount = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
   const userName = useSelector((state) => state.auth.name);
+  const notification = useSelector((state) => state.ui.notification);
 
   const [nameIsClicked, setNameIsClicked] = useState(false);
   const [name, setName] = useState("");
@@ -37,36 +40,8 @@ const MyAccount = () => {
     setName(name);
   };
 
-  const onNameSubmitHandler = async () => {
-    try {
-      const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDUlyw-dltmGCc-EjQuuVbGAQpX92HFL0I",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            idToken: token,
-            displayName: name,
-            returnSecureToken: false,
-          }),
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-
-      const data = await response.json();
-
-      let errorMessage = "Authentification failed!";
-
-      if (data && data.error && data.error.message) {
-        errorMessage = data.error.message;
-        throw new Error(errorMessage);
-      }
-
-      if (response.ok) {
-        console.log("Name changed");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const onNameSubmitHandler = () => {
+    dispatch(setDisplayName(token, name));
   };
 
   const onPasswordClickedHandler = () => {
@@ -78,37 +53,8 @@ const MyAccount = () => {
     setPassword(newPassword);
   };
 
-  const onPasswordSubmitHandler = async () => {
-    try {
-      const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDUlyw-dltmGCc-EjQuuVbGAQpX92HFL0I",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            idToken: token,
-            password: password,
-            returnSecureToken: false,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      let data = await response.json();
-
-      let errorMessage = "Authentification failed!";
-
-      if (data && data.error && data.error.message) {
-        errorMessage = data.error.message;
-        throw new Error(errorMessage);
-      }
-
-      if (response.ok) {
-        console.log("Password changed");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const onPasswordSubmitHandler = () => {
+    dispatch(changePassword(token, password));
   };
 
   const onAccountDeleteClickedHandler = () => {
@@ -164,18 +110,26 @@ const MyAccount = () => {
           </div>
           {passwordIsClicked && (
             <div className={classes["password-edit-body"]}>
-              <label htmlFor="password">New Password:</label>
-              <input
-                type="password"
-                id="new-password"
-                onChange={onPasswordChangeHandler}
-              />
-              <button
-                onClick={onPasswordSubmitHandler}
-                disabled={!passwordIsValid}
-              >
-                Submit
-              </button>
+              <div className={classes["password-edit-input"]}>
+                <label htmlFor="password">New Password:</label>
+                <input
+                  type="password"
+                  id="new-password"
+                  onChange={onPasswordChangeHandler}
+                />
+                <button
+                  onClick={onPasswordSubmitHandler}
+                  disabled={!passwordIsValid}
+                >
+                  Submit
+                </button>
+              </div>
+              {notification && (
+                <div className={notification.status === "Success" ? classes["success-notification"] : classes["fail-notification"]}>
+                  <h4>{notification.title}</h4>
+                  <p>{notification.message}</p>
+                </div>
+              )}
             </div>
           )}
         </div>
