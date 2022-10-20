@@ -5,6 +5,7 @@ import { authActions } from "../../store/auth-slice";
 import CartButton from "../Cart/CartButton";
 import { useState } from "react";
 import { useEffect } from "react";
+import { uiActions } from "../../store/ui-slice";
 
 const MainHeader = () => {
   const history = useHistory();
@@ -19,6 +20,7 @@ const MainHeader = () => {
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
       dispatch(authActions.userLoggedOut());
+      dispatch(uiActions.hideNotification());
       localStorage.removeItem("user");
       localStorage.removeItem("expirationTime");
       localStorage.setItem("isLoggedIn", false);

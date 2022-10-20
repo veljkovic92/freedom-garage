@@ -108,3 +108,11 @@ h3 {
 .fail-notification {
   color: red;
 }
+
+.arrow {
+  
+}
+
+.arrow-rotate {
+  transform: rotate(180deg);
+}

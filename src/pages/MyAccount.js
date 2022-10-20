@@ -5,6 +5,7 @@ import { FaArrowDown } from "react-icons/fa";
 import { useState } from "react";
 import { useEffect } from "react";
 import { changePassword, setDisplayName } from "../helpers/fetchAccountInfos";
+import { uiActions } from "../store/ui-slice";
 
 const MyAccount = () => {
   const dispatch = useDispatch();
@@ -30,8 +31,25 @@ const MyAccount = () => {
     }
   }, [password]);
 
+  // useEffect(() => {
+  //   if (nameIsClicked) {
+  //     setPasswordIsClicked(false);
+  //     setDeleteAccountIsClicked(false);
+  //   }
+  //   if (passwordIsClicked) {
+  //     setNameIsClicked(false);
+  //     setDeleteAccountIsClicked(false);
+  //   }
+  //   if (deleteAccountIsClicked) {
+  //     setNameIsClicked(false);
+  //     setPasswordIsClicked(false);
+  //   }
+  // }, [nameIsClicked, passwordIsClicked, deleteAccountIsClicked]);
+
   const onNameClickedHandler = () => {
     setNameIsClicked((prevValue) => !prevValue);
+    setPasswordIsClicked(false);
+    setDeleteAccountIsClicked(false);
   };
 
   const onNameChangeHandler = (event) => {
@@ -41,11 +59,16 @@ const MyAccount = () => {
   };
 
   const onNameSubmitHandler = () => {
+    if (notification) {
+      dispatch(uiActions.hideNotification());
+    }
     dispatch(setDisplayName(token, name));
   };
 
   const onPasswordClickedHandler = () => {
     setPasswordIsClicked((prevValue) => !prevValue);
+    setNameIsClicked(false);
+    setDeleteAccountIsClicked(false);
   };
 
   const onPasswordChangeHandler = (event) => {
@@ -59,6 +82,8 @@ const MyAccount = () => {
 
   const onAccountDeleteClickedHandler = () => {
     setDeleteAccountIsClicked((prevValue) => !prevValue);
+    setNameIsClicked(false);
+    setPasswordIsClicked(false);
   };
 
   const onDeleteAccountHandler = () => {};
@@ -84,18 +109,38 @@ const MyAccount = () => {
             onClick={onNameClickedHandler}
           >
             <a>Change my name</a>
-            <FaArrowDown />
+            <FaArrowDown
+              className={
+                nameIsClicked ? classes["arrow-rotate"] : classes["arrow"]
+              }
+            />
           </div>
           <div>
             {nameIsClicked && (
               <div className={classes["name-edit-body"]}>
-                <label htmlFor="new-name">New Name:</label>
-                <input
-                  type="text"
-                  id="new-name"
-                  onChange={onNameChangeHandler}
-                />
-                <button onClick={onNameSubmitHandler}>Submit</button>
+                <div className={classes["name-edit-input"]}>
+                  <label htmlFor="new-name">New Name:</label>
+                  <input
+                    type="text"
+                    id="new-name"
+                    onChange={onNameChangeHandler}
+                  />
+                  <button onClick={onNameSubmitHandler}>Submit</button>
+                </div>
+                {notification &&
+                  (notification.status === "name changed" ||
+                    notification.status === "name not changed") && (
+                    <div
+                      className={
+                        notification.status === "name changed"
+                          ? classes["success-notification"]
+                          : classes["fail-notification"]
+                      }
+                    >
+                      <h4>{notification.title}</h4>
+                      <p>{notification.message || ""}</p>
+                    </div>
+                  )}
               </div>
             )}
           </div>
@@ -106,7 +151,11 @@ const MyAccount = () => {
             onClick={onPasswordClickedHandler}
           >
             <a>Change my password</a>
-            <FaArrowDown />
+            <FaArrowDown
+              className={
+                passwordIsClicked ? classes["arrow-rotate"] : classes["arrow"]
+              }
+            />
           </div>
           {passwordIsClicked && (
             <div className={classes["password-edit-body"]}>
@@ -124,12 +173,20 @@ const MyAccount = () => {
                   Submit
                 </button>
               </div>
-              {notification && (
-                <div className={notification.status === "Success" ? classes["success-notification"] : classes["fail-notification"]}>
-                  <h4>{notification.title}</h4>
-                  <p>{notification.message}</p>
-                </div>
-              )}
+              {notification &&
+                (notification.status === "password changed" ||
+                  notification.status === "password not changed") && (
+                  <div
+                    className={
+                      notification.status === "password changed"
+                        ? classes["success-notification"]
+                        : classes["fail-notification"]
+                    }
+                  >
+                    <h4>{notification.title}</h4>
+                    <p>{notification.message}</p>
+                  </div>
+                )}
             </div>
           )}
         </div>
@@ -139,13 +196,35 @@ const MyAccount = () => {
             onClick={onAccountDeleteClickedHandler}
           >
             <a>Delete my account</a>
-            <FaArrowDown />
+            <FaArrowDown
+              className={
+                deleteAccountIsClicked
+                  ? classes["arrow-rotate"]
+                  : classes["arrow"]
+              }
+            />
           </div>
           {deleteAccountIsClicked && (
             <div className={classes["account-delete-body"]}>
-              <label htmlFor="password">New Password:</label>
-              <input type="password" id="new-password" />
-              <button onClick={onDeleteAccountHandler}>Submit</button>
+              <div className={classes["account-delete-input"]}>
+                <label htmlFor="password">New Password:</label>
+                <input type="password" id="new-password" />
+                <button onClick={onDeleteAccountHandler}>Submit</button>
+              </div>
+              {notification &&
+                (notification.status === "account deleted" ||
+                  notification.status === "account not deleted") && (
+                  <div
+                    className={
+                      notification.status === "account deleted"
+                        ? classes["success-notification"]
+                        : classes["fail-notification"]
+                    }
+                  >
+                    <h4>{notification.title}</h4>
+                    <p>{notification.message}</p>
+                  </div>
+                )}
             </div>
           )}
         </div>

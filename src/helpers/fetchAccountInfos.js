@@ -38,12 +38,26 @@ export const setDisplayName = (token, name) => {
             name: name,
           })
         );
+        dispatch(
+          uiActions.showNotification({
+            status: "name changed",
+            title: "Successfully changed name",
+            
+          })
+        );
         console.log("Name changed");
       }
     };
     try {
       await sendRequest();
     } catch (error) {
+      dispatch(
+        uiActions.showNotification({
+          status: "name not changed",
+          title: "Failed changing name",
+          
+        })
+      );
       console.log(error);
     }
   };
@@ -117,7 +131,7 @@ export const changePassword = (token, password) => {
       if (response.ok) {
         dispatch(
           uiActions.showNotification({
-            status: "Success",
+            status: "password changed",
             title: "Successfully changed password",
             message: "Please remember to note your new password",
           })
@@ -128,6 +142,13 @@ export const changePassword = (token, password) => {
     try {
       await sendRequest();
     } catch (error) {
+      dispatch(
+        uiActions.showNotification({
+          status: "password not changed",
+          title: "Failed changing password",
+          message: "Please try to log in again",
+        })
+      );
       console.log(error);
     }
   };
