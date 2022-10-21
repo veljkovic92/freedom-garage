@@ -1,14 +1,23 @@
 import ReactDOM from "react-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./Modal.module.css";
 import Card from "./Card";
 import { uiActions } from "../../store/ui-slice";
 
 const Backdrop = () => {
+  const photoClicked = useSelector((state) => state.ui.photoClicked);
+  const notificationShown = useSelector((state) => state.ui.notification);
+  const cartShown = useSelector((state) => state.ui.cartIsVisible);
+
   const dispatch = useDispatch();
   const onBackdropClickHandler = () => {
-    dispatch(uiActions.hideNotification());
-    dispatch(uiActions.hideCart());
+    if (photoClicked) {
+      dispatch(uiActions.photoClicked());
+    } else if (notificationShown) {
+      dispatch(uiActions.hideNotification());
+    } else if (cartShown) {
+      dispatch(uiActions.hideCart());
+    }
   };
   return (
     <div className={classes.backdrop} onClick={onBackdropClickHandler}></div>

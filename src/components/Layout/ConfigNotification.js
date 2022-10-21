@@ -1,11 +1,21 @@
 import Modal from "../UI/Modal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 import classes from "./ConfigNotification.module.css";
 
+import { authActions } from "../../store/auth-slice";
+import { useHistory } from "react-router-dom";
+
 const ConfigNotification = (props) => {
+  const notification = useSelector((state) => state.ui.notification);
+  const history = useHistory();
+
   const dispatch = useDispatch();
   const btnCLickHandler = () => {
+    if (notification.status === "account deleted") {
+      dispatch(authActions.userLoggedOut());
+      history.replace("/");
+    }
     dispatch(uiActions.hideNotification());
   };
 

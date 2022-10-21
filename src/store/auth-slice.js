@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { token: "", user: "", name: "", isLoggedIn: false },
+  initialState: { token: "", user: "", name: "", photoUrl: "", isLoggedIn: false },
   reducers: {
     userLoggedIn(state, action) {
       state.isLoggedIn = true;
@@ -21,6 +21,9 @@ const authSlice = createSlice({
     localName(state, action) {
       state.name = action.payload;
     },
+    localPhotoUrl(state, action) {
+      state.photoUrl = action.payload
+    }
   },
 });
 

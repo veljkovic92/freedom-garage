@@ -4,8 +4,15 @@ import profileImage from "../assets/profile-template.jpg";
 import { FaArrowDown } from "react-icons/fa";
 import { useState } from "react";
 import { useEffect } from "react";
-import { changePassword, setDisplayName } from "../helpers/fetchAccountInfos";
+import {
+  changePassword,
+  deleteAccount,
+  setDisplayName,
+} from "../helpers/fetchAccountInfos";
 import { uiActions } from "../store/ui-slice";
+import { MutatingDots } from "react-loader-spinner";
+import ConfigNotification from "../components/Layout/ConfigNotification";
+import Modal from "../components/UI/Modal";
 
 const MyAccount = () => {
   const dispatch = useDispatch();
@@ -13,6 +20,8 @@ const MyAccount = () => {
   const token = useSelector((state) => state.auth.token);
   const userName = useSelector((state) => state.auth.name);
   const notification = useSelector((state) => state.ui.notification);
+
+  const photoIsClicked = useSelector((state) => state.ui.photoClicked);
 
   const [nameIsClicked, setNameIsClicked] = useState(false);
   const [name, setName] = useState("");
@@ -23,6 +32,20 @@ const MyAccount = () => {
 
   const [deleteAccountIsClicked, setDeleteAccountIsClicked] = useState(false);
 
+  const loadingSpinner = (
+    <MutatingDots
+      height="100"
+      width="100"
+      color="#4fa94d"
+      secondaryColor="#4fa94d"
+      radius="12.5"
+      ariaLabel="mutating-dots-loading"
+      wrapperStyle={{}}
+      wrapperClass={classes.spinner}
+      visible={true}
+    />
+  );
+
   useEffect(() => {
     if (password.length >= 7) {
       setPasswordIsValid(true);
@@ -31,20 +54,9 @@ const MyAccount = () => {
     }
   }, [password]);
 
-  // useEffect(() => {
-  //   if (nameIsClicked) {
-  //     setPasswordIsClicked(false);
-  //     setDeleteAccountIsClicked(false);
-  //   }
-  //   if (passwordIsClicked) {
-  //     setNameIsClicked(false);
-  //     setDeleteAccountIsClicked(false);
-  //   }
-  //   if (deleteAccountIsClicked) {
-  //     setNameIsClicked(false);
-  //     setPasswordIsClicked(false);
-  //   }
-  // }, [nameIsClicked, passwordIsClicked, deleteAccountIsClicked]);
+  const onPhotoChangeHandler = () => {
+    dispatch(uiActions.photoClicked())
+  };
 
   const onNameClickedHandler = () => {
     setNameIsClicked((prevValue) => !prevValue);
@@ -86,7 +98,9 @@ const MyAccount = () => {
     setPasswordIsClicked(false);
   };
 
-  const onDeleteAccountHandler = () => {};
+  const onDeleteAccountHandler = () => {
+    dispatch(deleteAccount(token));
+  };
 
   return (
     <div className={classes["my-account"]}>
@@ -98,9 +112,16 @@ const MyAccount = () => {
         </div>
         <div className={classes["account-info__right"]}>
           <img alt="My Photo" src={profileImage} />
-          <a>Edit</a>
+          <button onClick={onPhotoChangeHandler}>Edit</button>
         </div>
       </div>
+      {photoIsClicked && (
+        <Modal className={classes["new-photo"]}>
+          <label htmlFor="new-photo">Add new photo</label>
+          <input id="new-photo" type="text" />
+          <button>Submit</button>
+        </Modal>
+      )}
       <h3>Change My Account Information</h3>
       <div className={classes["account-edit"]}>
         <div className={classes["name-edit"]}>
@@ -127,6 +148,9 @@ const MyAccount = () => {
                   />
                   <button onClick={onNameSubmitHandler}>Submit</button>
                 </div>
+                {notification &&
+                  notification.status === "changing name" &&
+                  loadingSpinner}
                 {notification &&
                   (notification.status === "name changed" ||
                     notification.status === "name not changed") && (
@@ -174,6 +198,9 @@ const MyAccount = () => {
                 </button>
               </div>
               {notification &&
+                notification.status === "changing password" &&
+                loadingSpinner}
+              {notification &&
                 (notification.status === "password changed" ||
                   notification.status === "password not changed") && (
                   <div
@@ -209,22 +236,37 @@ const MyAccount = () => {
               <div className={classes["account-delete-input"]}>
                 <label htmlFor="password">New Password:</label>
                 <input type="password" id="new-password" />
-                <button onClick={onDeleteAccountHandler}>Submit</button>
+                <button
+                  onClick={onDeleteAccountHandler}
+                  className={classes["delete-button"]}
+                >
+                  Delete my account
+                </button>
               </div>
               {notification &&
-                (notification.status === "account deleted" ||
-                  notification.status === "account not deleted") && (
-                  <div
-                    className={
-                      notification.status === "account deleted"
-                        ? classes["success-notification"]
-                        : classes["fail-notification"]
-                    }
-                  >
-                    <h4>{notification.title}</h4>
-                    <p>{notification.message}</p>
-                  </div>
-                )}
+                notification.status === "deleting account" &&
+                loadingSpinner}
+              {notification && notification.status === "account deleted" && (
+                <ConfigNotification
+                  title={notification.title}
+                  message={notification.message}
+                />
+              )}
+              {notification && notification.status === "account not deleted" && (
+                <div
+                  className={
+                    notification.status === "account deleted"
+                      ? classes["success-notification"]
+                      : classes["fail-notification"]
+                  }
+                >
+                  <h4>{notification.title}</h4>
+                  <p>{notification.message}</p>
+                </div>
+              )}
+              {notification &&
+                notification.status === "deleting account" &&
+                loadingSpinner}
             </div>
           )}
         </div>

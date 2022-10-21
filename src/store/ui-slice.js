@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: { cartIsVisible: false, notification: null },
+  initialState: {
+    cartIsVisible: false,
+    notification: null,
+    photoClicked: false,
+  },
   reducers: {
     showCart(state) {
       state.cartIsVisible = true;
@@ -19,6 +23,9 @@ const uiSlice = createSlice({
     },
     hideNotification(state) {
       state.notification = null;
+    },
+    photoClicked(state) {
+      state.photoClicked = !state.photoClicked;
     },
   },
 });
