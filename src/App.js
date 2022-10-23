@@ -76,7 +76,7 @@ function App() {
         localStorage.removeItem("user");
       }
     }, 1000);
-    
+
     if (token && localUser) {
       if (!localUser.name) {
         dispatch(getDisplayName(token));
@@ -109,10 +109,11 @@ function App() {
         <Route path="/welcome">
           <Welcome />
         </Route>
-
-        <Route path="/my-account">
-          <MyAccount />
-        </Route>
+        {isLoggedIn && (
+          <Route path="/my-account">
+            <MyAccount />
+          </Route>
+        )}
 
         <Route path="/orders">
           <MyOrders />

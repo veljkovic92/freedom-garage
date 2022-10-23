@@ -120,6 +120,7 @@ h3 {
 
 .arrow-rotate {
   transform: rotate(180deg);
+  transition: all 0.2s;
 }
 
 .delete-button {

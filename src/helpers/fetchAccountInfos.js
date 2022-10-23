@@ -141,9 +141,15 @@ export const changePassword = (token, password) => {
           uiActions.showNotification({
             status: "password changed",
             title: "Successfully changed password",
-            message: "Please remember to note your new password",
+            message:
+              "You'll be automatically logged out in 5 seconds! Please log in with your new password.",
           })
         );
+        setTimeout(() => {
+          dispatch(authActions.userLoggedOut());
+          dispatch(uiActions.hideNotification());
+        }, 5000);
+
         console.log("Password changed");
       }
     };
@@ -262,11 +268,10 @@ export const editPhoto = (token, photoUrl) => {
         );
         console.log("Photo changed");
       }
-
     };
 
-    try{
-
+    try {
+      sendRequest();
     } catch (error) {
       console.log(error);
     }

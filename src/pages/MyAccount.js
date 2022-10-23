@@ -13,6 +13,7 @@ import { uiActions } from "../store/ui-slice";
 import { MutatingDots } from "react-loader-spinner";
 import ConfigNotification from "../components/Layout/ConfigNotification";
 import Modal from "../components/UI/Modal";
+import { updateOrdersData } from "../store/previous-orders-actions";
 
 const MyAccount = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const MyAccount = () => {
   }, [password]);
 
   const onPhotoChangeHandler = () => {
-    dispatch(uiActions.photoClicked())
+    dispatch(uiActions.photoClicked());
   };
 
   const onNameClickedHandler = () => {
@@ -99,6 +100,7 @@ const MyAccount = () => {
   };
 
   const onDeleteAccountHandler = () => {
+    // dispatch(updateOrdersData(user));
     dispatch(deleteAccount(token));
   };
 
