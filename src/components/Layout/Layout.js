@@ -6,7 +6,7 @@ const Layout = (props) => {
   return (
     <>
       <MainHeader />
-      <div className={classes.frame}></div>
+
       <main className={classes["layout-body"]}>{props.children}</main>
       <MainFooter />
     </>

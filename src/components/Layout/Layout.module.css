@@ -4,34 +4,14 @@
   margin-top: 150px;
   margin-bottom: 150px;
   color: white;
-}
-
-.frame {
   border: 10px solid rgb(255, 65, 65);
   border-bottom: none;
   border-top: none;
   border-radius: 50px;
-  position: absolute;
-  width: 80vw;
-  height: 90%;
-  left: 50%;
-  top: 45%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
- 
-	
+  margin: 150px 50px 150px 50px;
+  overflow: hidden;
 }
 
 
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
+
