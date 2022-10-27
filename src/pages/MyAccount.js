@@ -106,7 +106,7 @@ const MyAccount = () => {
 
   return (
     <div className={classes["my-account"]}>
-      <h1>My Account</h1>
+      <h2 className="page-header">My Account</h2>
       <div className={classes["account-info"]}>
         <div className={classes["account-info__left"]}>
           <span>My Name: {userName || ""}</span>
@@ -124,7 +124,7 @@ const MyAccount = () => {
           <button>Submit</button>
         </Modal>
       )}
-      <h3>Change My Account Information</h3>
+      <h3 className="page-header">Change My Account Information</h3>
       <div className={classes["account-edit"]}>
         <div className={classes["name-edit"]}>
           <div

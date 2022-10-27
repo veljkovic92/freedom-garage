@@ -5,9 +5,10 @@ const BikesDesc = () => {
     month: "long",
     year: "numeric",
   });
+
   return (
     <>
-      <h2>Here is our list of available bikes for {currentMonth} .</h2>
+      <h2 className="page-header">Available Bikes for {currentMonth}</h2>
     </>
   );
 };

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const ordersSlice = createSlice({
   name: "orders",
-  initialState: { orders: null },
+  initialState: { orders: null, ordersLoading: false },
   reducers: {
     fetchOrder(state, action) {
       let orders = action.payload;
@@ -12,6 +12,9 @@ const ordersSlice = createSlice({
 
       state.orders = orders;
     },
+    ordersLoading(state, action) {
+      state.ordersLoading = action.payload;
+    }
   },
 });
 

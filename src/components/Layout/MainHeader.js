@@ -49,7 +49,7 @@ const MainHeader = () => {
         <ul>
           <li>
             <Link to="/" className={classes.title}>
-              <h1>The "Future Garage"</h1>
+              <h1 className={classes["web-title"]}>The "Future Garage"</h1>
             </Link>
           </li>
 

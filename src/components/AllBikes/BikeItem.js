@@ -24,7 +24,7 @@ const BikeItem = (props) => {
   return (
     <Card className={classes["bike-item"]} onClick={onConfigureHandler}>
       <div className={classes["left-box"]}>
-        <img src={props.img}></img>
+        <div className={classes["bike-item-img"]} style={{backgroundImage: `url("${props.img}")`}}></div>
       </div>
       <div className={classes["right-box"]}>
         <div className={classes["right-top-box"]}>

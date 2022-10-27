@@ -1,29 +1,48 @@
 .bike-item {
   display: flex;
-  height: 20rem;
-  width: 60vw;
+  width: calc(50% - 20px);
   justify-content: space-between;
-  align-items: center;
-  box-shadow: 2px 2px 4px 2px grey;
+  min-height: 350px;
+  
+  border-top: none;
+  border-bottom: none;
+  box-shadow: 1px 1px 8px 1px rgb(255, 54, 54);
+  
   border-radius: 10px;
-  margin: 3rem 1rem;
+  margin: 0 20px 20px 0;
+  background-color: rgb(12, 0, 29);
+}
+
+.bike-item:hover {
+  cursor: pointer;
+  transform: scale(102%);
+  transition: all .2s;
 }
 
 .left-box {
-  flex-basis: 50%;
-  height: 18rem;
-  object-fit: contain;
+  flex-basis: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  border-radius: 10px;
+  
 }
 
-.bike-item img {
-  width: 100%;
+.bike-item-img {
+  border-radius: 10px;
+  width: 85%;
+  height: 85%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .right-box {
-  flex-basis: 50%;
-  padding: 3rem;
+  flex-basis: 45%;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
+ padding: 0 10px;
 }
 
 .right-top-box {

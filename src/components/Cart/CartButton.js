@@ -12,7 +12,7 @@ const CartButton = () => {
   return (
     <button className={classes.mainCartBtn} onClick={onCartClickHandler}>
       <span></span>
-      <span>Your Garage</span>
+      <span>My Garage</span>
       <span></span>
     </button>
   );

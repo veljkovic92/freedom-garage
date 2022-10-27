@@ -6,7 +6,10 @@ const BikesList = () => {
   const availableBikes = useSelector((state) => state.bikes.bikes);
 
   return (
+    
     <div className={classes["bikes-list"]}>
+
+   
       {Object.keys(availableBikes).map((bike) => (
         <BikeItem
           key={availableBikes[bike].id}
@@ -17,7 +20,8 @@ const BikesList = () => {
           price={availableBikes[bike].price}
         />
       ))}
-    </div>
+      </div>
+    
   );
 };
 

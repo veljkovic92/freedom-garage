@@ -2,6 +2,7 @@ import { ordersActions } from "./previous-orders-slice";
 
 export const fetchOrdersData = (user) => {
   return async (dispatch) => {
+    dispatch(ordersActions.ordersLoading(true))
     const sendRequest = async () => {
       const response = await fetch(
         "https://react-http-de4ad-default-rtdb.europe-west1.firebasedatabase.app/orders.json"
@@ -14,6 +15,7 @@ export const fetchOrdersData = (user) => {
       return data;
     };
     try {
+      dispatch(ordersActions.ordersLoading(false))
       const cartData = await sendRequest();
       dispatch(ordersActions.fetchOrder(cartData));
     } catch (error) {}

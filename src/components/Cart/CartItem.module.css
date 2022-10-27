@@ -1,6 +1,11 @@
 .cart-item {
   display: flex;
+  
+  
 }
+
+
+
 .cart-item:not(:last-of-type) {
   border-bottom: 1px solid grey;
 }

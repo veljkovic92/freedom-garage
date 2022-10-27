@@ -38,7 +38,7 @@ const Cart = () => {
   };
 
   return (
-    <Modal>
+    <Modal className={classes.cart}>
       <CartList />
       <div className={classes["cart-actions"]}>
         <span>Total Price: {totalPrice}eur</span>

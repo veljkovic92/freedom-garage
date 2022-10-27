@@ -8,7 +8,7 @@ const OurGoals = () => {
   return (
     <section className={classes.home}>
       <header className={classes["home-header"]}>
-        <h2>One couple's dream of the "Freedom Garage"</h2>
+        <h2 className="page-header">One couple's dream of the "Freedom Garage"</h2>
         <p>
           Always wanted to feel the freedom of the open road, wear a bandana and
           have a ponytail, explore the unknown or lose yourself in the nature?

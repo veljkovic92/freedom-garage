@@ -1,11 +1,9 @@
 .my-account {
   padding: 0 20%;
+  
 }
 
-.my-account h1,
-h3 {
-  text-align: center;
-}
+
 
 .account-info {
   display: flex;
