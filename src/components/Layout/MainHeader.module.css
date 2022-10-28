@@ -5,10 +5,10 @@
   width: 100vw;
   padding: 0 3rem;
  color: white;
-  z-index: 1;
-  box-shadow: 3px 3px 50px 3px rgb(255, 65, 65);
+  z-index: 50;
   
 }
+
 
 .web-title {
   color: rgb(265, 65, 65);
@@ -17,7 +17,10 @@
   border-bottom: none;
   border-radius: 10px;
   padding: 0 10px;
+ 
 }
+
+
 
 
 
@@ -57,6 +60,8 @@
   border-bottom: none;
   border-radius: 10px;
     font-size: 1.2rem;
+    transition: all .2s;
+    
 }
 
 
