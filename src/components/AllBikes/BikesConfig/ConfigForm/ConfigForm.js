@@ -371,9 +371,7 @@ const ConfigForm = () => {
           message={notification.message}
         />
       )}
-      <h2>
-        Personalise the character and look of your bike with following upgrades:
-      </h2>
+      
       {bikeBackground}
       <form className={classes.form} onSubmit={configFormSubmitHandler}>
         <div className={classes.aesthethics}>
@@ -408,7 +406,7 @@ const ConfigForm = () => {
                 ></input>
               </div>
 
-              <span className={classes.price}>Price: {bikeLogo.price}</span>
+              <span className={classes.price}>{bikeLogo.price} EUR</span>
             </div>
             <div
               className={`${classes.logo} ${classes["right-container"]}`}
@@ -444,7 +442,7 @@ const ConfigForm = () => {
                 ></input>
               </div>
 
-              <span className={classes.price}>Price: {bikeColor.price}</span>
+              <span className={classes.price}>{bikeColor.price} EUR</span>
             </div>
             <div
               className={`${classes.color} ${classes["right-container"]}`}
@@ -482,7 +480,7 @@ const ConfigForm = () => {
                 ></input>
               </div>
 
-              <span className={classes.price}>Price: {bikeWheel.price}</span>
+              <span className={classes.price}>{bikeWheel.price} EUR</span>
             </div>
             <div
               className={`${classes.wheel} ${classes["right-container"]}`}
@@ -532,7 +530,7 @@ const ConfigForm = () => {
                   <span>{exhaust}</span>
                 </span>
               </div>
-              <span className={classes.price}>{bikeExhaust.price}</span>
+              <span className={classes.price}>{bikeExhaust.price}  EUR</span>
             </div>
             <div
               className={`${classes.exhaust} ${classes["right-container"]}`}
@@ -556,7 +554,7 @@ const ConfigForm = () => {
               <label htmlFor="seat" className={classes.label}>
                 <span className={classes.ball}></span>
               </label>
-              <span className={classes.price}>{bikeSeat.price}</span>
+              <span className={classes.price}>{bikeSeat.price} EUR</span>
             </div>
             <div
               className={`${classes.seat} ${classes["right-container"]}`}
@@ -580,7 +578,7 @@ const ConfigForm = () => {
               <label htmlFor="suspension" className={classes.label}>
                 <span className={classes.ball}></span>
               </label>
-              <span className={classes.price}>{bikeSuspension.price}</span>
+              <span className={classes.price}>{bikeSuspension.price} EUR</span>
             </div>
             <div
               className={`${classes.suspension} ${classes["right-container"]}`}
@@ -604,7 +602,7 @@ const ConfigForm = () => {
               <label htmlFor="brakes" className={classes.label}>
                 <span className={classes.ball}></span>
               </label>
-              <span className={classes.price}>{bikeBrakes.price}</span>
+              <span className={classes.price}>{bikeBrakes.price} EUR</span>
             </div>
             <div
               className={`${classes.brakes} ${classes["right-container"]}`}
@@ -627,7 +625,7 @@ const ConfigForm = () => {
               <label htmlFor="windshield" className={classes.label}>
                 <span className={classes.ball}></span>
               </label>
-              <span className={classes.price}>{bikeWindshield.price}</span>
+              <span className={classes.price}>{bikeWindshield.price} EUR</span>
             </div>
             <div
               className={`${classes.windshield} ${classes["right-container"]}`}
@@ -670,14 +668,14 @@ const ConfigForm = () => {
                   <span className={classes["range-value"]}>{power}</span>
                 </span>
               </div>
-              <span className={classes.price}>{bikePower.price}</span>
+              <span className={classes.price}>{bikePower.price} EUR</span>
             </div>
             <div
               className={`${classes.power} ${classes["right-container"]}`}
             ></div>
           </div>
         </div>
-        <button type="submit" disabled={!formIsValid}>
+        <button type="submit" disabled={!formIsValid} className={classes["form-submit-button"]}>
           Submit
         </button>
       </form>

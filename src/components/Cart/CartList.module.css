@@ -7,6 +7,10 @@
   padding: 1rem;
 }
 
+.cart-list h2 {
+  color: rgb(265, 65, 65);
+}
+
 .cart-mid {
   display: flex;
   flex-direction: column;
@@ -19,4 +23,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 3rem;
+}
+
+.cart-list button {
+  padding: 5px 10px;
+  border: 1px solid rgb(265, 65, 65);
+  background-color: inherit;
+  color: inherit;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.cart-list button:hover {
+  transform:scale(105%);
+  box-shadow: 1px 1px 10px 1px rgb(255, 65, 65);
 }

@@ -5,6 +5,8 @@
   bottom: 10rem;
   right: 10rem;
   text-align: center;
-  background-color: white;
+  background-color: rgb(10, 0, 24);
   justify-content: center;
+  border-radius: 10px;
+  border: 1px solid rgb(265, 65, 65);
 }

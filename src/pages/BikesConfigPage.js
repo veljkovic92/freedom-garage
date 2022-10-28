@@ -18,8 +18,6 @@ const BikesConfigPage = () => {
 
   return (
     <>
-      <h2>Bikes Config Page</h2>
-
       <ConfigForm bike={params} />
     </>
   );

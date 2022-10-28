@@ -1,5 +1,6 @@
 .dragon {
-  background-image: url("../../../../assets/BikeConfigPics/dragon-config.jpg");
+  background: linear-gradient(rgb(10, 0, 24, 0.45), rgba(265, 65, 65, 0.45)),
+    url("../../../../assets/BikeConfigPics/dragon-config.jpg");
   min-height: 300px;
   height: 100vh;
   background-attachment: fixed;
@@ -7,10 +8,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: -10rem;
+  box-shadow: 4px 4px 50px 4px rgb(265, 65, 65);
 }
 
 .firestorm {
-  background-image: url("../../../../assets/BikeConfigPics/firestorm-config.jpg");
+  background: linear-gradient(rgb(10, 0, 24, 0.45), rgba(265, 65, 65, 0.45)),
+    url("../../../../assets/BikeConfigPics/firestorm-config.jpg");
   min-height: 300px;
   height: 100vh;
   background-attachment: fixed;
@@ -18,9 +21,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: -10rem;
+  box-shadow: 4px 4px 50px 4px rgb(265, 65, 65);
 }
 .raptor {
-  background-image: url("../../../../assets/BikeConfigPics/raptor-config.jpg");
+  background: linear-gradient(rgb(10, 0, 24, 0.45), rgba(265, 65, 65, 0.45)),
+    url("../../../../assets/BikeConfigPics/raptor-config.jpg");
   min-height: 300px;
   height: 100vh;
   background-attachment: fixed;
@@ -28,9 +33,16 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: -10rem;
+  position: relative;
+  box-shadow: 4px 4px 50px 4px rgb(265, 65, 65);
 }
+
 .thunderstorm {
-  background-image: url("../../../../assets/BikeConfigPics/thunderstorm-config.jpg");
+  background-image: linear-gradient(
+      rgb(10, 0, 24, 0.45),
+      rgba(265, 65, 65, 0.45)
+    ),
+    url("../../../../assets/BikeConfigPics/thunderstorm-config.jpg");
   min-height: 300px;
   height: 100vh;
   background-attachment: fixed;
@@ -38,6 +50,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: -10rem;
+  box-shadow: 4px 4px 50px 4px rgb(265, 65, 65);
 }
 
 .form {
@@ -52,15 +65,16 @@
 
 .container {
   display: flex;
-  width: 100vw;
+  width: calc(100vw - (60px * 2));
   height: 30rem;
 }
 
-.aesthethics {
+.form h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0;
+  margin: 30px 0;
+  color: rgb(255, 65, 65);
 }
 
 .left-container p {
@@ -74,7 +88,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgba(10, 0, 24);
   color: white;
 }
 
@@ -87,36 +101,37 @@
 }
 
 .logo {
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/logo.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .color {
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/color.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .wheel {
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/wheel.jpg");
   background-position: center;
   background-size: cover;
 }
 
-.functionality {
+/* .functionality {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 .form h3 {
   align-self: flex-start;
   margin-top: 5%;
   margin-left: 5%;
+  color: rgb(255, 65, 65);
 }
 
 .functionality p {
@@ -127,48 +142,48 @@
   align-self: flex-end;
   margin-bottom: 5%;
   margin-right: 5%;
-  background-color: rgb(255, 54, 54);
+  border: 1px solid rgb(255, 54, 54);
   padding: 1rem;
   border-radius: 5px;
 }
 
 .exhaust {
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/exhaust.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .seat {
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/seat.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .suspension {
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/suspension.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .brakes {
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/brakes.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .windshield {
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/windshield.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .power {
-  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/power.jpg");
   background-position: center;
   background-size: cover;
@@ -190,17 +205,17 @@
 }
 
 .toggle:checked + .label {
-  background-color: #8e44ad;
+  background-color: rgb(265, 65, 65);
 }
 
 .ball {
-  background: #fff;
+  background: rgb(10, 0, 24);
   height: 34px;
   width: 34px;
   border-radius: 50%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 3px;
+  left: 2px;
   align-items: center;
   justify-content: center;
   animation: slideOff 0.3s linear forwards;
@@ -213,6 +228,23 @@
 .range {
   display: flex;
   flex-direction: column;
+}
+
+.form-submit-button {
+  margin-top: 50px;
+  padding: 20px 40px;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 65, 65);
+  background-color: inherit;
+  color: inherit;
+  box-shadow: 1px 1px 20px 1px rgb(255, 65, 65);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.form-submit-button:hover {
+  transform: scale(102%);
+  box-shadow: 2px 2px 30px 2px rgb(255, 65, 65);
 }
 
 @keyframes slideOn {

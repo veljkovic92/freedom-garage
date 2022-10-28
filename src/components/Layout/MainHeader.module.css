@@ -1,14 +1,12 @@
 .header {
   position: fixed;
-  background-color: rgb(12, 0, 29);
+  background-color: rgb(10, 0, 24);
   top: 0;
   width: 100vw;
   padding: 0 3rem;
- color: white;
+  color: white;
   z-index: 50;
-  
 }
-
 
 .web-title {
   color: rgb(265, 65, 65);
@@ -17,13 +15,8 @@
   border-bottom: none;
   border-radius: 10px;
   padding: 0 10px;
- 
+  text-shadow: 1px 1px 10px rgb(265, 65, 65);
 }
-
-
-
-
-
 
 .title {
   text-decoration: none;
@@ -49,25 +42,21 @@
 .navLink {
   color: inherit;
   text-decoration: none;
-  
+
   padding: 5px;
 }
-
 
 .activeLink {
   border: 3px solid rgb(255, 54, 54);
   border-top: none;
   border-bottom: none;
   border-radius: 10px;
-    font-size: 1.2rem;
-    transition: all .2s;
-    
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  text-shadow: 1px 1px 20px rgb(265, 65, 65);
 }
 
-
-
 .authHeadBtn {
-  
   padding: 0.5rem 1rem;
   color: inherit;
   border-radius: 5px;
@@ -75,10 +64,11 @@
   cursor: pointer;
   border: 1px solid rgb(255, 54, 54);
   background-color: inherit;
-  
+
   transition: all 0.2s;
 }
 
 .authHeadBtn:hover {
   transform: scale(105%);
+  box-shadow: 1px 1px 10px 1px rgb(255, 65, 65);
 }

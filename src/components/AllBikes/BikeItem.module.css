@@ -1,6 +1,6 @@
 .bike-item {
   display: flex;
-  width: calc(50% - 20px);
+  width: calc(50% - 25px);
   justify-content: space-between;
   min-height: 350px;
   
@@ -9,14 +9,15 @@
   box-shadow: 1px 1px 8px 1px rgb(255, 54, 54);
   
   border-radius: 10px;
-  margin: 0 20px 20px 0;
+  margin: 0 25px 25px 0;
   background-color: rgb(12, 0, 29);
 }
 
 .bike-item:hover {
   cursor: pointer;
-  transform: scale(102%);
+  transform: scale(101%);
   transition: all .2s;
+  box-shadow: 2px 2px 16px 2px rgb(265, 65, 65);
 }
 
 .left-box {
@@ -35,6 +36,23 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.bike-btn {
+  width: 60%;
+  align-self: center;
+  background-color: transparent;
+  border: 1px solid rgb(265, 65, 65);
+  color: inherit;
+  border-radius: 7px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.bike-btn:hover {
+  transform: scale(105%);
+  transition: all .1s;
+  box-shadow: 1px 1px 5px 1px rgb(265, 65, 65);
 }
 
 .right-box {

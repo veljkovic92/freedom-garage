@@ -1,4 +1,27 @@
 .cart {
-  max-height: 70vh;
+  min-height: 40vh;
+  max-height: 80vh;
   overflow: auto;
+  background-color: rgb(10, 0, 24);
+  color: white;
+  position: absolute;
+  top: 40vh;
+  left: 50vw;
+  border-radius: 10px;
+  padding: 30px 0;
+}
+
+.cart button {
+  padding: 5px 10px;
+  border: 1px solid rgb(265, 65, 65);
+  background-color: inherit;
+  color: inherit;
+  border-radius: 7px;
+  box-shadow: 1px 1px 10px 1px rgb(255, 65, 65);
+  cursor: pointer;
+}
+
+.cart button:hover {
+  transform:scale(105%);
+  box-shadow: 2px 2px 20px 2px rgb(255, 65, 65);
 }

@@ -16,7 +16,7 @@ const BikeItem = (props) => {
   };
 
   const bikeItemAction = !bikeAlreadyInCart ? (
-    <button onClick={onConfigureHandler}>Configure</button>
+    <button onClick={onConfigureHandler} className={classes["bike-btn"]}>Configure</button>
   ) : (
     <p>This bike is already added in "Your Garage"</p>
   );
