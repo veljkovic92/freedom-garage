@@ -46,7 +46,7 @@ const MainHeader = () => {
   return (
     <header className={classes.header}>
       <div className={classes["left-nav"]}>
-        <Link to="/" >
+        <Link to="/bikes" >
           <h1 className={classes["web-title"]}>The "Future Garage"</h1>
         </Link>
       </div>

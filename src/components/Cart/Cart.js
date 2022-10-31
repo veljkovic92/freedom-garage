@@ -39,6 +39,7 @@ const Cart = () => {
 
   return (
     <Modal className={classes.cart}>
+    <h2 className="page-header">View and/or edit your currently garaged bikes here</h2>
       <CartList />
       <div className={classes["cart-actions"]}>
         <div className={classes["top-cart-actions"]}>

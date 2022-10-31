@@ -23,25 +23,28 @@ const CartList = () => {
     return (
       <ul className={classes["cart-list"]} key={bike.id}>
         <div className={classes["cart-top"]}>
-          <h2>{bike.name}</h2>
+          <h3>{bike.name}</h3>
+          <div>
+            <span>Garaged on date: <br/> {bike.date}</span>
+            
+          </div>
         </div>
         <div className={classes["cart-mid"]}>
           <CartItem id={bike.id} config={bike.config} />
         </div>
         <div className={classes["cart-bot"]}>
           <div>
-            <h3>Please note:</h3>
+            <h4>Bike waiting time:</h4>
             <p>
-              Estimated waiting time to complete this bike: {bike.waitingTime}{" "}
+              Estimated waiting time to complete this bike: {bike.waitingTime}
               working days.
             </p>
           </div>
           <div>
-            <h3>Total price for this bike: {bike.totalConfigPrice}</h3>
+            <h4>Total bike price:</h4>
+            <p>{bike.totalConfigPrice}</p>
           </div>
-          <div>
-            <h4>Date of adding: {bike.date}</h4>
-          </div>
+          
           <div>
             <button onClick={() => onRemoveConfigHandler(bike.id)} className={classes["remove-config-btn"]}>
               Remove <br />

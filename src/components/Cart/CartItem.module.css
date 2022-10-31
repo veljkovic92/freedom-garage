@@ -1,5 +1,6 @@
 .cart-item {
   display: flex;
+  width: 40vw;
   
   
 }
@@ -16,20 +17,29 @@
   align-items: center;
   flex-direction: column;
   padding: 0.5rem 0.5rem;
-
-  width: 12rem;
+  width: calc(100% / 6);
+ 
 }
 
-.cart-item h3 {
+.cart-item h4 {
+  
   margin-bottom: 0rem;
 }
 
-.red-color {
-  color: red;
+.cart-item-header {
+  color: rgb(265, 65, 65);
 }
 
 .value {
   font-style: italic;
+}
+
+.value-added {
+  color: rgb(0, 165, 0);
+}
+
+.value-not-added {
+  color: red;
 }
 
 .cart-item button {
@@ -44,5 +54,6 @@
 
 .cart-item button:hover {
   transform:scale(105%);
+  transition: all .2s;
   box-shadow: 2px 2px 20px 2px rgb(255, 65, 65);
 }

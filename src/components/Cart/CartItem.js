@@ -6,7 +6,6 @@ const CartItem = (props) => {
   // add the date and time of adding to cart
 
   const config = props.config;
-  const boja = "red-color";
   const dispatch = useDispatch();
 
   const availableBikes = useSelector((state) => state.bikes.bikes);
@@ -56,28 +55,28 @@ const CartItem = (props) => {
     return (
       <li key={item} className={classes["cart-item"]}>
         <div>
-          <h2>{config[item].name}</h2>
+          <h4 className={classes["cart-item-header"]}>{config[item].name}</h4>
         </div>
         <div>
-          <h3>Status</h3>
+          <h4>Status</h4>
           {config[item].price !== 0 ? (
-            <span className={classes.value}>"Added"</span>
+            <span className={`${classes.value} ${classes["value-added"]}`}>"Added"</span>
           ) : (
-            <span className={`${classes.value} ${classes[boja]}`}>
+            <span className={`${classes.value} ${classes["value-not-added"]}`}>
               "Not Added"
             </span>
           )}
         </div>
         <div>
-          <h3>Value</h3>
+          <h4>Value</h4>
           <span className={classes.value}>{config[item].value}</span>
         </div>
         <div>
-          <h3>Waiting Time</h3>
+          <h4>Waiting Time</h4>
           <span className={classes.value}>{config[item].waitingTime}</span>
         </div>
         <div>
-          <h3>Price</h3>
+          <h4>Price</h4>
           <span className={classes.value}>{config[item].price}</span>
         </div>
         <div>

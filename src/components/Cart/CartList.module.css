@@ -7,8 +7,21 @@
   padding: 1rem;
 }
 
-.cart-list h2 {
+.cart-list h3 {
   color: rgb(265, 65, 65);
+}
+
+.cart-top {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-top div {
+  position: absolute;
+  right: 30px;
+  font-style: italic;
 }
 
 .cart-mid {
@@ -18,12 +31,25 @@
 
 .cart-bot {
   display: flex;
-  width: 100%;
+ 
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 3rem;
+  width: 100%;
+  
 }
+
+.cart-bot > div {
+ width: 20%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+
+
+
 
 .cart-list button {
   padding: 5px 10px;
@@ -32,6 +58,8 @@
   color: inherit;
   border-radius: 7px;
   cursor: pointer;
+  
+  
 }
 
 .cart-list button:hover {
