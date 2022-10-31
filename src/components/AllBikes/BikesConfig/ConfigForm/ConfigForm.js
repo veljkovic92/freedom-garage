@@ -374,6 +374,7 @@ const ConfigForm = () => {
       
       {bikeBackground}
       <form className={classes.form} onSubmit={configFormSubmitHandler}>
+      
         <div className={classes.aesthethics}>
           <h2>Aesthethics Upgrades</h2>
 

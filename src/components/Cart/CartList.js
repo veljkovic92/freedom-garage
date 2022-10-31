@@ -43,7 +43,7 @@ const CartList = () => {
             <h4>Date of adding: {bike.date}</h4>
           </div>
           <div>
-            <button onClick={() => onRemoveConfigHandler(bike.id)}>
+            <button onClick={() => onRemoveConfigHandler(bike.id)} className={classes["remove-config-btn"]}>
               Remove <br />
               Configuration
             </button>

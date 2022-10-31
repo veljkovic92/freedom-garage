@@ -41,11 +41,20 @@ const Cart = () => {
     <Modal className={classes.cart}>
       <CartList />
       <div className={classes["cart-actions"]}>
-        <span>Total Price: {totalPrice}eur</span>
-        <span>Total Waiting Time: {totalWaitingTime}</span>
-        <span>Total Bikes in Cart: {totalQuantity}</span>
-        <button onClick={onCartSubmitHandler}>Submit My Config</button>
-        <button>Exit My Garage</button>
+        <div className={classes["top-cart-actions"]}>
+          <span>Total Price: {totalPrice}eur</span>
+          <span>Total Waiting Time: {totalWaitingTime}</span>
+          <span>Total Bikes in Cart: {totalQuantity}</span>
+        </div>
+        <div className={classes["bot-cart-actions"]}>
+          <button
+            onClick={onCartSubmitHandler}
+            className={classes["submit-cart-btn"]}
+          >
+            Submit My Config
+          </button>
+          <button className={classes["exit-cart-btn"]}>Exit My Garage</button>
+        </div>
       </div>
     </Modal>
   );

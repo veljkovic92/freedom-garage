@@ -1,14 +1,24 @@
 .header {
   position: fixed;
-  background-color: rgb(10, 0, 24);
+  background-color: rgb(10, 0, 24, 0.9);
+  box-shadow: 2px 2px 40px 2px rgb(10, 0, 24);
   top: 0;
   width: 100vw;
   padding: 0 3rem;
   color: white;
   z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-nav {
+  flex-basis: 33%;
+  justify-self: flex-start;
 }
 
 .web-title {
+  display: inline-block;
   color: rgb(265, 65, 65);
   border: 2px solid rgb(265, 65, 65);
   border-top: none;
@@ -16,34 +26,41 @@
   border-radius: 10px;
   padding: 0 10px;
   text-shadow: 1px 1px 10px rgb(265, 65, 65);
-}
-
-.title {
   text-decoration: none;
-  color: inherit;
 }
 
-.header h1 {
-  margin-left: 0;
+.web-title:hover {
+  transform: scale(105%);
+  
+  text-shadow: 2px 2px 20px rgb(265, 65, 65);
+  transition: all 0.2s;
 }
 
-.header ul {
+.middle-nav {
+  flex-basis: 33%;
+  text-align: center;
+}
+
+.navBtns {
+  flex-basis: 33%;
   display: flex;
-  list-style: none;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-}
-
-.header li:not(:last-child) {
-  margin-right: 2rem;
+  justify-content: flex-end;
+  gap: 10px;
+  white-space: nowrap;
 }
 
 .navLink {
   color: inherit;
   text-decoration: none;
 
+  text-align: center;
   padding: 5px;
+}
+
+.navLink:hover {
+  font-size: 1.2rem;
+
+  transition: all 0.2s;
 }
 
 .activeLink {
@@ -51,7 +68,7 @@
   border-top: none;
   border-bottom: none;
   border-radius: 10px;
-  font-size: 1.2rem;
+
   transition: all 0.2s;
   text-shadow: 1px 1px 20px rgb(265, 65, 65);
 }

@@ -1,11 +1,11 @@
 .time-banner {
   display: flex;
-  position: fixed;
+  position:fixed;
   padding: 2rem 4rem;
-  bottom: 10rem;
-  right: 10rem;
+  bottom: 10vh;
+  right: 10vw;
   text-align: center;
-  background-color: rgb(10, 0, 24);
+  background-color: rgb(10, 0, 24, .8);
   justify-content: center;
   border-radius: 10px;
   border: 1px solid rgb(265, 65, 65);

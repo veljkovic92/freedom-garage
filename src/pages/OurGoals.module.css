@@ -23,8 +23,9 @@
 
 .number {
   flex-basis: 10%;
+  padding: 10px;
   font-size: 5rem;
-  background-color: rgb(255, 54, 54);
+  border: 2px solid rgb(255, 54, 54);
   color: white;
   border-radius: 10%;
 }

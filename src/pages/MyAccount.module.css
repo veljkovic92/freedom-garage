@@ -48,6 +48,7 @@
 .account-edit {
   display: flex;
   flex-direction: column;
+  color: rgb(10, 0, 24);
 }
 
 .account-edit > div {
@@ -114,10 +115,12 @@
 }
 
 .arrow {
+  transform: rotate(-360deg);
+  transition: all 0.2s;
 }
 
 .arrow-rotate {
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
   transition: all 0.2s;
 }
 

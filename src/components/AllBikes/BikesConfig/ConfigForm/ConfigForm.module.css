@@ -1,5 +1,5 @@
 .dragon {
-  background: linear-gradient(rgb(10, 0, 24, 0.45), rgba(265, 65, 65, 0.45)),
+  background: linear-gradient(rgb(10, 0, 24, 0.45), rgb(265, 65, 65, 0.45)),
     url("../../../../assets/BikeConfigPics/dragon-config.jpg");
   min-height: 300px;
   height: 100vh;
@@ -12,7 +12,7 @@
 }
 
 .firestorm {
-  background: linear-gradient(rgb(10, 0, 24, 0.45), rgba(265, 65, 65, 0.45)),
+  background: linear-gradient(rgb(10, 0, 24, 0.45), rgb(265, 65, 65, 0.45)),
     url("../../../../assets/BikeConfigPics/firestorm-config.jpg");
   min-height: 300px;
   height: 100vh;
@@ -24,7 +24,7 @@
   box-shadow: 4px 4px 50px 4px rgb(265, 65, 65);
 }
 .raptor {
-  background: linear-gradient(rgb(10, 0, 24, 0.45), rgba(265, 65, 65, 0.45)),
+  background: linear-gradient(rgb(10, 0, 24, 0.45), rgb(265, 65, 65, 0.45)),
     url("../../../../assets/BikeConfigPics/raptor-config.jpg");
   min-height: 300px;
   height: 100vh;
@@ -40,7 +40,7 @@
 .thunderstorm {
   background-image: linear-gradient(
       rgb(10, 0, 24, 0.45),
-      rgba(265, 65, 65, 0.45)
+      rgb(265, 65, 65, 0.45)
     ),
     url("../../../../assets/BikeConfigPics/thunderstorm-config.jpg");
   min-height: 300px;
@@ -75,6 +75,7 @@
   align-items: center;
   margin: 30px 0;
   color: rgb(255, 65, 65);
+  position: relative;
 }
 
 .left-container p {
@@ -88,7 +89,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(10, 0, 24);
+  background-color: rgb(10, 0, 24);
   color: white;
 }
 
@@ -101,21 +102,21 @@
 }
 
 .logo {
-  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgb(10, 0, 24), rgb(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/logo.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .color {
-  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgb(10, 0, 24), rgb(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/color.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .wheel {
-  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgb(10, 0, 24), rgb(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/wheel.jpg");
   background-position: center;
   background-size: cover;
@@ -148,42 +149,42 @@
 }
 
 .exhaust {
-  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgb(10, 0, 24), rgb(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/exhaust.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .seat {
-  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgb(10, 0, 24), rgb(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/seat.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .suspension {
-  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgb(10, 0, 24), rgb(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/suspension.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .brakes {
-  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgb(10, 0, 24), rgb(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/brakes.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .windshield {
-  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgb(10, 0, 24), rgb(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/windshield.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .power {
-  background: linear-gradient(to right, rgba(10, 0, 24), rgba(0, 0, 0, 0)),
+  background: linear-gradient(to right, rgb(10, 0, 24), rgb(0, 0, 0, 0)),
     url("../../../../assets/UpgradesPics/power.jpg");
   background-position: center;
   background-size: cover;

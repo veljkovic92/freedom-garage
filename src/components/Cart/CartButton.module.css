@@ -1,7 +1,5 @@
 .mainCartBtn {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  
   padding: .7rem 1.4rem;
   border-radius: 10px;
   border: 1px solid rgb(255, 65, 65);
@@ -9,7 +7,7 @@
   transition: all 0.2s;
   background-color: inherit;
   
- 
+ cursor: pointer;
 	
   color: inherit;
   font-size: large;
@@ -19,7 +17,7 @@
 
 
 .mainCartBtn:hover {
-  transform: translateX(-50%) scale(102%);
+  transform: scale(102%);
   box-shadow: 2px 2px 30px 2px rgb(255, 65, 65);
 }
 

@@ -45,84 +45,67 @@ const MainHeader = () => {
 
   return (
     <header className={classes.header}>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/" className={classes.title}>
-              <h1 className={classes["web-title"]}>The "Future Garage"</h1>
-            </Link>
-          </li>
+      <div className={classes["left-nav"]}>
+        <Link to="/" >
+          <h1 className={classes["web-title"]}>The "Future Garage"</h1>
+        </Link>
+      </div>
+      <div className={classes["middle-nav"]}>
+        {userLoggedIn && cartItems.length > 0 && <CartButton />}
+      </div>
 
-          {userLoggedIn && cartItems.length > 0 && <CartButton />}
+      <div className={classes.navBtns}>
+        {userLoggedIn && (
+          <NavLink
+            to="my-account"
+            activeClassName={classes.activeLink}
+            className={classes.navLink}
+          >
+            My Account
+          </NavLink>
+        )}
+        {userLoggedIn && userHasOrders && (
+          <NavLink
+            to="/orders"
+            activeClassName={classes.activeLink}
+            className={classes.navLink}
+          >
+            My Orders
+          </NavLink>
+        )}
 
-          <li>
-            <ul className={classes.navBtns}>
-              {userLoggedIn && (
-                <li>
-                  <NavLink
-                    to="my-account"
-                    activeClassName={classes.activeLink}
-                    className={classes.navLink}
-                  >
-                    My Account
-                  </NavLink>
-                </li>
-              )}
-              {userLoggedIn && userHasOrders && (
-                <li>
-                  <NavLink
-                    to="/orders"
-                    activeClassName={classes.activeLink}
-                    className={classes.navLink}
-                  >
-                    My Orders
-                  </NavLink>
-                </li>
-              )}
+        <NavLink
+          to="/goals"
+          activeClassName={classes.activeLink}
+          className={classes.navLink}
+        >
+          Our Goals
+        </NavLink>
 
-              <li>
-                <NavLink
-                  to="/goals"
-                  activeClassName={classes.activeLink}
-                  className={classes.navLink}
-                >
-                  Our Goals
-                </NavLink>
-              </li>
+        {userLoggedIn && (
+          <NavLink
+            to="/bikes"
+            activeClassName={classes.activeLink}
+            className={classes.navLink}
+          >
+            Bikes
+          </NavLink>
+        )}
 
-              {userLoggedIn && (
-                <li>
-                  <NavLink
-                    to="/bikes"
-                    activeClassName={classes.activeLink}
-                    className={classes.navLink}
-                  >
-                    Bikes
-                  </NavLink>
-                </li>
-              )}
+        <NavLink
+          to="/contact-us"
+          activeClassName={classes.activeLink}
+          className={classes.navLink}
+        >
+          Contact Us
+        </NavLink>
 
-              <li>
-                <NavLink
-                  to="/contact-us"
-                  activeClassName={classes.activeLink}
-                  className={classes.navLink}
-                >
-                  Contact Us
-                </NavLink>
-              </li>
-              <li>
-                <button
-                  className={classes.authHeadBtn}
-                  onClick={authBtnHandler}
-                >
-                  {userLoggedIn ? "Sign Out" : "Log In"}
-                </button>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+        <div>
+          <button className={classes.authHeadBtn} onClick={authBtnHandler}>
+            {userLoggedIn ? "Sign Out" : "Log In"}
+          </button>
+        </div>
+      </div>
     </header>
   );
 };
