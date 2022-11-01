@@ -109,8 +109,14 @@ const MyAccount = () => {
       <h2 className="page-header">My Account</h2>
       <div className={classes["account-info"]}>
         <div className={classes["account-info__left"]}>
-          <span>My Name: {userName || ""}</span>
-          <span>My E-Mail: {user}</span>
+          <div>
+            <h3>My Name:</h3>
+            <p>{userName || ""}</p>
+          </div>
+          <div>
+            <h3>My E-Mail:</h3>
+            <p>{user}</p>
+          </div>
         </div>
         <div className={classes["account-info__right"]}>
           <img alt="My Photo" src={profileImage} />

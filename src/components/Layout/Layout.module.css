@@ -1,5 +1,5 @@
 .layout-body {
-  
+  height: min-content;
   margin-top: 150px;
   margin-bottom: 150px;
   color: white;
@@ -9,7 +9,7 @@
   border-radius: 50px;
   margin: 150px 50px 150px 50px;
   overflow: hidden;
-  
+ 
  
 }
 

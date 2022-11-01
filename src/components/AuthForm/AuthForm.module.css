@@ -9,7 +9,11 @@
   height: 30rem;
   padding: 3rem;
   margin: auto;
-  margin-top: 5%;
+  
+}
+
+.form h2 {
+  color: rgb(265, 65, 65);
 }
 
 .form p {
@@ -25,7 +29,7 @@
 .form input {
   width: 70%;
   min-height: 2rem;
-  border-radius: 5px;
+  border-radius: 7px;
 }
 
 input .invalid {
@@ -37,34 +41,40 @@ input .invalid {
   border-color: red;
 }
 
-.formBtn,
-.formBtn:active,
-.formBtn:focus {
+.formBtn{
   margin-top: 2rem;
   padding: 1rem 2rem;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 110%;
-  background-color: rgb(44, 255, 125);
-  border: none;
-  box-shadow: 1px 1px 2px 2px grey;
+  border: 1px solid rgb(265, 65, 65);
+  color: white;
+  background-color: inherit;
+  box-shadow: 1px 1px 10px 1px rgb(265, 65, 65);
+  cursor: pointer;
+}
+
+.formBtn:active, .formBtn:focus {
+  box-shadow: 1px 1px 10px 1px rgb(265, 65, 65);
 }
 
 .formBtn:hover {
   transform: scale(105%);
+  box-shadow: 2px 2px 20px 2px rgb(265, 65, 65);
 }
 
 .formBtn:disabled {
   border: none;
-  background-color: lightgrey;
-  border: 1px solid grey;
+  background-color: inherit;
+  border: 1px solid rgb(265, 65, 65);
   cursor: not-allowed;
+  box-shadow: none;
 }
 
-.form .btnMode {
+.btnMode {
   border: none;
   background-color: transparent;
-  color: blue;
+  color: inherit;
   cursor: pointer;
-  font-size: 110%;
+  font-style: italic;
   margin-top: 1rem;
 }

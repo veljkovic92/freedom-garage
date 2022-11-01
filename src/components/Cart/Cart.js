@@ -37,15 +37,30 @@ const Cart = () => {
     history.replace("/bikes");
   };
 
+  const onExitGarageHandler = () => {
+    dispatch(uiActions.hideCart())
+  }
+
   return (
     <Modal className={classes.cart}>
-    <h2 className="page-header">View and/or edit your currently garaged bikes here</h2>
+      <h2 className="page-header">
+        View and/or edit your currently garaged bikes here
+      </h2>
       <CartList />
       <div className={classes["cart-actions"]}>
         <div className={classes["top-cart-actions"]}>
-          <span>Total Price: {totalPrice}eur</span>
-          <span>Total Waiting Time: {totalWaitingTime}</span>
-          <span>Total Bikes in Cart: {totalQuantity}</span>
+          <div>
+            <span>Total Price: </span>
+            <span>{totalPrice}eur</span>
+          </div>
+          <div>
+            <span>Total Waiting Time: </span>
+            <span>{totalWaitingTime}</span>
+          </div>
+          <div>
+            <span>Total Bikes in Cart: </span>
+            <span>{totalQuantity}</span>
+          </div>
         </div>
         <div className={classes["bot-cart-actions"]}>
           <button
@@ -54,7 +69,7 @@ const Cart = () => {
           >
             Submit My Config
           </button>
-          <button className={classes["exit-cart-btn"]}>Exit My Garage</button>
+          <button className={classes["exit-cart-btn"]} onClick={onExitGarageHandler}>Exit My Garage</button>
         </div>
       </div>
     </Modal>

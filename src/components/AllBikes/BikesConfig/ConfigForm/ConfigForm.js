@@ -336,13 +336,14 @@ const ConfigForm = () => {
       power: powerConfig,
     };
 
-    let configPrice = 0;
+    let configPrice = selectedBike.price;
 
     Object.keys(chosenUpgrades).forEach(
       (item) => (configPrice += chosenUpgrades[item].price)
     );
-
-    let configTime = 0;
+// each bikes waiting time in stock form is 2 days
+ 
+    let configTime = 2;
 
     Object.keys(chosenUpgrades).forEach(
       (item) => (configTime += chosenUpgrades[item].waitingTime)
@@ -354,6 +355,7 @@ const ConfigForm = () => {
       user: user,
       id: selectedBike.id,
       name: selectedBike.name,
+      price: selectedBike.price,
       config: chosenUpgrades,
       waitingTime: configTime,
       totalConfigPrice: configPrice,

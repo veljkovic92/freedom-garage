@@ -25,8 +25,9 @@ const CartList = () => {
         <div className={classes["cart-top"]}>
           <h3>{bike.name}</h3>
           <div>
-            <span>Garaged on date: <br/> {bike.date}</span>
-            
+            <span>
+              Garaged on date: <br /> {bike.date}
+            </span>
           </div>
         </div>
         <div className={classes["cart-mid"]}>
@@ -34,19 +35,20 @@ const CartList = () => {
         </div>
         <div className={classes["cart-bot"]}>
           <div>
-            <h4>Bike waiting time:</h4>
-            <p>
-              Estimated waiting time to complete this bike: {bike.waitingTime}
-              working days.
-            </p>
+            <span>Bike waiting time:</span>
+            <span>
+              {bike.waitingTime} working days.</span>
           </div>
           <div>
-            <h4>Total bike price:</h4>
-            <p>{bike.totalConfigPrice}</p>
+            <span>Total bike price:</span>
+            <span>{bike.totalConfigPrice}</span>
           </div>
-          
+
           <div>
-            <button onClick={() => onRemoveConfigHandler(bike.id)} className={classes["remove-config-btn"]}>
+            <button
+              onClick={() => onRemoveConfigHandler(bike.id)}
+              className={classes["remove-config-btn"]}
+            >
               Remove <br />
               Configuration
             </button>

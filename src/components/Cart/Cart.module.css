@@ -22,9 +22,24 @@
 
 .top-cart-actions {
   display: flex;
+  width: 60%;
   justify-content: space-evenly;
- 
+  margin: auto;
+ border: 2px solid rgb(265, 65, 65);
+ border-top: none;
+ border-bottom: none;
+ border-radius: 10px;
 }
+
+.top-cart-actions > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+
 
 .bot-cart-actions {
   position: relative;

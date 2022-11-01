@@ -14,15 +14,45 @@
 .account-info__left {
   display: flex;
   flex-direction: column;
+ 
+  
 }
+
+.account-info__left > div {
+ 
+  align-items: center;
+  
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+
+.account-info__left h3 {
+  color: rgb(265, 65, 65);
+  margin: 0;
+  
+}
+
+.account-info__left p {
+  border: 1px solid rgb(265, 65, 65);
+  border-top: none;
+  border-bottom: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
 
 .account-info__right {
   position: relative;
+ 
+ 
 }
 
 .account-info__right img {
   width: 10rem;
   border-radius: 10px;
+  
 }
 
 .account-info__right button {
@@ -48,14 +78,15 @@
 .account-edit {
   display: flex;
   flex-direction: column;
-  color: rgb(10, 0, 24);
+  color: white;
+ 
 }
 
 .account-edit > div {
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
-
+ 
   margin-top: 10px;
 }
 
@@ -64,20 +95,23 @@
 .account-delete {
   display: flex;
   flex-direction: column;
-  background-color: rgb(243, 243, 243);
-  border: 1px solid lightgrey;
+
+  
 }
 
 .name-edit-header,
 .password-edit-header,
 .account-delete-header {
-  background-color: rgb(224, 224, 224);
+  
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid grey;
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: 2px solid rgb(265, 65, 65);
   cursor: pointer;
+  background-color: rgb(10, 0, 24);
+  
+  
 }
 
 .name-edit-body,
@@ -88,6 +122,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: rgb(10, 0, 24);
+  border: 1px solid rgb(265, 65, 65);
+  border-top: none;
+  border-radius: 10px;
+
 }
 
 .name-edit-input,
