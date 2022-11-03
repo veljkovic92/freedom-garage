@@ -8,11 +8,14 @@ import {
   expirationHandler,
   expirationTimeHandler,
 } from "../../helpers/expiration";
+import { ThreeDots } from "react-loader-spinner";
 
 const AuthForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const token = useSelector((state) => state.auth.token);
+
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
 
   const [signUpMode, setSignUpMode] = useState(true);
 
@@ -59,6 +62,8 @@ const AuthForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    setIsAuthenticating(true);
+
     let url;
 
     if (signUpMode) {
@@ -98,7 +103,7 @@ const AuthForm = () => {
         };
 
         dispatch(authActions.userLoggedIn(userData));
-
+        setIsAuthenticating(false);
         expirationTimeHandler(data.expiresIn);
 
         localStorage.setItem("user", JSON.stringify(userData));
@@ -110,8 +115,6 @@ const AuthForm = () => {
       }
     })();
 
-    
-
     setEnteredEmail("");
     setEnteredPassword("");
     setEnteredEmailTouched(false);
@@ -120,45 +123,61 @@ const AuthForm = () => {
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <h2>{signUpMode ? "Sign Up" : "Log In"}</h2>
-      <label htmlFor="email">E-mail</label>
-      <input
-        id="email"
-        type="email"
-        value={enteredEmail}
-        onChange={enteredEmailHandler}
-        onBlur={enteredEmailBlurHandler}
-        className={enteredEmailIsInvalid ? classes.invalid : undefined}
-      ></input>
-      {enteredEmailIsInvalid && (
-        <p className={classes.invalid}>Please add valid e-mail account.</p>
+      {isAuthenticating && (
+        <ThreeDots
+          height="80"
+          width="150"
+          radius="200"
+          color="rgb(265,65,65)"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClassName=""
+          visible={true}
+        />
       )}
-      <label htmlFor="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        value={enteredPassword}
-        onChange={enteredPasswordHandler}
-        onBlur={enteredPasswordBlurHandler}
-        className={enteredPasswordIsInvalid ? classes.invalid : undefined}
-      ></input>
+      {!isAuthenticating && (
+        <>
+          <h2>{signUpMode ? "Sign Up" : "Log In"}</h2>
+          <label htmlFor="email">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            value={enteredEmail}
+            onChange={enteredEmailHandler}
+            onBlur={enteredEmailBlurHandler}
+            className={enteredEmailIsInvalid ? classes.invalid : undefined}
+          ></input>
+          {enteredEmailIsInvalid && (
+            <p className={classes.invalid}>Please add valid e-mail account.</p>
+          )}
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            value={enteredPassword}
+            onChange={enteredPasswordHandler}
+            onBlur={enteredPasswordBlurHandler}
+            className={enteredPasswordIsInvalid ? classes.invalid : undefined}
+          ></input>
 
-      {enteredPasswordIsInvalid && (
-        <p className={classes.invalid}>
-          Please add password longer than 6 characters.
-        </p>
+          {enteredPasswordIsInvalid && (
+            <p className={classes.invalid}>
+              Please add password longer than 6 characters.
+            </p>
+          )}
+
+          <button disabled={!formIsValid} className={classes.formBtn}>
+            {signUpMode ? "Sign Up" : "Log In"}
+          </button>
+          <button
+            onClick={authModeHandler}
+            className={classes.btnMode}
+            type="button"
+          >
+            {signUpMode ? "Already a member?" : "Not registered yet?"}
+          </button>
+        </>
       )}
-
-      <button disabled={!formIsValid} className={classes.formBtn}>
-        {signUpMode ? "Sign Up" : "Log In"}
-      </button>
-      <button
-        onClick={authModeHandler}
-        className={classes.btnMode}
-        type="button"
-      >
-        {signUpMode ? "Already a member?" : "Not registered yet?"}
-      </button>
     </form>
   );
 };

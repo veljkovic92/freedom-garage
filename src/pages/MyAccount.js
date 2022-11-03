@@ -10,7 +10,7 @@ import {
   setDisplayName,
 } from "../helpers/fetchAccountInfos";
 import { uiActions } from "../store/ui-slice";
-import { MutatingDots } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 import ConfigNotification from "../components/Layout/ConfigNotification";
 import Modal from "../components/UI/Modal";
 import { updateOrdersData } from "../store/previous-orders-actions";
@@ -34,17 +34,16 @@ const MyAccount = () => {
   const [deleteAccountIsClicked, setDeleteAccountIsClicked] = useState(false);
 
   const loadingSpinner = (
-    <MutatingDots
-      height="100"
-      width="100"
-      color="#4fa94d"
-      secondaryColor="#4fa94d"
-      radius="12.5"
-      ariaLabel="mutating-dots-loading"
-      wrapperStyle={{}}
-      wrapperClass={classes.spinner}
-      visible={true}
-    />
+    <ThreeDots 
+    height="80" 
+    width="80" 
+    radius="9"
+    color="rgb(265,65,65)" 
+    ariaLabel="three-dots-loading"
+    wrapperStyle={{}}
+    wrapperClassName=""
+    visible={true}
+     />
   );
 
   useEffect(() => {
@@ -144,9 +143,9 @@ const MyAccount = () => {
               }
             />
           </div>
-          <div>
-            {nameIsClicked && (
-              <div className={classes["name-edit-body"]}>
+          
+            
+              <div className={`${classes["name-edit-body"]} ${nameIsClicked ? classes["show-edit-body"] :  classes["hide-edit-body"]}`}>
                 <div className={classes["name-edit-input"]}>
                   <label htmlFor="new-name">New Name:</label>
                   <input
@@ -174,8 +173,8 @@ const MyAccount = () => {
                     </div>
                   )}
               </div>
-            )}
-          </div>
+            
+          
         </div>
         <div className={classes["password-edit"]}>
           <div
