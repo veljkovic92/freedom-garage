@@ -37,11 +37,11 @@ const CartList = () => {
           <div>
             <span>Bike waiting time:</span>
             <span>
-              {bike.waitingTime} working days.</span>
+              {bike.waitingTime} working days</span>
           </div>
           <div>
             <span>Total bike price:</span>
-            <span>{bike.totalConfigPrice}</span>
+            <span>{bike.totalConfigPrice} eur</span>
           </div>
 
           <div>

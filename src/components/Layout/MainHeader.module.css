@@ -1,7 +1,7 @@
 .header {
   position: fixed;
-  background-color: rgb(10, 0, 24, 0.9);
-  box-shadow: 2px 2px 40px 2px rgb(10, 0, 24);
+  background-color: rgb(10, 0, 15, 0.9);
+  box-shadow: 2px 2px 40px 2px rgb(10, 0, 15);
   top: 0;
   width: 100vw;
   padding: 0 3rem;
@@ -67,7 +67,7 @@ width: calc(100% / 6);
 }
 
 .activeLink {
-  border: 3px solid rgb(255, 54, 54);
+  border: 3px solid rgb(255, 65, 65);
   border-top: none;
   border-bottom: none;
   border-radius: 10px;

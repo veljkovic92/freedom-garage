@@ -40,13 +40,15 @@
 .account-info__right img {
   width: 10rem;
   border-radius: 10px;
+    filter: brightness(100);
 }
 
 .account-info__right button {
   position: absolute;
   z-index: 1;
-  left: 0;
-  bottom: 5px;
+  left: 50%;
+  bottom: 10px;
+  transform: translate(-50%);
   text-decoration: none;
   color: black;
   padding: 4px 8px;
@@ -93,7 +95,7 @@
   border-radius: 10px;
   border: 2px solid rgb(265, 65, 65);
   cursor: pointer;
-  background-color: rgb(10, 0, 24);
+  background-color: inherit;
 }
 
 .name-edit-body,
@@ -104,7 +106,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: rgb(10, 0, 24);
+  background-color: inherit;
   border: 1px solid rgb(265, 65, 65);
   border-top: none;
   border-radius: 10px;

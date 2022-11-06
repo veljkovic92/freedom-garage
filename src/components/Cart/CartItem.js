@@ -60,7 +60,9 @@ const CartItem = (props) => {
         <div>
           <h4>Status</h4>
           {config[item].price !== 0 ? (
-            <span className={`${classes.value} ${classes["value-added"]}`}>"Added"</span>
+            <span className={`${classes.value} ${classes["value-added"]}`}>
+              "Added"
+            </span>
           ) : (
             <span className={`${classes.value} ${classes["value-not-added"]}`}>
               "Not Added"
@@ -73,11 +75,13 @@ const CartItem = (props) => {
         </div>
         <div>
           <h4>Waiting Time</h4>
-          <span className={classes.value}>{config[item].waitingTime}</span>
+          <span className={classes.value}>
+            {config[item].waitingTime === 0 ? "none" : config[item].waitingTime} {config[item].waitingTime >= 2 ? "days" : config[item].waitingTime === 1 ? "day" : ""}
+          </span>
         </div>
         <div>
           <h4>Price</h4>
-          <span className={classes.value}>{config[item].price}</span>
+          <span className={classes.value}>{config[item].price} eur</span>
         </div>
         <div>
           {config[item].price === 0 ? (

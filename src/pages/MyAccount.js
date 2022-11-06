@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./MyAccount.module.css";
-import profileImage from "../assets/profile-template.jpg";
+import profileImage from "../assets/profile-template.png";
 import { FaArrowDown } from "react-icons/fa";
 import { useState } from "react";
 import { useEffect } from "react";

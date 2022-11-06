@@ -43,10 +43,12 @@ const MainHeader = () => {
     }
   }, [user, orders]);
 
+  const headerRoute = userLoggedIn ? "/bikes" : "/auth";
+
   return (
     <header className={classes.header}>
       <div className={classes["left-nav"]}>
-        <Link to="/bikes" >
+        <Link to={headerRoute} >
           <h1 className={classes["web-title"]}>The "Future Garage"</h1>
         </Link>
       </div>

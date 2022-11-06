@@ -9,11 +9,14 @@ import {
   expirationTimeHandler,
 } from "../../helpers/expiration";
 import { ThreeDots } from "react-loader-spinner";
+import { uiActions } from "../../store/ui-slice";
+import ConfigNotification from "../Layout/ConfigNotification";
 
 const AuthForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const token = useSelector((state) => state.auth.token);
+  const notification = useSelector(state => state.ui.notification)
 
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
@@ -93,6 +96,7 @@ const AuthForm = () => {
         let errorMessage = "Authentification failed!";
 
         if (data && data.error && data.error.message) {
+    
           errorMessage = data.error.message;
           throw new Error(errorMessage);
         }
@@ -111,7 +115,12 @@ const AuthForm = () => {
 
         history.replace("/welcome");
       } catch (error) {
-        console.log(error);
+        setIsAuthenticating(false);
+        dispatch(uiActions.showNotification({
+          status: error.message,
+          title: error.message
+        }))
+        
       }
     })();
 
@@ -177,6 +186,9 @@ const AuthForm = () => {
             {signUpMode ? "Already a member?" : "Not registered yet?"}
           </button>
         </>
+      )}
+      {!isAuthenticating && notification && (
+        <ConfigNotification title={notification.title}/>
       )}
     </form>
   );

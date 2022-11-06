@@ -19,6 +19,9 @@ const Cart = () => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const user = useSelector((state) => state.auth.user);
 
+  const oneOrMoreWaitingDays = totalWaitingTime <= 1 ? "day" : "days";
+const oneOrMoreQuantity = totalQuantity <= 1 ? "bike" : "bikes";
+
   const onCartSubmitHandler = () => {
     var cartId = "id" + Math.random().toString(16).slice(2);
 
@@ -51,15 +54,15 @@ const Cart = () => {
         <div className={classes["top-cart-actions"]}>
           <div>
             <span>Total Price: </span>
-            <span>{totalPrice}eur</span>
+            <span>{totalPrice} eur</span>
           </div>
           <div>
             <span>Total Waiting Time: </span>
-            <span>{totalWaitingTime}</span>
+            <span>{totalWaitingTime} {oneOrMoreWaitingDays}</span>
           </div>
           <div>
             <span>Total Bikes in Cart: </span>
-            <span>{totalQuantity}</span>
+            <span>{totalQuantity} {oneOrMoreQuantity}</span>
           </div>
         </div>
         <div className={classes["bot-cart-actions"]}>

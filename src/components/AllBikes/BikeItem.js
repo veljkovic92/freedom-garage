@@ -18,11 +18,11 @@ const BikeItem = (props) => {
   const bikeItemAction = !bikeAlreadyInCart ? (
     <button onClick={onConfigureHandler} className={classes["bike-btn"]}>Configure</button>
   ) : (
-    <p>This bike is already added in "Your Garage"</p>
+    <p>This bike is already parked in your garage</p>
   );
 
   return (
-    <Card className={classes["bike-item"]} onClick={onConfigureHandler}>
+    <Card className={bikeAlreadyInCart ? `${classes["bike-item-added"]} ${classes["bike-item"] }`: classes["bike-item"]} onClick={onConfigureHandler}>
       <div className={classes["left-box"]}>
         <div className={classes["bike-item-img"]} style={{backgroundImage: `url("${props.img}")`}}></div>
       </div>
