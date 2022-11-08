@@ -1,4 +1,9 @@
-/* .bikes {
-  margin-top: 100px;
-  margin-bottom: 100px;
-} */
+.bikes {
+  padding: 0 150px;
+}
+
+@media (max-width: 1920px) {
+  .bikes {
+    padding: 0 100px;
+  }
+}

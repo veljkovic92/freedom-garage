@@ -1,5 +1,5 @@
 .my-account {
-  padding: 0 20%;
+  padding: 0 150px;
 }
 
 .account-info {
@@ -160,4 +160,11 @@
 .delete-button {
   background-color: red;
   color: white;
+}
+
+
+@media (max-width: 1920px) {
+  .my-account {
+    padding: 0 100px;
+  }
 }

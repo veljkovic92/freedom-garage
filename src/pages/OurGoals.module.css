@@ -1,8 +1,8 @@
 .home {
-  width: 70rem;
-  max-width: 80vw;
-  margin: auto;
   
+  
+  margin: auto;
+  padding: 0 150px;
 }
 
 
@@ -66,4 +66,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media (max-width: 1920px) {
+  .home {
+    padding: 0 100px;
+  }
 }

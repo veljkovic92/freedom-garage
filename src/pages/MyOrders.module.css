@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 20%;
+  padding: 0 150px;
   list-style: none;
   
 }
@@ -32,6 +32,7 @@
   padding-inline-start: 0;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .item-config {
@@ -70,3 +71,8 @@
 }
 
 
+@media (max-width: 1920px) {
+  .orders {
+    padding: 0 100px;
+  }
+}

@@ -28,10 +28,10 @@ const BikeItem = (props) => {
       </div>
       <div className={classes["right-box"]}>
         <div className={classes["right-top-box"]}>
-          <h2>{props.name}</h2>
+          <h3>{props.name}</h3>
           <span className={classes.price}>{price} eur</span>
         </div>
-        <div>
+        <div className={classes["right-mid-box"]}>
           <p>{props.desc}</p>
         </div>
         {bikeItemAction}
