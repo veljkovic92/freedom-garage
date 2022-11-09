@@ -90,7 +90,7 @@ const MainHeader = () => {
             activeClassName={classes.activeLink}
             className={classes.navLink}
           >
-            Bikes
+            All Bikes
           </NavLink>
         )}
 

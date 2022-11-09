@@ -18,7 +18,7 @@ const BikeItem = (props) => {
   const bikeItemAction = !bikeAlreadyInCart ? (
     <button onClick={onConfigureHandler} className={classes["bike-btn"]}>Configure</button>
   ) : (
-    <p>This bike is already parked in your garage</p>
+    <p className={classes["bike-item-added-text"]}>This bike is already parked in your garage</p>
   );
 
   return (
@@ -34,7 +34,10 @@ const BikeItem = (props) => {
         <div className={classes["right-mid-box"]}>
           <p>{props.desc}</p>
         </div>
+        <div className={classes["right-bot-box"]}>
         {bikeItemAction}
+        </div>
+        
       </div>
     </Card>
   );

@@ -19,6 +19,10 @@
   box-shadow: 1px 1px 12px 1px rgb(265, 65, 65);
 }
 
+.bike-item-added {
+  opacity: .7;
+}
+
 .bike-item.bike-item-added:hover {
   cursor: not-allowed;
   box-shadow: none;
@@ -64,7 +68,7 @@
   flex-basis: 45%;
  display: flex;
  flex-direction: column;
- justify-content: space-between;
+ justify-content:space-between;
  
 }
 
@@ -72,21 +76,44 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-basis: 10%;
   
 }
 
 .right-top-box h3 {
   margin: 0;
+  
 }
 
 .right-mid-box {
-  
+  flex-basis: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-mid-box p {
+  margin: 0;
+}
+
+.right-bot-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ flex-basis: 10%;
 }
 
 .price {
   color: white;
   padding: 0.5rem;
-  
+  white-space: nowrap;
+}
+
+.bike-item-added .bike-item-added-text {
+  font-style: italic;
+ border: 1px solid rgb(265, 65, 65);
+ border-radius: 5px;
+ text-align: center;
 }
 
 @media (max-width: 1920px) {
@@ -94,7 +121,6 @@
     padding: 15px;
     gap: 15px;
     height: 250px;
-    width: calc(50% - 20px);
-    margin: 0 20px 20px 0;
+  
   }
 }
