@@ -14,7 +14,7 @@
 
 .left-nav {
   flex-basis: 33%;
-  
+  backface-visibility: hidden;
   justify-self: flex-start;
 }
 
@@ -28,13 +28,15 @@
   padding: 0 10px;
   text-shadow: 1px 1px 10px rgb(265, 65, 65);
   text-decoration: none;
+ 
 }
 
 .web-title:hover {
-  transform: scale(105%);
+  transform: scale(101%);
   
   text-shadow: 2px 2px 20px rgb(265, 65, 65);
   transition: all 0.2s;
+  
 }
 
 .middle-nav {
@@ -139,6 +141,19 @@ width: calc(100% / 6);
   .hamburger-btn {
     display: flex;
     justify-self: flex-end;
+    cursor: pointer;
+    margin-right: 40px;
+    
+  }
+
+  .hamburger-clicked {
+    transform: rotate(-90deg);
+    transition: all 0.2s;
+  }
+
+  .hamburger-clicked-two {
+    transform: rotate(0deg);
+    transition: all 0.2s;
   }
 
   .navBtns {
@@ -149,14 +164,14 @@ width: calc(100% / 6);
   .navBtnsHam {
     display: flex;
     top: 80px;
-    right: 20px;
+    right: 30px;
     flex-direction: column;
     white-space: nowrap;
     position: absolute;
     background-color: rgb(10, 0, 15, .9);
     width: 110px;
     align-items: center;
-    
+   
   }
 
   

@@ -23,6 +23,10 @@ const MainHeader = () => {
     setShowNavItems((prevValue) => !prevValue);
   }
 
+  const onNavItemClickHandler = () => {
+    setShowNavItems(false);
+  }
+
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
       dispatch(authActions.userLoggedOut());
@@ -34,6 +38,7 @@ const MainHeader = () => {
     } else {
       history.push("/auth");
     }
+    setShowNavItems(false);
   };
 
   useEffect(() => {
@@ -66,9 +71,9 @@ const MainHeader = () => {
 
       
     <div className={classes["right-nav"]}>
-    <div className={classes["hamburger-btn"]}>
+    <div className={`${classes["hamburger-btn"]} ${showNavItems ? classes["hamburger-clicked"] : classes["hamburger-clicked-two"]}`}>
     
-    <GiHamburgerMenu size="30px" style={{color: "rgb(265,65,65)"}} onClick={onHamburgerClickHandler}/>
+    <GiHamburgerMenu size="40px" style={{color: "rgb(265,65,65)"}} onClick={onHamburgerClickHandler}/>
     
     </div>
       <div className={`${classes.navBtns} ${showNavItems ? classes["navBtnsHam"]  : classes["hide-nav"]}`}>
@@ -78,6 +83,7 @@ const MainHeader = () => {
             to="my-account"
             activeClassName={classes.activeLink}
             className={classes.navLink}
+            onClick={onNavItemClickHandler}
           >
             My Account
           </NavLink>
@@ -87,6 +93,7 @@ const MainHeader = () => {
             to="/orders"
             activeClassName={classes.activeLink}
             className={classes.navLink}
+            onClick={onNavItemClickHandler}
           >
             My Orders
           </NavLink>
@@ -96,6 +103,7 @@ const MainHeader = () => {
           to="/goals"
           activeClassName={classes.activeLink}
           className={classes.navLink}
+          onClick={onNavItemClickHandler}
         >
           Our Goals
         </NavLink>
@@ -105,6 +113,7 @@ const MainHeader = () => {
             to="/bikes"
             activeClassName={classes.activeLink}
             className={classes.navLink}
+            onClick={onNavItemClickHandler}
           >
             All Bikes
           </NavLink>
@@ -114,6 +123,7 @@ const MainHeader = () => {
           to="/contact-us"
           activeClassName={classes.activeLink}
           className={classes.navLink}
+          onClick={onNavItemClickHandler}
         >
           Contact Us
         </NavLink>
