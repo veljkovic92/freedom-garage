@@ -6,6 +6,7 @@ import CartButton from "../Cart/CartButton";
 import { useState } from "react";
 import { useEffect } from "react";
 import { uiActions } from "../../store/ui-slice";
+import {GiHamburgerMenu} from "react-icons/gi"
 
 const MainHeader = () => {
   const history = useHistory();
@@ -16,6 +17,11 @@ const MainHeader = () => {
   const user = useSelector((state) => state.auth.user);
 
   const [userHasOrders, setUserHasOrders] = useState(false);
+  const [showNavItems, setShowNavItems] = useState(false);
+
+  const onHamburgerClickHandler = () => {
+    setShowNavItems((prevValue) => !prevValue);
+  }
 
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
@@ -56,7 +62,17 @@ const MainHeader = () => {
         {userLoggedIn && cartItems.length > 0 && <CartButton />}
       </div>
 
-      <div className={classes.navBtns}>
+      
+
+      
+    <div className={classes["right-nav"]}>
+    <div className={classes["hamburger-btn"]}>
+    
+    <GiHamburgerMenu size="30px" style={{color: "rgb(265,65,65)"}} onClick={onHamburgerClickHandler}/>
+    
+    </div>
+      <div className={`${classes.navBtns} ${showNavItems ? classes["navBtnsHam"]  : classes["hide-nav"]}`}>
+      
         {userLoggedIn && (
           <NavLink
             to="my-account"
@@ -107,7 +123,10 @@ const MainHeader = () => {
             {userLoggedIn ? "Sign Out" : "Log In"}
           </button>
         </div>
+        
       </div>
+      </div>
+      
     </header>
   );
 };

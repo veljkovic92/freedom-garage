@@ -43,8 +43,21 @@
   
 }
 
-.navBtns {
+.right-nav {
+  display: flex;
   flex-basis: 33%;
+  justify-content: flex-end;
+}
+
+.hamburger-btn {
+  display: none;
+}
+
+
+
+
+.navBtns {
+  
   
   display: flex;
   justify-content: flex-end;
@@ -120,4 +133,37 @@ width: calc(100% / 6);
   }
 
  
+}
+
+@media (max-width: 1440px) {
+  .hamburger-btn {
+    display: flex;
+    justify-self: flex-end;
+  }
+
+  .navBtns {
+    
+    display: none;
+  }
+
+  .navBtnsHam {
+    display: flex;
+    top: 80px;
+    right: 20px;
+    flex-direction: column;
+    white-space: nowrap;
+    position: absolute;
+    background-color: rgb(10, 0, 15, .9);
+    width: 110px;
+    align-items: center;
+    
+  }
+
+  
+
+  .hide-nav.navBtnsHam {
+    display: none;
+  }
+
+  
 }
