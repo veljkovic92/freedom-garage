@@ -10,7 +10,7 @@
  cursor: pointer;
 	
   color: inherit;
-  font-size: large;
+  
 }
 
 
@@ -19,5 +19,21 @@
 .mainCartBtn:hover {
   transform: scale(102%);
   box-shadow: 2px 2px 30px 2px rgb(255, 65, 65);
+  
 }
 
+@media (max-width: 768px) {
+  .mainCartBtn {
+    padding: .4rem 1rem;
+    box-shadow: 1px 1px 10px 1px rgb(255, 65, 65);
+    white-space: pre-wrap;
+   word-wrap: break-word;
+   width: min-content;
+   line-height: 20px;
+  }
+
+  .mainCartBtn:hover {
+    transform: scale(102%);
+    box-shadow: 2px 2px 20px 2px rgb(255, 65, 65);
+  }
+}

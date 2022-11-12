@@ -23,3 +23,14 @@ body {
   color: rgb(265, 65, 65);
 }
 
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 375px) {
+  body {
+    font-size: 12px;
+  }
+}

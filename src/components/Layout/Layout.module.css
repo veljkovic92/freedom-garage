@@ -1,7 +1,6 @@
 .layout-body {
   height: min-content;
-  margin-top: 150px;
-  margin-bottom: 150px;
+  
   color: white;
   border: 10px solid rgb(255, 65, 65);
   border-bottom: none;
@@ -10,4 +9,20 @@
   margin: 150px 150px 150px 150px;
   overflow: hidden;
   
+}
+
+@media (max-width: 1024px) {
+  .layout-body {
+    margin: 150px 75px 150px 75px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-body {
+    margin: 150px 25px 150px 25px;
+    border: 7px solid rgb(255, 65, 65);
+    border-bottom: none;
+    border-top: none;
+    border-radius: 30px;
+  }
 }

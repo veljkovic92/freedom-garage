@@ -60,7 +60,7 @@ const MainHeader = () => {
     <header className={classes.header}>
       <div className={classes["left-nav"]}>
         <Link to={headerRoute} >
-          <h1 className={classes["web-title"]}>The "Future Garage"</h1>
+          <h1 className={classes["web-title"]}>Future Garage</h1>
         </Link>
       </div>
       <div className={classes["middle-nav"]}>
