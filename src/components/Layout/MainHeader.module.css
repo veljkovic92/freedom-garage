@@ -186,10 +186,10 @@ width: calc(100% / 6);
 @media (max-width: 768px) {
   .header {
     padding: 0 15px;
-    height: 15%;
+    height: 10%;
   }
   .web-title {
-    line-height: 30px;
+    line-height: 25px;
     text-align: center;
     white-space: pre-wrap;
    word-wrap: break-word;
@@ -198,5 +198,8 @@ width: calc(100% / 6);
 
   .hamburger-btn {
     margin-right: 10px;
+  }
+  .navBtnsHam {
+   right: 0;
   }
 }
