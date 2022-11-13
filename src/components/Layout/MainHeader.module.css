@@ -53,7 +53,10 @@
 
 .hamburger-btn {
   display: none;
+  
 }
+
+
 
 
 
@@ -146,6 +149,8 @@ width: calc(100% / 6);
     
   }
 
+  
+
   .hamburger-clicked {
     transform: rotate(-90deg);
     transition: all 0.2s;
@@ -161,6 +166,8 @@ width: calc(100% / 6);
     display: none;
   }
 
+  
+
   .navBtnsHam {
     display: flex;
     top: 80px;
@@ -172,6 +179,11 @@ width: calc(100% / 6);
     width: 110px;
     align-items: center;
    
+  }
+
+  .hamburger-icon:hover {
+    transform: scale(105%);
+    transition: all .2s;
   }
 
   
@@ -194,6 +206,11 @@ width: calc(100% / 6);
     white-space: pre-wrap;
    word-wrap: break-word;
    width: min-content;
+   text-shadow: 1px 1px 5px rgb(265, 65, 65);
+  }
+
+  .web-title:hover {
+    text-shadow: 1px 1px 10px rgb(265, 65, 65);
   }
 
   .hamburger-btn {

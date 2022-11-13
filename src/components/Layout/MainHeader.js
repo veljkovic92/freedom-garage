@@ -56,6 +56,8 @@ const MainHeader = () => {
 
   const headerRoute = userLoggedIn ? "/bikes" : "/auth";
 
+ 
+
   return (
     <header className={classes.header}>
       <div className={classes["left-nav"]}>
@@ -73,7 +75,7 @@ const MainHeader = () => {
     <div className={classes["right-nav"]}>
     <div className={`${classes["hamburger-btn"]} ${showNavItems ? classes["hamburger-clicked"] : classes["hamburger-clicked-two"]}`}>
     
-    <GiHamburgerMenu size="40px" style={{color: "rgb(265,65,65)"}} onClick={onHamburgerClickHandler}/>
+    <GiHamburgerMenu size="40" style={{color: "rgb(265,65,65)"}} onClick={onHamburgerClickHandler} className={classes["hamburger-icon"]}/>
     
     </div>
       <div className={`${classes.navBtns} ${showNavItems ? classes["navBtnsHam"]  : classes["hide-nav"]}`}>

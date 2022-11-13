@@ -67,6 +67,10 @@ input .invalid {
   box-shadow: none;
 }
 
+ .formBtn:disabled.formBtn:hover {
+  transform: scale(100%);
+}
+
 .btnMode {
   border: none;
   background-color: transparent;
