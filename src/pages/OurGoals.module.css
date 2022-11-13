@@ -115,3 +115,9 @@
     width: 50%;
   }
 }
+
+@media (max-width: 768px) {
+  .home {
+    padding: 0 25px;
+  }
+}

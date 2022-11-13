@@ -108,12 +108,12 @@ const MyAccount = () => {
       <h2 className="page-header">My Account</h2>
       <div className={classes["account-info"]}>
         <div className={classes["account-info__left"]}>
-          <div>
-            <h3>My Name:</h3>
+          <div className={classes["account-info__name"]}>
+            <h4>My Name:</h4>
             <p>{userName || ""}</p>
           </div>
-          <div>
-            <h3>My E-Mail:</h3>
+          <div className={classes["account-info__email"]}>
+            <h4>My E-Mail:</h4>
             <p>{user}</p>
           </div>
         </div>

@@ -76,3 +76,23 @@
     padding: 0 100px;
   }
 }
+
+@media (max-width: 768px) {
+  .orders {
+    padding: 0 25px;
+  }
+
+  .order-summary {
+    margin-top: 3rem;
+    padding: 1rem;
+  }
+
+  .item-config-list {
+   justify-content: space-evenly;
+    gap: 10px;
+  }
+
+  .order-item-top strong {
+    display: block;
+  }
+}

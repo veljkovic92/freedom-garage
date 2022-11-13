@@ -6,23 +6,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap-reverse;
 }
 
 .account-info__left {
   display: flex;
   flex-direction: column;
+  
 }
 
-.account-info__left > div {
+.account-info__name, .account-info__email {
   align-items: center;
-
+ 
   display: flex;
   flex-direction: column;
 }
 
-.account-info__left h3 {
+.account-info__left h4 {
   color: rgb(265, 65, 65);
   margin: 0;
+  
+ 
 }
 
 .account-info__left p {
@@ -60,9 +64,7 @@
   text-align: end;
 }
 
-.my-account h3 {
-  margin-top: 5rem;
-}
+
 
 .account-edit {
   display: flex;
@@ -167,4 +169,32 @@
   .my-account {
     padding: 0 100px;
   }
+}
+
+@media (max-width: 768px) {
+  .my-account {
+    padding: 0 25px;
+  }
+
+  
+  .account-info__left p { 
+    padding: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .account-info {
+    justify-content: center;
+    
+  }
+  .account-info__left {
+    margin-top: 10px;
+  }
+  .account-info__right {
+    flex-basis: 60%;
+    text-align: center;
+  }
+
+ 
+ 
 }
