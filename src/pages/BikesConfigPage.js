@@ -2,6 +2,7 @@ import ConfigForm from "../components/AllBikes/BikesConfig/ConfigForm/ConfigForm
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NotFound from "./NotFound";
+import classes from "./BikesConfigPage.module.css"
 
 const BikesConfigPage = () => {
   const params = useParams();
@@ -17,9 +18,9 @@ const BikesConfigPage = () => {
   }
 
   return (
-    <>
+    <div className={classes["bikes-config-page"]}>
       <ConfigForm bike={params} />
-    </>
+    </div>
   );
 };
 
