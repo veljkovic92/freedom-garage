@@ -1,3 +1,27 @@
 .not-found {
-  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found h2 {
+  color: rgb(265, 65, 65);
+}
+
+.not-found button {
+  background-color: inherit;
+  border: 1px solid rgb(265, 65, 65);
+  color: inherit;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px 1px rgb(265, 65, 65);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.not-found button:hover {
+  transform: scale(102%);
+  box-shadow: 1px 1px 20px 1px rgb(265, 65, 65);
 }

@@ -1,9 +1,30 @@
 .welcome {
-  width: 70rem;
+  width: 60vw;
   max-width: 80vw;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.welcome h2 {
+  color: rgb(265, 65, 65);
+}
+
+.welcome button {
+  background-color: inherit;
+  border: 1px solid rgb(265, 65, 65);
+  color: inherit;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px 1px rgb(265, 65, 65);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.welcome button:hover {
+  transform: scale(102%);
+  box-shadow: 1px 1px 20px 1px rgb(265, 65, 65);
 }

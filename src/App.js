@@ -20,6 +20,7 @@ import {
   getDisplayName,
   onGetDisplayNameHandler,
 } from "./helpers/fetchAccountInfos";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -106,9 +107,11 @@ function App() {
             <Authentication />
           </Route>
         )}
-        <Route path="/welcome">
-          <Welcome />
-        </Route>
+        {isLoggedIn && (
+          <Route path="/welcome">
+            <Welcome />
+          </Route>
+        )}
         {isLoggedIn && (
           <Route path="/my-account">
             <MyAccount />
@@ -125,7 +128,7 @@ function App() {
 
         <Route path="/bikes" exact>
           {isLoggedIn && <Bikes />}
-          {!isLoggedIn && <Redirect to="/not-auth" />}
+          {!isLoggedIn && <NotFound />}
         </Route>
         <Route path="/bikes/:bikeId">
           <BikesConfigPage />
@@ -134,7 +137,7 @@ function App() {
           <ContactUs />
         </Route>
         <Route path="*">
-          <Redirect to="/" />
+          <NotFound/>
         </Route>
       </Switch>
     </Layout>

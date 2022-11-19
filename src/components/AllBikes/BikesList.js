@@ -26,5 +26,3 @@ const BikesList = () => {
 };
 
 export default BikesList;
-
-// style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}

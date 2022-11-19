@@ -114,6 +114,7 @@ const AuthForm = () => {
         localStorage.setItem("isLoggedIn", true);
 
         history.replace("/welcome");
+        
       } catch (error) {
         setIsAuthenticating(false);
         dispatch(uiActions.showNotification({
