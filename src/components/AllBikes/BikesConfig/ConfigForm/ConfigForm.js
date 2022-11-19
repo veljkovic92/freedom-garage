@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { setCartData } from "../../../../store/cart-actions";
 import { cartActions } from "../../../../store/cart-slice";
 import { uiActions } from "../../../../store/ui-slice";
@@ -14,6 +14,7 @@ let firstSubmit = true;
 const ConfigForm = () => {
   const params = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const notification = useSelector((state) => state.ui.notification);
   const bikes = useSelector((state) => state.bikes.bikes);
   const cart = useSelector((state) => state.cart.items);
@@ -341,8 +342,8 @@ const ConfigForm = () => {
     Object.keys(chosenUpgrades).forEach(
       (item) => (configPrice += chosenUpgrades[item].price)
     );
-// each bikes waiting time in stock form is 2 days
- 
+    // each bikes waiting time in stock form is 2 days
+
     let configTime = 2;
 
     Object.keys(chosenUpgrades).forEach(
@@ -363,6 +364,15 @@ const ConfigForm = () => {
     };
 
     dispatch(cartActions.addToCart(chosenConfig));
+
+    dispatch(
+      uiActions.showNotification({
+        status: "bike added to cart",
+        title: "Bike configured successfully",
+        message: "Your personalised bike has been added to the Garage",
+      })
+    );
+   
   };
 
   return (
@@ -373,10 +383,9 @@ const ConfigForm = () => {
           message={notification.message}
         />
       )}
-      
+
       {bikeBackground}
       <form className={classes.form} onSubmit={configFormSubmitHandler}>
-      
         <div className={classes.aesthethics}>
           <h2>Aesthethics Upgrades</h2>
 
@@ -533,7 +542,7 @@ const ConfigForm = () => {
                   <span>{exhaust}</span>
                 </span>
               </div>
-              <span className={classes.price}>{bikeExhaust.price}  EUR</span>
+              <span className={classes.price}>{bikeExhaust.price} EUR</span>
             </div>
             <div
               className={`${classes.exhaust} ${classes["right-container"]}`}
@@ -678,7 +687,11 @@ const ConfigForm = () => {
             ></div>
           </div>
         </div>
-        <button type="submit" disabled={!formIsValid} className={classes["form-submit-button"]}>
+        <button
+          type="submit"
+          disabled={!formIsValid}
+          className={classes["form-submit-button"]}
+        >
           Submit
         </button>
       </form>

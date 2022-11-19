@@ -16,6 +16,9 @@ const ConfigNotification = (props) => {
       dispatch(authActions.userLoggedOut());
       history.replace("/");
     }
+    if (notification.status === "bike added to cart") {
+      history.replace("/bikes");
+    }
     dispatch(uiActions.hideNotification());
   };
 

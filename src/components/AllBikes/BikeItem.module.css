@@ -19,8 +19,19 @@
   box-shadow: 1px 1px 12px 1px rgb(265, 65, 65);
 }
 
-.bike-item-added {
-  opacity: .7;
+.bike-item-added .left-box {
+  opacity: .5;
+  
+}
+
+.bike-item-added .right-top-box {
+  opacity: .5;
+  
+}
+
+.bike-item-added .right-mid-box {
+  opacity: .5;
+  
 }
 
 .bike-item.bike-item-added:hover {
