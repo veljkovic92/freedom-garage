@@ -3,8 +3,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding: 1rem;
+  line-height: 1rem;
 }
 
 .cart-list h3 {
@@ -37,6 +37,7 @@
   align-items: center;
   width: 100%;
   padding: 20px 0;
+  
 }
 
 .cart-bot > div {
@@ -66,3 +67,4 @@
   transform:scale(105%);
   box-shadow: 1px 1px 10px 1px rgb(255, 65, 65);
 }
+

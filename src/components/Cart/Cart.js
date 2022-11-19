@@ -61,7 +61,7 @@ const oneOrMoreQuantity = totalQuantity <= 1 ? "bike" : "bikes";
             <span>{totalWaitingTime} {oneOrMoreWaitingDays}</span>
           </div>
           <div>
-            <span>Total Bikes in Cart: </span>
+            <span>Total Bikes: </span>
             <span>{totalQuantity} {oneOrMoreQuantity}</span>
           </div>
         </div>
