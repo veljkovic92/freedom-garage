@@ -148,6 +148,9 @@ export const changePassword = (token, password) => {
         setTimeout(() => {
           dispatch(authActions.userLoggedOut());
           dispatch(uiActions.hideNotification());
+          localStorage.removeItem("user");
+          localStorage.removeItem("expirationTime");
+          localStorage.setItem("isLoggedIn", false);
         }, 5000);
 
         console.log("Password changed");

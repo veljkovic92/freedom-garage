@@ -1,4 +1,4 @@
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Authentication from "./pages/Authentication";
 import OurGoals from "./pages/OurGoals";
@@ -33,6 +33,8 @@ function App() {
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.user);
   const name = useSelector((state) => state.auth.name);
+  const history = useHistory();
+  
   // Fetching Bikes and Orders on first load
   useEffect(() => {
     dispatch(fetchBikesData());
@@ -97,6 +99,13 @@ function App() {
       countdownHandler(existingLocalTime);
     }
   }, []);
+
+  useEffect(() => {
+    if (!localUser) {
+history.replace("/auth")
+    }
+    
+  }, [localUser])
 
   return (
     <Layout>
