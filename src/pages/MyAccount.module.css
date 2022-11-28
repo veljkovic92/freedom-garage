@@ -41,10 +41,16 @@
   position: relative;
 }
 
-.account-info__right img {
+.default-photo {
   width: 10rem;
   border-radius: 10px;
     filter: brightness(100);
+}
+
+.user-image {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 10px;
 }
 
 .account-info__right button {

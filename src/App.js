@@ -18,6 +18,7 @@ import { countdownHandler } from "./helpers/expiration";
 import MyAccount from "./pages/MyAccount";
 import {
   getDisplayName,
+  getUserPhoto,
   onGetDisplayNameHandler,
 } from "./helpers/fetchAccountInfos";
 import NotFound from "./pages/NotFound";
@@ -85,6 +86,11 @@ function App() {
         dispatch(getDisplayName(token));
       } else {
         dispatch(authActions.localName(localUser.name));
+      }
+      if (!localUser.photoUrl) {
+        dispatch(getUserPhoto(token))
+      } else {
+        dispatch(authActions.localPhotoUrl(localUser.photoUrl))
       }
     }
   }, [token]);
