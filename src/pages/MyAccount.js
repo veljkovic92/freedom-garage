@@ -196,6 +196,7 @@ const MyAccount = () => {
                   type="password"
                   id="new-password"
                   onChange={onPasswordChangeHandler}
+                  value={password}
                 />
                 <button
                   onClick={onPasswordSubmitHandler}
