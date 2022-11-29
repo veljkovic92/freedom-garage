@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import {
   changePassword,
   deleteAccount,
+  editPhoto,
   setDisplayName,
 } from "../helpers/fetchAccountInfos";
 import { uiActions } from "../store/ui-slice";
@@ -20,42 +21,70 @@ const MyAccount = () => {
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
   const userName = useSelector((state) => state.auth.name);
+  const userPhoto = useSelector((state) => state.auth.photoUrl);
   const notification = useSelector((state) => state.ui.notification);
 
+  const [photo, setPhoto] = useState("");
   const photoIsClicked = useSelector((state) => state.ui.photoClicked);
+  const [photoIsValid, setPhotoIsValid] = useState(false);
 
-  const [nameIsClicked, setNameIsClicked] = useState(false);
   const [name, setName] = useState("");
+  const [nameIsClicked, setNameIsClicked] = useState(false);
+  const [nameIsValid, setNameIsValid] = useState(false);
 
   const [password, setPassword] = useState("");
-  const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [passwordIsClicked, setPasswordIsClicked] = useState(false);
+  const [passwordIsValid, setPasswordIsValid] = useState(false);
 
   const [deleteAccountIsClicked, setDeleteAccountIsClicked] = useState(false);
 
   const loadingSpinner = (
-    <ThreeDots 
-    height="80" 
-    width="80" 
-    radius="9"
-    color="rgb(265,65,65)" 
-    ariaLabel="three-dots-loading"
-    wrapperStyle={{}}
-    wrapperClassName=""
-    visible={true}
-     />
+    <ThreeDots
+      height="80"
+      width="80"
+      radius="9"
+      color="rgb(265,65,65)"
+      ariaLabel="three-dots-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+    />
   );
 
   useEffect(() => {
+    if (name.length >= 3 && /^[A-Za-z0-9]*$/.test(name)) {
+      setNameIsValid(true);
+    } else {
+      setNameIsValid(false);
+    }
+
     if (password.length >= 7) {
       setPasswordIsValid(true);
     } else {
       setPasswordIsValid(false);
     }
-  }, [password]);
 
-  const onPhotoChangeHandler = () => {
+    if (photo.length > 1) {
+      setPhotoIsValid(true);
+    } else {
+      setPhotoIsValid(false);
+    }
+  }, [name, password, photo]);
+
+  const onPhotoClickedHandler = () => {
     dispatch(uiActions.photoClicked());
+  };
+
+  const onPhotoChangeHandler = (event) => {
+    setPhoto(event.target.value);
+  };
+
+  const onPhotoSubmitHandler = () => {
+    dispatch(editPhoto(token, photo));
+  };
+
+  const onPhotoDeleteHandler = () => {
+    dispatch(editPhoto(token, ""));
   };
 
   const onNameClickedHandler = () => {
@@ -118,15 +147,24 @@ const MyAccount = () => {
           </div>
         </div>
         <div className={classes["account-info__right"]}>
-          <img alt="My Photo" src={profileImage} />
-          <button onClick={onPhotoChangeHandler}>Edit</button>
+          <img
+            alt="My Photo"
+            src={userPhoto || profileImage}
+            className={
+              userPhoto ? classes["user-image"] : classes["default-photo"]
+            }
+          />
+          <button onClick={onPhotoClickedHandler}>Edit</button>
         </div>
       </div>
       {photoIsClicked && (
         <Modal className={classes["new-photo"]}>
           <label htmlFor="new-photo">Add new photo</label>
-          <input id="new-photo" type="text" />
-          <button>Submit</button>
+          <input id="new-photo" type="text" onChange={onPhotoChangeHandler} />
+          <button onClick={onPhotoSubmitHandler} disabled={!photoIsValid}>
+            Submit
+          </button>
+          <button onClick={onPhotoDeleteHandler}>Delete Photo</button>
         </Modal>
       )}
       <h3 className="page-header">Change My Account Information</h3>
@@ -143,38 +181,39 @@ const MyAccount = () => {
               }
             />
           </div>
-          
-            
-              <div className={`${classes["name-edit-body"]} ${nameIsClicked ? classes["show-edit-body"] :  classes["hide-edit-body"]}`}>
-                <div className={classes["name-edit-input"]}>
-                  <label htmlFor="new-name">New Name:</label>
-                  <input
-                    type="text"
-                    id="new-name"
-                    onChange={onNameChangeHandler}
-                  />
-                  <button onClick={onNameSubmitHandler}>Submit</button>
+
+          <div
+            className={`${classes["name-edit-body"]} ${
+              nameIsClicked
+                ? classes["show-edit-body"]
+                : classes["hide-edit-body"]
+            }`}
+          >
+            <div className={classes["name-edit-input"]}>
+              <label htmlFor="new-name">New Name:</label>
+              <input type="text" id="new-name" onChange={onNameChangeHandler} className={classes["name-input"]}/>
+              <button onClick={onNameSubmitHandler} disabled={!nameIsValid} className={classes["name-input-button"]}>
+                Submit
+              </button>
+            </div>
+            {notification &&
+              notification.status === "changing name" &&
+              loadingSpinner}
+            {notification &&
+              (notification.status === "name changed" ||
+                notification.status === "name not changed") && (
+                <div
+                  className={
+                    notification.status === "name changed"
+                      ? classes["success-notification"]
+                      : classes["fail-notification"]
+                  }
+                >
+                  <h4>{notification.title}</h4>
+                  <p>{notification.message || ""}</p>
                 </div>
-                {notification &&
-                  notification.status === "changing name" &&
-                  loadingSpinner}
-                {notification &&
-                  (notification.status === "name changed" ||
-                    notification.status === "name not changed") && (
-                    <div
-                      className={
-                        notification.status === "name changed"
-                          ? classes["success-notification"]
-                          : classes["fail-notification"]
-                      }
-                    >
-                      <h4>{notification.title}</h4>
-                      <p>{notification.message || ""}</p>
-                    </div>
-                  )}
-              </div>
-            
-          
+              )}
+          </div>
         </div>
         <div className={classes["password-edit"]}>
           <div
@@ -195,11 +234,14 @@ const MyAccount = () => {
                 <input
                   type="password"
                   id="new-password"
+                  value={password}
                   onChange={onPasswordChangeHandler}
+                  className={classes["password-input"]}
                 />
                 <button
                   onClick={onPasswordSubmitHandler}
                   disabled={!passwordIsValid}
+                  className={classes["password-input-button"]}
                 >
                   Submit
                 </button>

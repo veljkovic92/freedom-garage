@@ -254,27 +254,86 @@ export const editPhoto = (token, photoUrl) => {
       }
 
       if (response.ok) {
-        dispatch(authActions.localPhotoUrl(photoUrl));
-        const localUser = JSON.parse(localStorage.getItem("user"));
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            ...localUser,
-            photoUrl: photoUrl,
-          })
-        );
-        dispatch(
-          uiActions.showNotification({
-            status: "photo changed",
-            title: "Successfully changed photo",
-          })
-        );
-        console.log("Photo changed");
+        if (photoUrl === "") {
+          dispatch(authActions.localPhotoUrl(""));
+          const localUser = JSON.parse(localStorage.getItem("user"));
+          console.log(localUser);
+          delete localUser.photoUrl;
+         
+
+          localStorage.setItem(
+            "user",
+            JSON.stringify(localUser)
+          );
+
+          dispatch(
+            uiActions.showNotification({
+              status: "photo deleted",
+              title: "Successfully deleted photo",
+            })
+          );
+          console.log("Photo deleted");
+        } else {
+          dispatch(authActions.localPhotoUrl(photoUrl));
+          const localUser = JSON.parse(localStorage.getItem("user"));
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              ...localUser,
+              photoUrl: photoUrl,
+            })
+          );
+          dispatch(
+            uiActions.showNotification({
+              status: "photo changed",
+              title: "Successfully changed photo",
+            })
+          );
+          console.log("Photo changed");
+        }
       }
     };
 
     try {
       sendRequest();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getUserPhoto = (token) => {
+  return async (dispatch) => {
+    const sendRequest = async () => {
+      const response = await fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDUlyw-dltmGCc-EjQuuVbGAQpX92HFL0I",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            idToken: token,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Can't set configs");
+      }
+      const user = await response.json();
+      console.log(user);
+      const userPhoto = user.users[0].photoUrl;
+      console.log(userPhoto);
+      const localUser = JSON.parse(localStorage.getItem("user"));
+      const newLocalUser = {
+        ...localUser,
+        photoUrl: userPhoto,
+      };
+      localStorage.setItem("user", JSON.stringify(newLocalUser));
+      dispatch(authActions.localPhotoUrl(userPhoto));
+    };
+    try {
+      await sendRequest();
     } catch (error) {
       console.log(error);
     }
