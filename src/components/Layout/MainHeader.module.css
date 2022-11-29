@@ -49,6 +49,7 @@
   display: flex;
   flex-basis: 33%;
   justify-content: flex-end;
+  
 }
 
 .hamburger-btn {
@@ -68,7 +69,6 @@
   justify-content: flex-end;
   gap: 10px;
   white-space: nowrap;
-
 }
 
 .navLink {
@@ -77,7 +77,7 @@
   align-items: center;
   color: inherit;
   text-decoration: none;
-width: calc(100% / 6);
+
   text-align: center;
   padding: 5px;
   

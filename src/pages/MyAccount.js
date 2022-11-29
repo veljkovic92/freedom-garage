@@ -191,8 +191,8 @@ const MyAccount = () => {
           >
             <div className={classes["name-edit-input"]}>
               <label htmlFor="new-name">New Name:</label>
-              <input type="text" id="new-name" onChange={onNameChangeHandler} />
-              <button onClick={onNameSubmitHandler} disabled={!nameIsValid}>
+              <input type="text" id="new-name" onChange={onNameChangeHandler} className={classes["name-input"]}/>
+              <button onClick={onNameSubmitHandler} disabled={!nameIsValid} className={classes["name-input-button"]}>
                 Submit
               </button>
             </div>
@@ -234,11 +234,14 @@ const MyAccount = () => {
                 <input
                   type="password"
                   id="new-password"
+                  value={password}
                   onChange={onPasswordChangeHandler}
+                  className={classes["password-input"]}
                 />
                 <button
                   onClick={onPasswordSubmitHandler}
                   disabled={!passwordIsValid}
+                  className={classes["password-input-button"]}
                 >
                   Submit
                 </button>
