@@ -4,13 +4,10 @@ import classes from "./BikesList.module.css"
 
 const BikesList = () => {
   const availableBikes = useSelector((state) => state.bikes.bikes);
-
   return (
     
     <div className={classes["bikes-list"]}>
-
-   
-      {Object.keys(availableBikes).map((bike) => (
+      {availableBikes && Object.keys(availableBikes).map((bike) => (
         <BikeItem
           key={availableBikes[bike].id}
           id={availableBikes[bike].id}
@@ -20,7 +17,7 @@ const BikesList = () => {
           price={availableBikes[bike].price}
         />
       ))}
-      </div>
+    </div>
     
   );
 };
