@@ -36,17 +36,6 @@ function App() {
   const name = useSelector((state) => state.auth.name);
   const history = useHistory();
 
-  // Stopping body from scrolling when cart open
-
-  // useEffect(()=>{
-  //   if (showCart) {
-  //     document.body.style.overflow = "hidden"
-  //   } else {
-  //     document.body.style.overflow = "auto"
-  //   }
-  // },[showCart])
-
- 
   
   // Fetching Bikes and Orders on first load
   useEffect(() => {
