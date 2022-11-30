@@ -132,6 +132,8 @@ const MyAccount = () => {
     dispatch(deleteAccount(token));
   };
 
+  
+
   return (
     <div className={classes["my-account"]}>
       <h2 className="page-header">My Account</h2>

@@ -164,9 +164,9 @@
 .name-input-button:disabled, .password-input-button:disabled {
   box-shadow: none;
   cursor:not-allowed;
-  background-color: rgb(10, 10, 10);
+  background-color: inherit;
   color: darkgrey;
-  border-color: rgb(10, 10, 10);
+  border: 1px solid rgb(265, 65, 65);
   transform: scale(100%);
 }
 

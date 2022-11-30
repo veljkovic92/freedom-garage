@@ -377,7 +377,7 @@ const ConfigForm = () => {
 
   return (
     <>
-      {notification && (
+      {notification && notification.status === "bike added to cart" && (
         <ConfigNotification
           title={notification.title}
           message={notification.message}
