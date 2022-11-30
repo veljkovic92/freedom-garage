@@ -2,7 +2,7 @@ import { ordersActions } from "./previous-orders-slice";
 
 export const fetchOrdersData = (user) => {
   return async (dispatch) => {
-    dispatch(ordersActions.ordersLoading(true))
+    dispatch(ordersActions.ordersLoading(true));
     const sendRequest = async () => {
       const response = await fetch(
         "https://react-http-de4ad-default-rtdb.europe-west1.firebasedatabase.app/orders.json"
@@ -15,7 +15,7 @@ export const fetchOrdersData = (user) => {
       return data;
     };
     try {
-      dispatch(ordersActions.ordersLoading(false))
+      dispatch(ordersActions.ordersLoading(false));
       const cartData = await sendRequest();
       dispatch(ordersActions.fetchOrder(cartData));
     } catch (error) {}
@@ -35,7 +35,6 @@ export const updateOrdersData = (user) => {
         throw new Error("Can't set configs");
       }
       const data = await response.json();
-      console.log(data);
 
       const newData = {};
 
@@ -44,12 +43,9 @@ export const updateOrdersData = (user) => {
           return (newData[item] = data[item]);
         }
       });
-      console.log(newData);
     };
     try {
       sendRequest();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 };

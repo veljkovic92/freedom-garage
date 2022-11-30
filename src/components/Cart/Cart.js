@@ -10,8 +10,6 @@ import { fetchOrdersData } from "../../store/previous-orders-actions";
 import ConfigNotification from "../Layout/ConfigNotification";
 
 const Cart = () => {
-  console.log(fetchOrdersData);
-
   const history = useHistory();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
@@ -94,7 +92,6 @@ const Cart = () => {
           </button>
         </div>
       </div>
-      
     </Modal>
   );
 };

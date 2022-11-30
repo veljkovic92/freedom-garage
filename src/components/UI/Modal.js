@@ -3,11 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import classes from "./Modal.module.css";
 import Card from "./Card";
 import { uiActions } from "../../store/ui-slice";
+import { useEffect } from "react";
 
 const Backdrop = () => {
   const photoClicked = useSelector((state) => state.ui.photoClicked);
   const notificationShown = useSelector((state) => state.ui.notification);
   const cartShown = useSelector((state) => state.ui.cartIsVisible);
+
+  // stopping Body from scrolling on modal open
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    //component will unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  });
 
   const dispatch = useDispatch();
   const onBackdropClickHandler = () => {

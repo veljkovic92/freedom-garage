@@ -6,7 +6,7 @@ import CartButton from "../Cart/CartButton";
 import { useState } from "react";
 import { useEffect } from "react";
 import { uiActions } from "../../store/ui-slice";
-import {GiHamburgerMenu} from "react-icons/gi"
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const MainHeader = () => {
   const history = useHistory();
@@ -21,11 +21,11 @@ const MainHeader = () => {
 
   const onHamburgerClickHandler = () => {
     setShowNavItems((prevValue) => !prevValue);
-  }
+  };
 
   const onNavItemClickHandler = () => {
     setShowNavItems(false);
-  }
+  };
 
   const authBtnHandler = (event) => {
     if (userLoggedIn) {
@@ -56,12 +56,10 @@ const MainHeader = () => {
 
   const headerRoute = userLoggedIn ? "/bikes" : "/auth";
 
- 
-
   return (
     <header className={classes.header}>
       <div className={classes["left-nav"]}>
-        <Link to={headerRoute} >
+        <Link to={headerRoute}>
           <h1 className={classes["web-title"]}>Future Garage</h1>
         </Link>
       </div>
@@ -69,76 +67,83 @@ const MainHeader = () => {
         {userLoggedIn && cartItems.length > 0 && <CartButton />}
       </div>
 
-      
-
-      
-    <div className={classes["right-nav"]}>
-    <div className={`${classes["hamburger-btn"]} ${showNavItems ? classes["hamburger-clicked"] : classes["hamburger-clicked-two"]}`}>
-    
-    <GiHamburgerMenu size="40" style={{color: "rgb(265,65,65)"}} onClick={onHamburgerClickHandler} className={classes["hamburger-icon"]}/>
-    
-    </div>
-      <div className={`${classes.navBtns} ${showNavItems ? classes["navBtnsHam"]  : classes["hide-nav"]}`}>
-      
-        {userLoggedIn && (
-          <NavLink
-            to="my-account"
-            activeClassName={classes.activeLink}
-            className={classes.navLink}
-            onClick={onNavItemClickHandler}
-          >
-            My Account
-          </NavLink>
-        )}
-        {userLoggedIn && userHasOrders && (
-          <NavLink
-            to="/orders"
-            activeClassName={classes.activeLink}
-            className={classes.navLink}
-            onClick={onNavItemClickHandler}
-          >
-            My Orders
-          </NavLink>
-        )}
-
-        <NavLink
-          to="/goals"
-          activeClassName={classes.activeLink}
-          className={classes.navLink}
-          onClick={onNavItemClickHandler}
+      <div className={classes["right-nav"]}>
+        <div
+          className={`${classes["hamburger-btn"]} ${
+            showNavItems
+              ? classes["hamburger-clicked"]
+              : classes["hamburger-clicked-two"]
+          }`}
         >
-          Our Goals
-        </NavLink>
-
-        {userLoggedIn && (
-          <NavLink
-            to="/bikes"
-            activeClassName={classes.activeLink}
-            className={classes.navLink}
-            onClick={onNavItemClickHandler}
-          >
-            All Bikes
-          </NavLink>
-        )}
-
-        <NavLink
-          to="/contact-us"
-          activeClassName={classes.activeLink}
-          className={classes.navLink}
-          onClick={onNavItemClickHandler}
-        >
-          Contact Us
-        </NavLink>
-
-        <div>
-          <button className={classes.authHeadBtn} onClick={authBtnHandler}>
-            {userLoggedIn ? "Sign Out" : "Log In"}
-          </button>
+          <GiHamburgerMenu
+            size="40"
+            style={{ color: "rgb(265,65,65)" }}
+            onClick={onHamburgerClickHandler}
+            className={classes["hamburger-icon"]}
+          />
         </div>
-        
+        <div
+          className={`${classes.navBtns} ${
+            showNavItems ? classes["navBtnsHam"] : classes["hide-nav"]
+          }`}
+        >
+          {userLoggedIn && (
+            <NavLink
+              to="/my-account"
+              activeClassName={classes.activeLink}
+              className={classes.navLink}
+              onClick={onNavItemClickHandler}
+            >
+              My Account
+            </NavLink>
+          )}
+          {userLoggedIn && userHasOrders && (
+            <NavLink
+              to="/orders"
+              activeClassName={classes.activeLink}
+              className={classes.navLink}
+              onClick={onNavItemClickHandler}
+            >
+              My Orders
+            </NavLink>
+          )}
+
+          <NavLink
+            to="/goals"
+            activeClassName={classes.activeLink}
+            className={classes.navLink}
+            onClick={onNavItemClickHandler}
+          >
+            Our Goals
+          </NavLink>
+
+          {userLoggedIn && (
+            <NavLink
+              to="/bikes"
+              activeClassName={classes.activeLink}
+              className={classes.navLink}
+              onClick={onNavItemClickHandler}
+            >
+              All Bikes
+            </NavLink>
+          )}
+
+          <NavLink
+            to="/contact-us"
+            activeClassName={classes.activeLink}
+            className={classes.navLink}
+            onClick={onNavItemClickHandler}
+          >
+            Contact Us
+          </NavLink>
+
+          <div>
+            <button className={classes.authHeadBtn} onClick={authBtnHandler}>
+              {userLoggedIn ? "Sign Out" : "Log In"}
+            </button>
+          </div>
+        </div>
       </div>
-      </div>
-      
     </header>
   );
 };

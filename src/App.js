@@ -35,6 +35,18 @@ function App() {
   const user = useSelector((state) => state.auth.user);
   const name = useSelector((state) => state.auth.name);
   const history = useHistory();
+
+  // Stopping body from scrolling when cart open
+
+  // useEffect(()=>{
+  //   if (showCart) {
+  //     document.body.style.overflow = "hidden"
+  //   } else {
+  //     document.body.style.overflow = "auto"
+  //   }
+  // },[showCart])
+
+ 
   
   // Fetching Bikes and Orders on first load
   useEffect(() => {
@@ -127,6 +139,7 @@ history.replace("/auth")
             <Welcome />
           </Route>
         )}
+        
         {isLoggedIn && (
           <Route path="/my-account">
             <MyAccount />

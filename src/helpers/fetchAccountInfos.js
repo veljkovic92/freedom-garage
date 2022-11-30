@@ -49,7 +49,6 @@ export const setDisplayName = (token, name) => {
             title: "Successfully changed name",
           })
         );
-        console.log("Name changed");
       }
     };
     try {
@@ -61,7 +60,6 @@ export const setDisplayName = (token, name) => {
           title: "Failed changing name",
         })
       );
-      console.log(error);
     }
   };
 };
@@ -86,7 +84,7 @@ export const getDisplayName = (token) => {
       }
       const user = await response.json();
       const userName = user.users[0].displayName;
-      console.log(userName);
+
       const localUser = JSON.parse(localStorage.getItem("user"));
       const newLocalUser = {
         ...localUser,
@@ -97,9 +95,7 @@ export const getDisplayName = (token) => {
     };
     try {
       await sendRequest();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 };
 
@@ -152,8 +148,6 @@ export const changePassword = (token, password) => {
           localStorage.removeItem("expirationTime");
           localStorage.setItem("isLoggedIn", false);
         }, 5000);
-
-        console.log("Password changed");
       }
     };
     try {
@@ -166,7 +160,6 @@ export const changePassword = (token, password) => {
           message: "Please try to log in again",
         })
       );
-      console.log(error);
     }
   };
 };
@@ -209,7 +202,6 @@ export const deleteAccount = (token) => {
               "You'll be automatically signed out on closing this notification",
           })
         );
-        console.log("Account deleted");
       }
     };
 
@@ -223,7 +215,6 @@ export const deleteAccount = (token) => {
           message: "Please try to log in again",
         })
       );
-      console.log(error);
     }
   };
 };
@@ -257,14 +248,10 @@ export const editPhoto = (token, photoUrl) => {
         if (photoUrl === "") {
           dispatch(authActions.localPhotoUrl(""));
           const localUser = JSON.parse(localStorage.getItem("user"));
-          console.log(localUser);
-          delete localUser.photoUrl;
-         
 
-          localStorage.setItem(
-            "user",
-            JSON.stringify(localUser)
-          );
+          delete localUser.photoUrl;
+
+          localStorage.setItem("user", JSON.stringify(localUser));
 
           dispatch(
             uiActions.showNotification({
@@ -272,7 +259,6 @@ export const editPhoto = (token, photoUrl) => {
               title: "Successfully deleted photo",
             })
           );
-          console.log("Photo deleted");
         } else {
           dispatch(authActions.localPhotoUrl(photoUrl));
           const localUser = JSON.parse(localStorage.getItem("user"));
@@ -289,16 +275,13 @@ export const editPhoto = (token, photoUrl) => {
               title: "Successfully changed photo",
             })
           );
-          console.log("Photo changed");
         }
       }
     };
 
     try {
       sendRequest();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 };
 
@@ -321,9 +304,9 @@ export const getUserPhoto = (token) => {
         throw new Error("Can't set configs");
       }
       const user = await response.json();
-      console.log(user);
+
       const userPhoto = user.users[0].photoUrl;
-      console.log(userPhoto);
+
       const localUser = JSON.parse(localStorage.getItem("user"));
       const newLocalUser = {
         ...localUser,
@@ -334,8 +317,6 @@ export const getUserPhoto = (token) => {
     };
     try {
       await sendRequest();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 };

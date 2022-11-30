@@ -7,6 +7,7 @@
   z-index: 100;
   background-color: rgb(10,0,15);
   opacity: 0.9;
+ 
 }
 
 .overlay {
@@ -15,4 +16,6 @@
   left: 50vw;
   top: 30vh;
   transform: translate(-50%, -50%);
+ 
 }
+
