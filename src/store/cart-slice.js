@@ -4,7 +4,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     user: "",
-   
+
     items: [],
     waitingTime: 0,
     totalQuantity: 0,
@@ -37,7 +37,6 @@ const cartSlice = createSlice({
             action.payload.chosenUpgradePrice;
           configItem.config[action.payload.name].waitingTime =
             action.payload.chosenUpgradeWaitingTime;
-
           configItem.totalConfigPrice += action.payload.chosenUpgradePrice;
           configItem.waitingTime += action.payload.chosenUpgradeWaitingTime;
 
@@ -53,12 +52,25 @@ const cartSlice = createSlice({
         if (configItem.id == action.payload.id) {
           configItem.config[action.payload.name].price = 0;
           configItem.config[action.payload.name].waitingTime = 0;
+          configItem.config[action.payload.name].value = "none";
 
           configItem.totalConfigPrice -= action.payload.chosenUpgradePrice;
           configItem.waitingTime -= action.payload.chosenUpgradeWaitingTime;
 
           state.totalPrice -= action.payload.chosenUpgradePrice;
           state.waitingTime -= action.payload.chosenUpgradeWaitingTime;
+        }
+      });
+    },
+    addCartItemValue(state, action) {
+      
+      state.items.find((configItem) => {
+        if (configItem.id == action.payload.id) {
+          configItem.config[action.payload.name].value =
+            action.payload.value;
+          
+
+          
         }
       });
     },

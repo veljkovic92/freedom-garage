@@ -1,6 +1,7 @@
 import classes from "./CartItem.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
+import GarageItemValue from "../../helpers/GarageItemValue";
 
 const CartItem = (props) => {
   // add the date and time of adding to cart
@@ -71,12 +72,24 @@ const CartItem = (props) => {
         </div>
         <div>
           <h4>Value</h4>
-          <span className={classes.value}>{config[item].value}</span>
+          {/* <span className={classes.value}>{config[item].value}</span> */}
+          <GarageItemValue
+            name={config[item].name}
+            value={config[item].value}
+            index={index}
+            id={props.id}
+            price={config[item].price}
+          />
         </div>
         <div>
           <h4>Waiting Time</h4>
           <span className={classes.value}>
-            {config[item].waitingTime === 0 ? "none" : config[item].waitingTime} {config[item].waitingTime >= 2 ? "days" : config[item].waitingTime === 1 ? "day" : ""}
+            {config[item].waitingTime === 0 ? "none" : config[item].waitingTime}{" "}
+            {config[item].waitingTime >= 2
+              ? "days"
+              : config[item].waitingTime === 1
+              ? "day"
+              : ""}
           </span>
         </div>
         <div>
