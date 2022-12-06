@@ -156,7 +156,7 @@ const MyAccount = () => {
               userPhoto ? classes["user-image"] : classes["default-photo"]
             }
           />
-          <button onClick={onPhotoClickedHandler}>Edit</button>
+          <button onClick={onPhotoClickedHandler} className={classes["account-img-btn"]}>Edit</button>
         </div>
       </div>
       {photoIsClicked && (

@@ -161,7 +161,6 @@ const GarageItemValue = (props) => {
             className={classes["garage-item-value-input"]}
             style={{ width: "50%", borderRadius: "5px" }}
             onChange={(event) => setItemValue(event.target.value)}
-            style={{ width: "50%", borderRadius: "5px" }}
             min="15"
             max="30"
             step="15"
@@ -171,8 +170,13 @@ const GarageItemValue = (props) => {
           <button onClick={logoChangeSubmitHandler}></button>
         </>
       )}
-      
-      {(name === "Seat" || name === "Suspension" || name === "Brakes" || name === "Windshield") &&  <span className={classes.value}>{props.value}</span>}
+
+      {(name === "Seat" ||
+        name === "Suspension" ||
+        name === "Brakes" ||
+        name === "Windshield") && (
+        <span className={classes.value}>{props.value}</span>
+      )}
     </>
   );
 };

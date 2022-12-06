@@ -12,12 +12,12 @@
 .account-info__left {
   display: flex;
   flex-direction: column;
-  
 }
 
-.account-info__name, .account-info__email {
+.account-info__name,
+.account-info__email {
   align-items: center;
- 
+
   display: flex;
   flex-direction: column;
 }
@@ -25,8 +25,6 @@
 .account-info__left h4 {
   color: rgb(265, 65, 65);
   margin: 0;
-  
- 
 }
 
 .account-info__left p {
@@ -39,12 +37,13 @@
 
 .account-info__right {
   position: relative;
+  overflow: hidden;
 }
 
 .default-photo {
   width: 10rem;
   border-radius: 10px;
-    filter: brightness(100);
+  filter: brightness(100);
 }
 
 .user-image {
@@ -53,24 +52,44 @@
   border-radius: 10px;
 }
 
+
+
 .account-info__right button {
   position: absolute;
   z-index: 1;
   left: 50%;
   bottom: 10px;
-  transform: translate(-50%);
+  transform: translate(-50%, 150%);
   text-decoration: none;
-  color: black;
+  color: inherit;
   padding: 4px 8px;
-  border-radius: 5px;
-  border: 1px solid grey;
+  border: 2px solid rgb(265, 65, 65);
+  background-color: rgb(10, 0, 15);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all .5s;
 }
+
+.account-info__right button:hover {
+ 
+}
+
+.account-info__right:hover.account-info__right button {
+  
+  transform: translate(-50%, -10%);
+  
+}
+.account-info__right:hover.account-info__right button:hover {
+  
+  transform: scale(105%) translate(-48%, -10%);
+  transition: all .2s;
+  
+}
+
 
 .new-photo {
   text-align: end;
 }
-
-
 
 .account-edit {
   display: flex;
@@ -109,7 +128,6 @@
 .name-edit-body,
 .password-edit-body,
 .account-delete-body {
-  
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -123,11 +141,9 @@
 
 .name-edit-body.show-edit-body {
   display: flex;
-  
 }
 
 .name-edit-body.hide-edit-body {
-  
   display: none;
 }
 
@@ -142,12 +158,14 @@
   border-radius: 5px;
 }
 
-.name-input, .password-input {
+.name-input,
+.password-input {
   border-radius: 5px;
   border: none;
 }
 
-.name-input-button, .password-input-button {
+.name-input-button,
+.password-input-button {
   padding: 3px 10px;
   border-radius: 5px;
   box-shadow: 1px 1px 10px 1px rgb(265, 65, 65);
@@ -157,21 +175,23 @@
   border: 1px solid rgb(265, 65, 65);
 }
 
-.name-input-button:hover, .password-input-button:hover {
+.name-input-button:hover,
+.password-input-button:hover {
   transform: scale(103%);
 }
 
-.name-input-button:disabled, .password-input-button:disabled {
+.name-input-button:disabled,
+.password-input-button:disabled {
   box-shadow: none;
-  cursor:not-allowed;
+  cursor: not-allowed;
   background-color: inherit;
   color: darkgrey;
   border: 1px solid rgb(265, 65, 65);
   transform: scale(100%);
 }
 
-.name-input-button:active, .password-input-button:active {
-  
+.name-input-button:active,
+.password-input-button:active {
 }
 
 .name-edit-notificaiton,
@@ -202,7 +222,6 @@
   color: white;
 }
 
-
 @media (max-width: 1920px) {
   .my-account {
     padding: 0 100px;
@@ -214,8 +233,7 @@
     padding: 0 25px;
   }
 
-  
-  .account-info__left p { 
+  .account-info__left p {
     padding: 0;
   }
 }
@@ -223,7 +241,6 @@
 @media (max-width: 500px) {
   .account-info {
     justify-content: center;
-    
   }
   .account-info__left {
     margin-top: 10px;
@@ -232,7 +249,4 @@
     flex-basis: 60%;
     text-align: center;
   }
-
- 
- 
 }
