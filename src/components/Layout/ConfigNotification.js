@@ -11,6 +11,19 @@ const ConfigNotification = (props) => {
   const history = useHistory();
 
   const dispatch = useDispatch();
+
+  const toGarageClickHandler = () => {
+    history.replace("/bikes");
+    dispatch(uiActions.hideNotification());
+    dispatch(uiActions.showCart());
+  };
+
+  const button = notification.status === "bike added to cart" && (
+    <button onClick={toGarageClickHandler} className={classes["garage-btn"]}>
+      To "Garage"
+    </button>
+  );
+
   const btnCLickHandler = () => {
     if (notification.status === "account deleted") {
       dispatch(authActions.userLoggedOut());
@@ -26,7 +39,12 @@ const ConfigNotification = (props) => {
     <Modal className={classes.notification}>
       <h2>{props.title}</h2>
       <p>{props.message}</p>
-      <button onClick={btnCLickHandler}>Close</button>
+      <div className={classes["notification-actions"]}>
+        {button}
+        <button onClick={btnCLickHandler} className={classes["close-btn"]}>
+          Close
+        </button>
+      </div>
     </Modal>
   );
 };

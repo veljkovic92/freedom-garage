@@ -229,23 +229,6 @@ const ConfigForm = () => {
 
   const configFormSubmitHandler = (event) => {
     event.preventDefault();
-    if (firstSubmit === true) {
-      if (
-        !isExhaustChecked ||
-        !isSeatChecked ||
-        !isSuspensionChecked ||
-        !isBrakesChecked ||
-        !isWindshieldChecked
-      ) {
-        firstSubmit = false;
-        alert("Are you sure you don't want to add any more upgrades?");
-      } else {
-        firstSubmit = false;
-        alert(
-          "Please understand that the waiting time will be longer in order to process all of the upgrades"
-        );
-      }
-    }
 
     const logoConfig = isLogoChanged
       ? {
@@ -365,14 +348,42 @@ const ConfigForm = () => {
 
     dispatch(cartActions.addToCart(chosenConfig));
 
-    dispatch(
-      uiActions.showNotification({
-        status: "bike added to cart",
-        title: "Bike configured successfully",
-        message: "Your personalised bike has been added to the Garage",
-      })
-    );
-   
+    if (
+      !isLogoChecked ||
+      !isColorChecked ||
+      !isWheelChecked ||
+      !isExhaustChecked ||
+      !isSeatChecked ||
+      !isSuspensionChecked ||
+      !isBrakesChecked ||
+      !isWindshieldChecked ||
+      !isPowerChecked
+    ) {
+      dispatch(
+        uiActions.showNotification({
+          status: "bike added to cart",
+          title: 'Bike successfully added to the "Garage"',
+          message: "There you can futher reconfigure your selected bike",
+        })
+      );
+    } else {
+      dispatch(
+        uiActions.showNotification({
+          status: "bike added to cart",
+          title: 'Bike successfully added to the "Garage"',
+          message:
+            "There you can futher reconfigure your selected bike. Please understand that the waiting time will be longer in order to process all of the upgrades.",
+        })
+      );
+    }
+
+    // dispatch(
+    //   uiActions.showNotification({
+    //     status: "bike added to cart",
+    //     title: "Bike configured successfully",
+    //     message: "Your personalised bike has been added to the Garage",
+    //   })
+    // );
   };
 
   return (
