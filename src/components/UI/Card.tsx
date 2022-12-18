@@ -1,6 +1,13 @@
+import React, { MouseEventHandler, ReactNode } from 'react';
 import classes from "./Card.module.css";
 
-const Card = (props) => {
+type CardProps = {
+  onClick: MouseEventHandler,
+  children: ReactNode,
+  className: string
+}
+
+const Card: React.FC<CardProps> = (props) => {
   return (
     <section
       className={`${classes.card} ${props.className ? props.className : ""}`}
